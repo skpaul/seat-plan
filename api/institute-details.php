@@ -16,7 +16,6 @@ $db = new ZeroSQL();
 $db->database(DATABASE_NAME)->user(DATABASE_USER_NAME)->server(DATABASE_SERVER)->password(DATABASE_PASSWORD)->connect();
 
 $eiin = $_POST["eiin"];
-$password = $_POST["password"];
 
 try {
     $details= $db->select()->from("institutions")->where("eiin")->equalTo($eiin)->single();
@@ -25,7 +24,6 @@ try {
 }
 
 http_response_code(200);
-$data = array("eiin"=>$eiin, "password"=>$password);
 $json = json_encode($details);
 exit($json);
 

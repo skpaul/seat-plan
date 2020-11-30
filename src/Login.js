@@ -24,8 +24,8 @@ function Login(props) {
         data.append("password", password);
 
         Axios.post("http://localhost/seat-plan/api/validate-login.php",data).then(response=>{
-            console.log(response.data);
-            localStorage.setItem('myData', "hi");
+           // console.log(response.data);
+            localStorage.setItem('eiin', eiin);
             props.history.push('/dashboard'); // Redirect to dashboard
         }).catch(error=>{
             console.log(error);

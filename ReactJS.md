@@ -268,3 +268,8 @@ export default App;
 ## Reactjs - How to load component after successful login
 
 https://stackoverflow.com/questions/58535557/reactjs-how-to-load-component-after-successful-login-with-githubfirebase
+
+## Page transition
+
+https://www.youtube.com/watch?v=qJt-FtzJ5fo&feature=emb_logo
+
