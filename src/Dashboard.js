@@ -2,6 +2,12 @@ import React from "react";
 
 
 export default function Dashboard(){
-    return <div>Im Dashboard</div>;
+   let data = localStorage.getItem('myData');
+    return(
+        <>
+            <div>Im Dashboard</div>
+            <div>{data}</div>
+        </>
+    ) ;
 
 }
