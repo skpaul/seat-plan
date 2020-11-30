@@ -10,13 +10,10 @@ export default function Dashboard(props){
 
    const [district, setDistrict] = useState("");
    useEffect(()=>{
-        // console.log("use effect");
-
         let postData = new FormData();
         postData.append("eiin", eiin);
         Axios.post("http://localhost/seat-plan/api/institute-details.php",postData).then(response=>{
             let data = response.data;
-            // console.log(data.level);
             setDistrict(data.district);
         }).catch(error=>{
             console.log(error);
