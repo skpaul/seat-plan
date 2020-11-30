@@ -10,6 +10,14 @@ export default function Dashboard(props){
    }
 
    const [district, setDistrict] = useState("");
+   const [thana, setThana] = useState("");
+   const [type, setType] = useState("");
+   const [level, setLevel] = useState("");
+//    const [eiin, setEIIN] = useState("");
+   const [name, setName] = useState("");
+   const [address, setAddress] = useState("");
+   const [post, setPost] = useState("");
+   
    useEffect(()=>{
         let postData = new FormData();
         postData.append("eiin", eiin);
