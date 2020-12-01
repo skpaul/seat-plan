@@ -45,3 +45,15 @@ Stack trace:
 [01-Dec-2020 10:13:26 Europe/Berlin] PHP Stack trace:
 [01-Dec-2020 10:13:26 Europe/Berlin] PHP   1. {main}() D:\php\seat-plan\api\institute-details.php:0
 [01-Dec-2020 10:13:26 Europe/Berlin] PHP   2. Validable->required() D:\php\seat-plan\api\institute-details.php:50
+Error No.-0. Description-Password required.
+File:D:\php\seat-plan\api\lib\FormValidator\Validable.php, Line:328, Datetime:01-12-2020 08:00:10 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-Use of undefined constant BASE_URL - assumed 'BASE_URL' (this will throw an Error in a future version of PHP)
+File:D:\php\seat-plan\api\lib\logger\SwiftLogger.php, Line:91, Datetime:01-12-2020 08:00:10 PM  
+------------------------------------------------------------------------------------
+Failed to execute the following SQL statement: UPDATE `institutions` SET eiin='133980', district='DHAKA', thana='ADABOR', type='COLLEGE', level='HIGHER SECONDARY', name='COLLEGE OF HUMAN DEVELOPMENT', address='39, JANATA HOUSING', post='MOHAMMADPUR', mobile='01712203212', email='skpaul@gmail.com' WHERE . MySQL Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1. SqlState: 42000
+File:SwiftLogger.php, Line:128, Datetime:01-12-2020 08:00:42 PM  
+------------------------------------------------------------------------------------
+The query must return exactly 1 record. But found none.
+File:SwiftLogger.php, Line:128, Datetime:01-12-2020 08:07:17 PM  
+------------------------------------------------------------------------------------

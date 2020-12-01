@@ -62,7 +62,7 @@ if($action === "save"){
             $db->insert($institute)->into("institutions")->execute();
         }
         else{
-            $db->update($institute)->into("institutions")->execute();
+            $db->update($institute)->into("institutions")->where("eiin")->equalTo($eiin)->execute();
         }
         
         http_response_code(200);

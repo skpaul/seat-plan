@@ -22,11 +22,13 @@ export default function Dashboard(props){
    const [post, setPost] = useState("");
    const [mobile, setMobile] = useState("");
    const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
 
    //Get data on component load event
    useEffect(()=>{
         let postData = new FormData();
         postData.append("eiin", eiinNo);
+        //Get institute profile details -->
         Axios.post("http://localhost/seat-plan/api/institute-details.php?action=get",postData).then(response=>{
             if(response.data){
                 let data = response.data;
@@ -39,24 +41,38 @@ export default function Dashboard(props){
                 setPost(data.post);
                 setMobile(data.mobile);
                 setEmail(data.email);
+                setPassword(data.password);
             }
         }).catch(error=>{
             console.log(error);
+        }); //<--Get institute profile details
+
+        //Get buildings
+        Axios.post("http://localhost/seat-plan/api/building.php?action=get", postData).then(response=>{
+            const items = response.data;
+            items.map((item,index)=>{
+            setCount(count => count + 1);
+            setBuilding(buildings => [...buildings, <Building buildingId={item.id} buildingName={item.name} eiin={eiinNo} updateFunction={buildingUpdated} key={count} val={count}/>]);
+                
+            })
+        }).catch(error=>{
+            console.log(error);
         });
+
    },[]);
-
-
 
     const [buildings, setBuilding] = useState([]);
     const [count, setCount] = React.useState(0);
 
     //This function is passed to Building and called from there.
-    const buildingUpdated = (value) => {console.log("I am from dashboard and value is -" + value)};
+    const buildingUpdated = (value) => {
+        //I'll do something here.
+    };
 
-    const addNewFloor = event=>{
+    const addNewBuilding = event=>{
         event.preventDefault();
         setCount(count => count + 1);
-        setBuilding(buildings => [...buildings, <Building updateFunction={buildingUpdated} key={count} val={count}/>]);
+        setBuilding(buildings => [...buildings, <Building buildingId="" buildingName="" eiin={eiinNo} updateFunction={buildingUpdated} key={count} val={count}/>]);
     }
 
     const allBuildings = buildings.map( item => (
@@ -99,6 +115,11 @@ export default function Dashboard(props){
         setEmail(event.target.value);
     }
 
+    const passwordChanged=event=>{
+        setPassword(event.target.value);
+    }
+
+
     const saveProfile= (e)=>{
         e.preventDefault();
         let updatedData = new FormData();
@@ -112,6 +133,8 @@ export default function Dashboard(props){
         updatedData.append("post", post);
         updatedData.append("mobile", mobile);
         updatedData.append("email", email);
+        updatedData.append("password", password);
+
         Axios.post("http://localhost/seat-plan/api/institute-details.php?action=save",updatedData).then(response=>{
             if(response.data.issuccess){
                 alert("Saved");
@@ -168,12 +191,17 @@ export default function Dashboard(props){
                 <input onChange={emailChanged} id="email" email="email" value={email} type="text"/>
             </div>
             
+            <div className="field">
+                <label>Password</label>
+                <input onChange={passwordChanged} id="password" password="password" value={password} type="password"/>
+            </div>
+
             <button id="saveButton" onClick={saveProfile} type="button">Save</button>
             <div>
                 {allBuildings}
             </div>
             
-            <div onClick={addNewFloor}>Add Building</div>
+            <div onClick={addNewBuilding}>Add Building</div>
             
            
         </>
