@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Room from './Room';
+import "./Floor.css";
 
 export default function Floor(props){
 

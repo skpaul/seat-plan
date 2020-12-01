@@ -628,7 +628,8 @@ class ZeroSQL{
         *
         * No need to use table name if this data was read by find() previously.
         *
-        *@return int number of rows affected.
+        *@param mixed
+        *@return this number of rows affected.
         */
         public function update($param){
             $this->_debugBacktrace();

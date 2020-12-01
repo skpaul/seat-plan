@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Floor from './Floor';
+import "./Building.css";
 
 export default function Building(props){
 
@@ -29,6 +30,7 @@ export default function Building(props){
     return (
   
         <div className="building">
+            
             <div>
                 <input key={props.val} type="text" onChange={buildingNameChanged} value={buildingName} name="buildingName" placeholder="building name"/>
             </div>

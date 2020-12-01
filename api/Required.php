@@ -50,10 +50,6 @@ class Required{
         return new static;
     }
 
-    public static function FormValidator($version = null){
-        require_once(ROOT_DIRECTORY ."/lib/FormValidator/FormValidator.php");
-        return new static;
-    }
 
     public static function Validable($version = null){
         require_once(ROOT_DIRECTORY ."/lib/FormValidator/Validable.php");

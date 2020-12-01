@@ -3,9 +3,12 @@ import Axios from "axios";
 import Building from "./components/Building";
 
 export default function Dashboard(props){
-   let eiin = localStorage.getItem('eiin');
+    const [eiinNo, setEIIN] = useState(localStorage.getItem('eiin'));
+    
+//    let eiin = localStorage.getItem('eiin');
+    //setEIIN(localStorage.getItem('eiin'));
 
-   if(eiin == null || eiin === ""){
+   if(eiinNo == null || eiinNo === ""){
        props.history.push('/');
    }
 
@@ -13,20 +16,18 @@ export default function Dashboard(props){
    const [thana, setThana] = useState("");
    const [type, setType] = useState("");
    const [level, setLevel] = useState("");
-   const [eiinNo, setEIIN] = useState("");
+   
    const [name, setName] = useState("");
    const [address, setAddress] = useState("");
    const [post, setPost] = useState("");
    const [mobile, setMobile] = useState("");
    const [email, setEmail] = useState("");
-   
 
-
+   //Get data on component load event
    useEffect(()=>{
         let postData = new FormData();
-        postData.append("eiin", eiin);
-        Axios.post("http://localhost/seat-plan/api/institute-details.php",postData).then(response=>{
-            setEIIN(eiin);
+        postData.append("eiin", eiinNo);
+        Axios.post("http://localhost/seat-plan/api/institute-details.php?action=get",postData).then(response=>{
             if(response.data){
                 let data = response.data;
                 setDistrict(data.district);
@@ -97,10 +98,36 @@ export default function Dashboard(props){
     const emailChanged=event=>{
         setEmail(event.target.value);
     }
+
+    const saveProfile= (e)=>{
+        e.preventDefault();
+        let updatedData = new FormData();
+        updatedData.append("eiin", eiinNo);
+        updatedData.append("district", district);
+        updatedData.append("thana", thana);
+        updatedData.append("type", type);
+        updatedData.append("level", level);
+        updatedData.append("name", name);
+        updatedData.append("address", address);
+        updatedData.append("post", post);
+        updatedData.append("mobile", mobile);
+        updatedData.append("email", email);
+        Axios.post("http://localhost/seat-plan/api/institute-details.php?action=save",updatedData).then(response=>{
+            if(response.data.issuccess){
+                alert("Saved");
+            }
+            else{
+                alert("Could not save. Please try again");
+            }
+        }).catch(error=>{
+            console.log(error);
+        });
+    }
+
     return(
         <>
             
-            <div>{eiin}</div>
+            {/* <div>{eiin}</div> */}
             <div className="field">
                 <label>District</label>
                 <input onChange={districtChanged} id="district" name="district" value={district} type="text"/>
@@ -141,6 +168,7 @@ export default function Dashboard(props){
                 <input onChange={emailChanged} id="email" email="email" value={email} type="text"/>
             </div>
             
+            <button id="saveButton" onClick={saveProfile} type="button">Save</button>
             <div>
                 {allBuildings}
             </div>
