@@ -18,7 +18,7 @@ $db->database(DATABASE_NAME)->user(DATABASE_USER_NAME)->server(DATABASE_SERVER)-
 $eiin = $_POST["eiin"];
 
 try {
-    $details= $db->select()->from("institutions")->where("eiin")->equalTo($eiin)->single();
+    $details= $db->select()->from("institutions")->where("eiin")->equalTo($eiin)->singleOrNull();
 } catch (\ZeroException $exp) {
     $logger->createLog($exp->getMessage());
 }

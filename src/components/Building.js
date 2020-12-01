@@ -27,12 +27,15 @@ export default function Building(props){
     ))
 
     return (
-        <>
-            <input key={props.val} type="text" onChange={buildingNameChanged} value={buildingName} name="buildingName"/>
+  
+        <div className="building">
+            <div>
+                <input key={props.val} type="text" onChange={buildingNameChanged} value={buildingName} name="buildingName" placeholder="building name"/>
+            </div>
             <div>
                 {allFloors}
             </div>
             <button onClick={addNewFloor} >Add Floor</button>
-        </>
+        </div>
     );
 }
