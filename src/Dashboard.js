@@ -24,6 +24,9 @@ export default function Dashboard(props){
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
 
+   const [buildings, setBuilding] = useState([]);
+   const [count, setCount] = useState(0);
+
    //Get data on component load event
    useEffect(()=>{
         let postData = new FormData();
@@ -52,7 +55,8 @@ export default function Dashboard(props){
             const items = response.data;
             items.map((item,index)=>{
             setCount(count => count + 1);
-            setBuilding(buildings => [...buildings, <Building buildingId={item.id} buildingName={item.name} eiin={eiinNo} updateFunction={buildingUpdated} key={count} val={count}/>]);
+            console.log(count);
+            // setBuilding(buildings => [...buildings, <Building buildingId={item.id} buildingName={item.name} eiin={eiinNo} updateFunction={buildingUpdated} key={count}/>]);
                 
             })
         }).catch(error=>{
@@ -61,8 +65,7 @@ export default function Dashboard(props){
 
    },[]);
 
-    const [buildings, setBuilding] = useState([]);
-    const [count, setCount] = React.useState(0);
+    
 
     //This function is passed to Building and called from there.
     const buildingUpdated = (value) => {
