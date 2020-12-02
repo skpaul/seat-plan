@@ -5,6 +5,7 @@ import './bootstrap-grid.css';
 import './teletalk.css';
 
 export default function Dashboard(props) {
+    const apiUrl = "http://localhost"; //http://209.126.69.61:5000
     const [eiinNo, setEIIN] = useState(localStorage.getItem('eiin'));
 
     //    let eiin = localStorage.getItem('eiin');
@@ -34,7 +35,7 @@ export default function Dashboard(props) {
         let postData = new FormData();
         postData.append("eiin", eiinNo);
         //Get institute profile details -->
-        Axios.post("http://localhost/seat-plan/api/institute-details.php?action=get", postData).then(response => {
+        Axios.post(`${apiUrl}/seat-plan/api/institute-details.php?action=get`, postData).then(response => {
             if (response.data) {
                 let data = response.data;
                 setDistrict(data.district);
@@ -53,18 +54,21 @@ export default function Dashboard(props) {
         }); //<--Get institute profile details
 
         //Get buildings
-        Axios.post("http://localhost/seat-plan/api/building.php?action=get", postData).then(response => {
+        Axios.post(`${apiUrl}/seat-plan/api/building.php?action=get`, postData).then(response => {
             const items = response.data;
             let local_count = 0;
+
             items.map((item, index) => {
                 local_count += 1;
+                //setCount(count => count + 1);
                 setBuilding(buildings => [...buildings, <Building buildingId={item.id} buildingName={item.name} eiin={eiinNo} updateFunction={buildingUpdated} key={local_count} />]);
 
+               // console.log("final" + count);
             })
             // setCount(count => count + local_count);
-            setCount(local_count);
+             setCount(local_count);
 
-            console.log(count);
+            
         }).catch(error => {
             console.log(error);
         });
@@ -146,7 +150,7 @@ export default function Dashboard(props) {
         updatedData.append("email", email);
         updatedData.append("password", password);
 
-        Axios.post("http://localhost/seat-plan/api/institute-details.php?action=save", updatedData).then(response => {
+        Axios.post("http://209.126.69.61:5000/seat-plan/api/institute-details.php?action=save", updatedData).then(response => {
             if (response.data.issuccess) {
                 alert("Saved");
             }
@@ -176,7 +180,7 @@ export default function Dashboard(props) {
                         <div className="col-lg-4">
                             <div key="eiinDiv" className="field">
                                 <label>EIIN</label>
-                                <input id="name" name="name" value={eiinNo} type="text" />
+                                <input id="eiinNo" name="eiinNo" value={eiinNo} type="text" readOnly />
                             </div>
                         </div>
                     </div>

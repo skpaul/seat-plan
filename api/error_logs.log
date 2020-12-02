@@ -57,3 +57,689 @@ File:SwiftLogger.php, Line:128, Datetime:01-12-2020 08:00:42 PM
 The query must return exactly 1 record. But found none.
 File:SwiftLogger.php, Line:128, Datetime:01-12-2020 08:07:17 PM  
 ------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:08 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:08 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:08 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:08 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:08 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:08 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:11 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:11 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:11 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:11 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:11 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:11 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:19 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:19 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:20 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:20 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:50 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:55 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:41:59 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:04 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:08 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:08 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:09 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:09 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:09 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:09 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:09 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:09 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:09 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:09 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:09 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:09 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:13 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:17 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:17 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:18 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:18 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:18 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:18 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:18 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:18 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:18 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:18 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:18 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:18 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:22 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:65, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------
+Error No.-2. Description-mysqli_error() expects parameter 1 to be mysqli, bool given
+File:D:\php\seat-plan\api\lib\database\v2\ZeroSQL.php, Line:68, Datetime:02-12-2020 04:42:32 PM  
+------------------------------------------------------------------------------------

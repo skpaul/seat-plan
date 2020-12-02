@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2020 at 08:24 AM
+-- Generation Time: Dec 02, 2020 at 10:07 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -30,8 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `buildings` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `instituteEIIN` int(11) NOT NULL
+  `eiin` int(11) NOT NULL COMMENT 'EIIN of the institutes'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `buildings`
+--
+
+INSERT INTO `buildings` (`id`, `name`, `eiin`) VALUES
+(1, 'First building', 0),
+(2, 'Updated again once', 1111),
+(3, '2nd Building Name', 1111);
 
 -- --------------------------------------------------------
 
@@ -71,7 +80,7 @@ CREATE TABLE `institutions` (
 --
 
 INSERT INTO `institutions` (`id`, `password`, `district`, `thana`, `type`, `level`, `eiin`, `name`, `address`, `post`, `mobile`, `email`) VALUES
-(1, '123', 'DHAKA', 'ADABOR', 'COLLEGE', 'HIGHER SECONDARY ', 133980, 'COLLEGE OF HUMAN DEVELOPMENT', '39, JANATA HOUSING', 'MOHAMMADPUR', '01712203212', ''),
+(1, '123', 'DHAKA', 'ADABOR', 'COLLEGE', 'HIGHER SECONDARY', 133980, 'COLLEGE OF HUMAN DEVELOPMENT', '39, JANATA HOUSING', 'MOHAMMADPUR', '01712203212', 'skl@gmail.com'),
 (2, '123', 'DHAKA', 'ADABOR', 'COLLEGE', 'HIGHER SECONDARY ', 134614, 'MISSION INTERNATIONAL COLLEGE', '37/UMA/1, ROAD-6, BAITUL AMAN HOUSING SOCIETY', 'MOHAMMADPUR', '01922001134', ''),
 (3, '123', 'DHAKA', 'ADABOR', 'COLLEGE', 'HIGHER SECONDARY ', 130560, 'QUEEN\'S COLLEGE', 'HOUSE 1132/C, ROAD 1/A', 'MOHAMMADPUR', '01912486170', ''),
 (4, '123', 'DHAKA', 'BADDA', 'COLLEGE', 'MASTERS ', 108031, 'A.K.M. RAHMAT ULLAH DEGREE COLLEGE', 'BORO BERAID', 'BARA BARAID', '01725130474', ''),
@@ -988,7 +997,8 @@ INSERT INTO `institutions` (`id`, `password`, `district`, `thana`, `type`, `leve
 (913, '123', 'Dhaka', 'Uttara', 'TECHNICAL', '', 132731, 'UTTARA  ENGINEERING COLLEGE', '', '', '01707462917', 'UEC.COLLEGE@YAHOO.COM'),
 (914, '123', 'Dhaka', 'Uttar Khan', 'TECHNICAL', '', 132573, 'KARIGARI BANIJYA COLLEGE,UTTAR KHAN', '', '', '01715460242', 'KBC4657@GMAIL.COM'),
 (915, '123', 'Dhaka', 'Dhanmondi', 'TECHNICAL', '', 138389, 'WESTERN IDEAL INSTITUTE', '', '', '01992057777', 'WII.DHAKA@GMAIL.COM'),
-(916, '123', 'Dhaka', 'Ramna', 'TECHNICAL', '', 133070, 'DHAKA CITY MOHILA BANIJJIK MOHABIDDALAY', '', '', '01712888026', 'DHAKACITY50064COLLEGE@GMAIL.COM');
+(916, '123', 'Dhaka', 'Ramna', 'TECHNICAL', '', 133070, 'DHAKA CITY MOHILA BANIJJIK MOHABIDDALAY', '', '', '01712888026', 'DHAKACITY50064COLLEGE@GMAIL.COM'),
+(917, '1', 'Dhaka', 'Mirjkpur', 'alskdj', 'lkj', 1111, 'skpaul college', 'lkj', 'lkj', '01711781878', 'lksdlsdkjf@alskdjf.com');
 
 --
 -- Indexes for dumped tables
@@ -1020,7 +1030,7 @@ ALTER TABLE `institutions`
 -- AUTO_INCREMENT for table `buildings`
 --
 ALTER TABLE `buildings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `floors`
@@ -1032,7 +1042,7 @@ ALTER TABLE `floors`
 -- AUTO_INCREMENT for table `institutions`
 --
 ALTER TABLE `institutions`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=917;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=918;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

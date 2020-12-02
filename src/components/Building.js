@@ -4,6 +4,7 @@ import "./Building.css";
 import Axios from 'axios';
 
 export default function Building(props){
+    const apiUrl = "http://localhost"; //http://209.126.69.61:5000
     const [buildingName, setBuildingName] = useState(props.buildingName);
     const [buildingId, setBuildingId] = useState(props.buildingId);
     const[eiinNo, setEiinNo]= useState(props.eiin);
@@ -31,7 +32,7 @@ export default function Building(props){
     postData.append("buildingId", buildingId);
 
     //Get floors
-    Axios.post("http://localhost/seat-plan/api/floor.php?action=list", postData).then(response=>{
+    Axios.post("http://209.126.69.61:5000/seat-plan/api/floor.php?action=list", postData).then(response=>{
         const items = response.data;
         let local_count = 0;
         items.map((item,index)=>{
@@ -42,8 +43,6 @@ export default function Building(props){
         })
         // setCount(count => count + local_count);
         setCount(local_count);
-
-        console.log(count);
     }).catch(error=>{
         console.log(error);
     });
@@ -78,7 +77,7 @@ export default function Building(props){
         postData.append("id", buildingId);
         postData.append("name", buildingName);
 
-        Axios.post("http://localhost/seat-plan/api/building.php?action=save", postData).then(response=>{
+        Axios.post("http://209.126.69.61:5000/seat-plan/api/building.php?action=save", postData).then(response=>{
             if(response.data){
                 let data = response.data;
                 if(response.data.issuccess){
