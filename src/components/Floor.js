@@ -30,9 +30,9 @@ export default function Floor(props){
 
     return (
         <div className="floor">
-            <div>
-                {/* <input type="text" onChange={floorNameChanged} value={floorName} name="floorName" placeholder="floor number"/> */}
-                <select onChange={floorNameChanged}>
+            <div className="floor-row">
+                <label className="floor-name-label">Floor Name</label>
+                <select onChange={floorNameChanged} className="floor-name-select">
                     <option value="">select</option>
                     <option value="Ground floor">Ground floor</option>
                     <option value="1st floor">1st floor</option>
@@ -43,7 +43,10 @@ export default function Floor(props){
                 </select>
             </div>
             <div>{allRooms}</div>
-            <button onClick={addNewRoom} >Add Room</button>
+            <div className="add-romm-button-container">
+            <button onClick={addNewRoom} className="add-room-button" >Add Room</button>
+            </div>
+            
         </div>
     );
 }

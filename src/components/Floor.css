@@ -1,5 +1,30 @@
 .floor{
     border: 1px solid gray;
     padding:20px;
-    margin:10px;
+    margin-left:142px;
+    margin-top: 20px;
+}
+
+.floor-row{
+    display: flex;
+}
+
+.floor-name-label{
+    margin-right: 20px;
+    padding:5px;
+}
+
+.floor-name-select{
+    padding:5px 10px;
+    width: 513px;
+}
+
+.add-romm-button-container{
+    
+    text-align: left;
+}
+.add-room-button{
+    padding:5px;
+    margin-left: 108px;
+    margin-top: 20px;
 }

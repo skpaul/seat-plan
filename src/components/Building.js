@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Floor from './Floor';
 import "./Building.css";
 import Axios from 'axios';
@@ -21,6 +21,44 @@ export default function Building(props){
 
     const floorUpdated = (value) => {console.log("I am from biolding and value is -" + value)};
 
+
+
+
+   //Get data on component load event
+   useEffect(()=>{
+   
+    let postData = new FormData();
+    postData.append("buildingId", buildingId);
+
+    //Get floors
+    Axios.post("http://localhost/seat-plan/api/floor.php?action=list", postData).then(response=>{
+        const items = response.data;
+        let local_count = 0;
+        items.map((item,index)=>{
+            local_count += 1;
+            console.log(item);
+           // setBuilding(buildings => [...buildings, <Building buildingId={item.id} buildingName={item.name} eiin={eiinNo} updateFunction={buildingUpdated} key={local_count}/>]);
+            
+        })
+        // setCount(count => count + local_count);
+        setCount(local_count);
+
+        console.log(count);
+    }).catch(error=>{
+        console.log(error);
+    });
+
+},[]);
+
+
+
+
+
+
+
+
+
+
     const addNewFloor = event=>{
         event.preventDefault();
         setCount(count => count + 1);     
@@ -30,6 +68,8 @@ export default function Building(props){
     const allFloors = floors.map(item => (
         item
     ))
+
+
 
     const saveBuildingName=(e)=>{
         e.preventDefault();
@@ -58,21 +98,24 @@ export default function Building(props){
     const[saveBuildingButtonStyle, changeSaveBuildingButtonStyle] = useState({display:'none'}); 
 
     //initial visibility of addFloorButton is hidden.
-    const[addFloorButtonStyle, changeAddFloorButtonStyle] = useState({display:'none'});
+    const[addFloorButtonStyle, changeAddFloorButtonStyle] = useState({display:'block'});
 
 
 
     return (
-  
-        <div className="building">
-            <div>
-                <input key={props.val} type="text" onChange={buildingNameChanged} value={buildingName} name="buildingName" placeholder="building name"/>
-                <button name="saveBuildingButton" onClick={saveBuildingName} style={saveBuildingButtonStyle} >Save building</button>
+        <div className="container">
+            <div className="building">
+                <div className="building-row">
+                    <label className="building-name-label">Building Name</label>
+                    <input className="building-name-textbox" key={props.val} type="text" onChange={buildingNameChanged} value={buildingName} name="buildingName" placeholder="building name" />
+                    <button className="save-building-button" name="saveBuildingButton" onClick={saveBuildingName} style={saveBuildingButtonStyle} >Save building</button>
+                </div>
+                <div>
+                    {allFloors}
+                </div>
+                <button className="add-floor-button" name="addFloorButton" style={addFloorButtonStyle} onClick={addNewFloor} >Add Floor</button>
             </div>
-            <div>
-                {allFloors}
-            </div>
-            <button name="addFloorButton" style={addFloorButtonStyle} onClick={addNewFloor} >Add Floor</button>
         </div>
+        
     );
 }
