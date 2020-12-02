@@ -164,15 +164,15 @@ export default function Dashboard(props) {
 
     return (
         <>
-            <div className="container" style={{marginBottom:'50px'}}>
+            <div className="container box-shadow" style={{marginBottom:'50px'}}>
                 <h2>
-                    Profile
+                    Institute Profile
                 </h2>
                 <form className="classic">
                     <div className="row">
                         <div className="col-lg-8">
                             <div key="nameDiv" className="field">
-                                <label>Name</label>
+                                <label>Institute Name</label>
                                 <input onChange={nameChanged} id="name" name="name" value={name} type="text" />
                             </div>
                         </div>
@@ -187,7 +187,7 @@ export default function Dashboard(props) {
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="field">
-                                <label>Type</label>
+                                <label>Institute Type</label>
                                 <input onChange={typeChanged} id="type" name="type" value={type} type="text" />
                             </div>
                         </div>
@@ -255,7 +255,7 @@ export default function Dashboard(props) {
                         </div>
                     </div>
 
-                    <button className="btn btn-large btn-dark" id="saveButton" onClick={saveProfile} type="button">UPDATE PROFILE</button>
+                    <button className="btn btn-large btn-dark" id="saveButton" onClick={saveProfile} type="button">SAVE PROFILE</button>
                 </form>
             </div>
            

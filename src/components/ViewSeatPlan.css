@@ -1,0 +1,33 @@
+table{
+    width: 90%;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+thead{
+    background-color: rgb(245, 241, 241);
+    color: gray;
+}
+
+thead>tr>th{
+    padding-top:5px;
+    padding-bottom: 5px;
+}
+
+tbody>tr{
+    border-collapse: collapse;
+}
+
+tbody>tr>td{
+    padding-top:5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid;
+}
+
+tfoot>tr>td{
+    font-weight: bold;
+}
+
+tfoot>tr>td:first-child{
+    text-align: right;
+}

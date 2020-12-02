@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Room from './Room';
 import "./Floor.css";
+import Axios from 'axios';
 
 export default function Floor(props){
+
+    const [floorId, setFloorId] = useState(props.floorId);
 
     const [floorName, setFloorName] = useState("");
 
@@ -16,6 +19,29 @@ export default function Floor(props){
     const [rooms, setRoom] = useState([]);
 
     const roomUpdated = (value) => {console.log("I am from biolding and value is -" + value)};
+
+    const apiUrl = "http://localhost"; //http://209.126.69.61:5000
+
+    //Get data on component load event
+    useEffect(()=>{
+        let postData = new FormData();
+        postData.append("floorId", floorId);
+
+        //Get floors
+        Axios.post(`${apiUrl}/seat-plan/api/room.php?action=list`, postData).then(response => {
+            const items = response.data;
+            console.log(items);
+            let local_count = 0;
+            items.map((item) => {
+                local_count += 1;
+                setRoom(rooms => [...rooms, <Room roomId={item.id} updateFunction={roomUpdated} key={local_count} />]);
+            })
+            // setCount(count => count + local_count);
+            setCount(local_count);
+        }).catch(error => {
+            console.log(error);
+        });
+    }, []); //end of useEffect
 
     const addNewRoom = event=>{
         console.log("Room created");

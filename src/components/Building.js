@@ -32,14 +32,13 @@ export default function Building(props){
     postData.append("buildingId", buildingId);
 
     //Get floors
-    Axios.post("http://209.126.69.61:5000/seat-plan/api/floor.php?action=list", postData).then(response=>{
+    Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=list`, postData).then(response=>{
         const items = response.data;
+        console.log(items);
         let local_count = 0;
-        items.map((item,index)=>{
+        items.map((item)=>{
             local_count += 1;
-            console.log(item);
-           // setBuilding(buildings => [...buildings, <Building buildingId={item.id} buildingName={item.name} eiin={eiinNo} updateFunction={buildingUpdated} key={local_count}/>]);
-            
+            setFloor(floors => [...floors, <Floor floorId={item.id} updateFunction={floorUpdated} key={local_count}/>]);
         })
         // setCount(count => count + local_count);
         setCount(local_count);
@@ -50,18 +49,10 @@ export default function Building(props){
 },[]);
 
 
-
-
-
-
-
-
-
-
     const addNewFloor = event=>{
         event.preventDefault();
         setCount(count => count + 1);     
-        setFloor(floors => [...floors, <Floor updateFunction={floorUpdated} key={count} val={count}/>]);
+        setFloor(floors => [...floors, <Floor updateFunction={floorUpdated} key={count}/>]);
     }
 
     const allFloors = floors.map(item => (
