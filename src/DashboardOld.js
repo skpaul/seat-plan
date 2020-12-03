@@ -5,7 +5,7 @@ import './bootstrap-grid.css';
 import './teletalk.css';
 import TopNav from "./components/TopNav";
 
-export default function Dashboard(props) {
+export default function DashboardOld(props) {
     const apiUrl = "http://localhost"; //http://209.126.69.61:5000
     const [eiinNo, setEIIN] = useState(localStorage.getItem('eiin'));
 
@@ -53,6 +53,27 @@ export default function Dashboard(props) {
         }).catch(error => {
             console.log(error);
         }); //<--Get institute profile details
+
+        //Get buildings
+        Axios.post(`${apiUrl}/seat-plan/api/building.php?action=get`, postData).then(response => {
+            const items = response.data;
+            let local_count = 0;
+
+            items.map((item, index) => {
+                local_count += 1;
+                //setCount(count => count + 1);
+                setBuilding(buildings => [...buildings, <Building buildingId={item.id} buildingName={item.name} eiin={eiinNo} updateFunction={buildingUpdated} key={local_count} />]);
+
+               // console.log("final" + count);
+            })
+            // setCount(count => count + local_count);
+             setCount(local_count);
+
+            
+        }).catch(error => {
+            console.log(error);
+        });
+
     }, []);
 
 
@@ -69,6 +90,10 @@ export default function Dashboard(props) {
 
         setCount(count => count + 1);
     }
+
+    const allBuildings = buildings.map(item => (
+        item
+    ))
 
     const districtChanged = event => {
         setDistrict(event.target.value);
@@ -232,11 +257,16 @@ export default function Dashboard(props) {
                         </div>
                     </div>
 
-                    <br/>  <br/>
                     <button className="btn btn-large btn-dark" id="saveButton" onClick={saveProfile} type="button">SAVE PROFILE</button>
-                    <br/>  <br/>  <br/>
                 </form>
             </div>
+           
+            <div>
+                {allBuildings}
+            </div>
+
+            <div onClick={addNewBuilding}>Add Building</div>
+
 
         </>
     );

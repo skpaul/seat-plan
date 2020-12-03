@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2020 at 10:07 AM
+-- Generation Time: Dec 02, 2020 at 07:21 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -30,17 +30,38 @@ SET time_zone = "+00:00";
 CREATE TABLE `buildings` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `eiin` int(11) NOT NULL COMMENT 'EIIN of the institutes'
+  `eiin` int(11) NOT NULL COMMENT 'EIIN of the institutes',
+  `examId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `buildings`
 --
 
-INSERT INTO `buildings` (`id`, `name`, `eiin`) VALUES
-(1, 'First building', 0),
-(2, 'Updated again once', 1111),
-(3, '2nd Building Name', 1111);
+INSERT INTO `buildings` (`id`, `name`, `eiin`, `examId`) VALUES
+(1, 'First building', 0, 0),
+(2, 'Updated again once', 1111, 1),
+(3, '2nd Building Name', 1111, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exams`
+--
+
+CREATE TABLE `exams` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `reference` varchar(100) NOT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `exams`
+--
+
+INSERT INTO `exams` (`id`, `name`, `reference`, `isActive`) VALUES
+(1, 'MBBS Exam', 'relksadjf lf', 1);
 
 -- --------------------------------------------------------
 
@@ -53,6 +74,13 @@ CREATE TABLE `floors` (
   `name` varchar(30) NOT NULL,
   `buildingId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `floors`
+--
+
+INSERT INTO `floors` (`id`, `name`, `buildingId`) VALUES
+(1, 'Ground', 3);
 
 -- --------------------------------------------------------
 
@@ -1000,6 +1028,28 @@ INSERT INTO `institutions` (`id`, `password`, `district`, `thana`, `type`, `leve
 (916, '123', 'Dhaka', 'Ramna', 'TECHNICAL', '', 133070, 'DHAKA CITY MOHILA BANIJJIK MOHABIDDALAY', '', '', '01712888026', 'DHAKACITY50064COLLEGE@GMAIL.COM'),
 (917, '1', 'Dhaka', 'Mirjkpur', 'alskdj', 'lkj', 1111, 'skpaul college', 'lkj', 'lkj', '01711781878', 'lksdlsdkjf@alskdjf.com');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `id` int(11) NOT NULL,
+  `roomNo` varchar(10) NOT NULL,
+  `startRoll` int(11) DEFAULT NULL,
+  `endRoll` int(11) DEFAULT NULL,
+  `capacity` int(11) NOT NULL,
+  `floorId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`id`, `roomNo`, `startRoll`, `endRoll`, `capacity`, `floorId`) VALUES
+(1, '101', NULL, NULL, 100, 1);
+
 --
 -- Indexes for dumped tables
 --
@@ -1008,6 +1058,12 @@ INSERT INTO `institutions` (`id`, `password`, `district`, `thana`, `type`, `leve
 -- Indexes for table `buildings`
 --
 ALTER TABLE `buildings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `exams`
+--
+ALTER TABLE `exams`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1023,6 +1079,12 @@ ALTER TABLE `institutions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1033,16 +1095,28 @@ ALTER TABLE `buildings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `exams`
+--
+ALTER TABLE `exams`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `floors`
 --
 ALTER TABLE `floors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `institutions`
 --
 ALTER TABLE `institutions`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=918;
+
+--
+-- AUTO_INCREMENT for table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

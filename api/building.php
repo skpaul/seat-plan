@@ -16,9 +16,8 @@ $db = new ZeroSQL();
 $db->database(DATABASE_NAME)->user(DATABASE_USER_NAME)->server(DATABASE_SERVER)->password(DATABASE_PASSWORD)->connect();
 
 $action = $_GET["action"];
-$eiin = $_POST["eiin"];
 
-if($action === "get"){
+if($action === "details"){
     try {
         $buildings= $db->select()->from("buildings")->where("eiin")->equalTo($eiin)->toList();
         http_response_code(200);
@@ -31,30 +30,28 @@ if($action === "get"){
     }
 }
 
-if($action === "save"){
-    $buildingId = trim($_POST["id"]);
-    //first check whether this eiin exists or not. 
-    //If exist, then update. Otherwise create new.
+if($action === "list"){
+    $eiin = $_POST["eiin"];
     try {
-        $isNew = false;
-        if(empty($buildingId)){
-            $isNew = true;
-            $building = $db->new("buildings");
-            $building->eiin = $eiin;
-        }
-        else{
-            $building = $db->select()->from("buildings")->where("id")->equalTo($buildingId)->singleOrNull();
-        }
+        $buildings= $db->select()->from("buildings")->where("eiin")->equalTo($eiin)->toList();
+        http_response_code(200);
+        $json = json_encode($buildings);
+        exit($json);
+    } catch (\ZeroException $exp) {
+        $logger->createLog($exp->getMessage());
+        http_response_code(501);
+        die();
+    }
+}
 
-        $form = new Validable();
+if($action === "create"){
+    $eiin = $_POST["eiin"];
+    try {
+
+        $building = $db->new("buildings");
+        $building->eiin = $eiin;
         $building->name = trim($_POST["name"]);
-
-        if($isNew){
-            $building->id = $db->insert($building)->into("buildings")->execute();
-        }
-        else{
-            $db->update($building)->into("buildings")->where("id")->equalTo($building->id)->execute();
-        }
+        $building->id = $db->insert($building)->into("buildings")->execute();
         
         http_response_code(200);
 

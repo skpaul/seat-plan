@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import "./ViewSeatPlan.css";
+import TopNav from "./TopNav";
 
 export default function ViewSeatPlan(props){
 
@@ -69,6 +70,7 @@ export default function ViewSeatPlan(props){
 
     return(
         <>
+         <TopNav/>
             {/* A good combobox here - https://react-select.com/home */}
             <select onChange={examChanged}>
                 <option value="">select an exam</option>

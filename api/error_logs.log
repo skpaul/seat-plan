@@ -42,3 +42,6 @@ Failed to execute the following SQL statement: SELECT e.name as exam, b.name as 
             order by b.name, f.name, r.roomNo' at line 3. SqlState: 42000
 File:SwiftLogger.php, Line:128, Datetime:02-12-2020 11:29:09 PM  
 ------------------------------------------------------------------------------------
+The query must return exactly 1 record. But found none.
+File:SwiftLogger.php, Line:128, Datetime:03-12-2020 08:11:10 AM  
+------------------------------------------------------------------------------------
