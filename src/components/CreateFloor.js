@@ -15,8 +15,8 @@ export default function CreateFloor(props){
 
     const apiUrl = "http://localhost"; //http://209.126.69.61:5000
     useEffect(() => {
-        console.log(location.pathname); // result: '/secondpage'
-        console.log(location.search); // result: '?query=abc'
+        // console.log(location.pathname); // result: '/secondpage'
+        // console.log(location.search); // result: '?query=abc'
         setEiin(location.state.eiin)
         setExamId(location.state.examId);
         setBuildingId(location.state.buildingId);

@@ -22,10 +22,6 @@ export default function SelectFloor(props){
         // console.log(location.pathname); // result: '/secondpage'
         // console.log(location.search); // result: '?query=abc'
         // console.log(location.state.id); // result: 'some_value'
-
-        // console.log(location.state.eiin); // result: 'some_value'
-        // console.log(location.state.eiin);
-        // console.log(location.state.examId);
         setEiin(location.state.eiin);
         setExamId(location.state.examId);
         setBuildingId(location.state.buildingId);
@@ -35,7 +31,6 @@ export default function SelectFloor(props){
         
         Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=list`, postData).then(response => {
             const items = response.data;
-             console.log(items);
             let local_count = 0;
             items.map((item) => {
                 local_count += 1;

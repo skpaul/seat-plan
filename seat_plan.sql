@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2020 at 07:21 PM
+-- Generation Time: Dec 03, 2020 at 08:13 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -30,18 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `buildings` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `eiin` int(11) NOT NULL COMMENT 'EIIN of the institutes',
-  `examId` int(11) NOT NULL
+  `eiin` int(11) NOT NULL COMMENT 'EIIN of the institutes'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `buildings`
 --
 
-INSERT INTO `buildings` (`id`, `name`, `eiin`, `examId`) VALUES
-(1, 'First building', 0, 0),
-(2, 'Updated again once', 1111, 1),
-(3, '2nd Building Name', 1111, 1);
+INSERT INTO `buildings` (`id`, `name`, `eiin`) VALUES
+(11, 'B1', 1111),
+(12, 'b2', 1111),
+(13, 'b3', 1111);
 
 -- --------------------------------------------------------
 
@@ -80,7 +79,9 @@ CREATE TABLE `floors` (
 --
 
 INSERT INTO `floors` (`id`, `name`, `buildingId`) VALUES
-(1, 'Ground', 3);
+(5, 'F1', 11),
+(6, 'f2', 12),
+(7, 'c3', 13);
 
 -- --------------------------------------------------------
 
@@ -1040,15 +1041,24 @@ CREATE TABLE `rooms` (
   `startRoll` int(11) DEFAULT NULL,
   `endRoll` int(11) DEFAULT NULL,
   `capacity` int(11) NOT NULL,
-  `floorId` int(11) NOT NULL
+  `floorId` int(11) NOT NULL,
+  `buildingId` int(11) NOT NULL,
+  `eiin` int(11) NOT NULL,
+  `examId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `roomNo`, `startRoll`, `endRoll`, `capacity`, `floorId`) VALUES
-(1, '101', NULL, NULL, 100, 1);
+INSERT INTO `rooms` (`id`, `roomNo`, `startRoll`, `endRoll`, `capacity`, `floorId`, `buildingId`, `eiin`, `examId`) VALUES
+(1, '101', NULL, NULL, 100, 1, 0, 0, 0),
+(2, '101', 0, 0, 0, 0, 12, 0, 1),
+(3, '101', 0, 0, 120, 0, 12, 0, 1),
+(4, '101', 0, 0, 120, 0, 12, 1111, 1),
+(5, '1110', 1, 5, 4, 7, 13, 1111, 1),
+(6, '4554', 0, 0, 2, 7, 13, 1111, 1),
+(7, '4554', 0, 0, 2, 7, 13, 1111, 1);
 
 --
 -- Indexes for dumped tables
@@ -1092,7 +1102,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `buildings`
 --
 ALTER TABLE `buildings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `exams`
@@ -1104,7 +1114,7 @@ ALTER TABLE `exams`
 -- AUTO_INCREMENT for table `floors`
 --
 ALTER TABLE `floors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `institutions`
@@ -1116,7 +1126,7 @@ ALTER TABLE `institutions`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

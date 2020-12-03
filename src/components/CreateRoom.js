@@ -37,8 +37,12 @@ export default function CreateRoom(props){
          postData.append("capacity", capacity);
         
         Axios.post(`${apiUrl}/seat-plan/api/room.php?action=create`, postData).then(response => {
-            console.log(response.data);
-           
+           if(response.data.issuccess){
+
+           }
+           else{
+                alert(response.data.message);
+           }
             // history.push({
             //     pathname: '/seat-plan/new/create-room',
             //     search: '?query=abc',

@@ -16,16 +16,15 @@ export default function CreateBuilding(props){
     useEffect(() => {
         // console.log(location.pathname); // result: '/secondpage'
         // console.log(location.search); // result: '?query=abc'
-        console.log(location.state.id); // result: 'some_value'
-        console.log(location.state.eiin); // result: 'some_value'
+        // console.log(location.state.id); // result: 'some_value'
 
         setEiin(location.state.eiin)
         setExamId(location.state.id);
-     }, []); //end of useEffect()
+    }, []); //end of useEffect()
 
     
     
-     const createBuilding=(e)=>{
+    const createBuilding=(e)=>{
          e.preventDefault();
          let postData = new FormData();
          postData.append("name", buildingName);
