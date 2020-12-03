@@ -16,8 +16,8 @@ export default function SelectBuilding(props){
 
     const apiUrl = "http://localhost"; //http://209.126.69.61:5000
     useEffect(() => {
-        console.log(location.pathname); // result: '/secondpage'
-        console.log(location.search); // result: '?query=abc'
+        // console.log(location.pathname); // result: '/secondpage'
+        // console.log(location.search); // result: '?query=abc'
         console.log(location.state.id); // result: 'some_value'
         console.log(location.state.eiin); // result: 'some_value'
         setEiin(location.state.eiin);
@@ -59,9 +59,9 @@ export default function SelectBuilding(props){
     return(
         <>
         <TopNav/>
-       
+       <h1>Select Building</h1>
         <select onChange={buildingChanged}>
-            <option value="">select an exam</option>
+            <option value="">select building</option>
             {selectOptions}
 
             <option value="create">Create New</option>
@@ -74,6 +74,6 @@ export default function SelectBuilding(props){
 
 function SelectOption(props){
     return(
-    <option value={props.id}>{props.name}</option>
+        <option value={props.id}>{props.name}</option>
     );
 }

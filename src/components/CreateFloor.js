@@ -4,37 +4,40 @@ import Axios from 'axios';
 import TopNav from "./TopNav";
 import { useLocation, useHistory } from "react-router-dom";
 
-export default function CreateBuilding(props){
+export default function CreateFloor(props){
 
     const location = useLocation();
     const history = useHistory();
 
     const[examId, setExamId]=useState("");
     const[eiinNo, setEiin]=useState("");
+    const[buildingId, setBuildingId] = useState("");
 
     const apiUrl = "http://localhost"; //http://209.126.69.61:5000
     useEffect(() => {
         console.log(location.pathname); // result: '/secondpage'
         console.log(location.search); // result: '?query=abc'
         setEiin(location.state.eiin)
-        setExamId(location.state.id);
+        setExamId(location.state.examId);
+        setBuildingId(location.state.buildingId);
      }, []); //end of useEffect()
 
     
     
-     const createBuilding=(e)=>{
+     const createFloor=(e)=>{
          e.preventDefault();
          let postData = new FormData();
          postData.append("eiin", eiinNo);
-         postData.append("name", buildingName);
+         postData.append("buildingId", buildingId);
+         postData.append("name", floorName);
         
-        Axios.post(`${apiUrl}/seat-plan/api/building.php?action=create`, postData).then(response => {
+        Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=create`, postData).then(response => {
             console.log(response.data);
            
             history.push({
-                pathname: '/seat-plan/new/select-floor',
+                pathname: '/seat-plan/new/create-room',
                 search: '?query=abc',
-                state: { examId: examId, eiin:eiinNo, buildingId:response.data.id }
+                state: { examId: examId, eiin:eiinNo, buildingId:buildingId, floorId:response.data.floorId }
             });
 
             }).catch(error => {
@@ -44,17 +47,18 @@ export default function CreateBuilding(props){
        
     }
 
-    const[buildingName, setBuildingName] = useState("");
-    const buildingNameChanged=(e)=>{
+    const[floorName, setFloorName] = useState("");
+    const floorNameChanged=(e)=>{
         e.preventDefault();
-        setBuildingName(e.target.value);
+        setFloorName(e.target.value);
     }
 
     return(
         <>
             <TopNav/>
-            <input onChange={buildingNameChanged} value={buildingName} type="text" />
-            <button onClick={createBuilding}>Next</button>
+            <h1>Create Floor</h1>
+            <input onChange={floorNameChanged} value={floorName} type="text" />
+            <button onClick={createFloor}>Next</button>
     </>
     );
 }

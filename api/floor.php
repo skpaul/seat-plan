@@ -29,39 +29,22 @@ if($action === "list"){
     }
 }
 
-if($action === "save"){
-    $buildingId = trim($_POST["id"]);
-    //first check whether this eiin exists or not. 
-    //If exist, then update. Otherwise create new.
+if($action === "create"){   
+   
     try {
-        $isNew = false;
-        if(empty($buildingId)){
-            $isNew = true;
-            $building = $db->new("buildings");
-            $building->eiin = $eiin;
-        }
-        else{
-            $building = $db->select()->from("buildings")->where("id")->equalTo($buildingId)->singleOrNull();
-        }
-
-        $form = new Validable();
-        $building->name = trim($_POST["name"]);
-
-        if($isNew){
-            $building->id = $db->insert($building)->into("buildings")->execute();
-        }
-        else{
-            $db->update($building)->into("buildings")->where("id")->equalTo($building->id)->execute();
-        }
-        
+        // $form = new Validable();
+        $floor = $db->new("floors");
+        $floor->buildingId = $buildingId;
+        $floor->name = trim($_POST["name"]);
+        $floor->id = $db->insert($floor)->into("floors")->execute();
         http_response_code(200);
 
-        $json = '{"issuccess":true, "buildingId":'.$building->id.'}';
+        $json = '{"issuccess":true, "floorId":'.$floor->id.'}';
         exit($json);
 
     } catch (\ZeroException $exp) {
         $logger->createLog($exp->getMessage());
-        $json = SwiftJSON::failure("Could not save this building name. Please try again.");
+        $json = SwiftJSON::failure("Could not save. Please try again.");
         die($json);
     }
     

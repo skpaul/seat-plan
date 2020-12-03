@@ -22,7 +22,12 @@ export default function SelectFloor(props){
         // console.log(location.pathname); // result: '/secondpage'
         // console.log(location.search); // result: '?query=abc'
         // console.log(location.state.id); // result: 'some_value'
+
         // console.log(location.state.eiin); // result: 'some_value'
+        console.log(location.state.eiin);
+        console.log(location.state.examId);
+        console.log(location.state.buildingId);
+
         setEiin(location.state.eiin);
         setExamId(location.state.examId);
         setBuildingId(location.state.buildingId);
@@ -44,14 +49,12 @@ export default function SelectFloor(props){
 
      }, []); //end of useEffect()
 
-
-     
      const buildingChanged=(e)=>{
         if(e.target.value==="create"){
             history.push({
-                pathname: '/seat-plan/new/create-building',
+                pathname: '/seat-plan/new/create-floor',
                 search: '?query=abc',
-                state: { id: examId, eiin:eiinNo }
+                state: { examId: examId, eiin:eiinNo, buildingId:buildingId }
             });
         }
         setBuildingId(e.target.value);
@@ -63,9 +66,9 @@ export default function SelectFloor(props){
     return(
         <>
         <TopNav/>
-       
+       <h1>Select Floor</h1>
         <select onChange={buildingChanged}>
-            <option value="">select an exam</option>
+            <option value="">select a floor</option>
             {selectOptions}
 
             <option value="create">Create New</option>
