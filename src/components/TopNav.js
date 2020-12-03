@@ -13,9 +13,12 @@ export default function TopNav(){
             </div>
 
             <div>
-            <Link to="/view-seat-plan">View Seat Plan</Link>
+                <Link to="/view-seat-plan">View Seat Plan</Link>
             </div>
 
+            <div>
+                <Link to="/">Logout</Link>
+            </div>
         </div>
     );
 }

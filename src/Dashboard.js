@@ -7,8 +7,8 @@ import TopNav from "./components/TopNav";
 
 export default function Dashboard(props) {
 
-    //const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
+    const apiUrl = "http://localhost";
+    // const apiUrl = "http://209.126.69.61:5000";
 
     const [eiinNo, setEIIN] = useState(localStorage.getItem('eiin'));
 
@@ -31,7 +31,7 @@ export default function Dashboard(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const [buildings, setBuilding] = useState([]);
+
     const [count, setCount] = useState(0);
 
     //Get data on component load event
@@ -56,25 +56,48 @@ export default function Dashboard(props) {
         }).catch(error => {
             console.log(error);
         }); //<--Get institute profile details
+
+
+        Axios.post(`${apiUrl}/seat-plan/api/div-dist-thana.php?action=districtList`).then(response => {
+            const items = response.data.districts;
+            let local_count = 0;
+            items.map((item) => {
+                local_count += 1;
+                setDistrictList(districtList => [...districtList, <SelectOption key={local_count} id={item.district} name={item.district} />]);
+            })
+           
+            }).catch(error => {
+                console.log(error);
+            }); //end of axios.
+
     }, []);
 
+    const[districtList, setDistrictList]=useState([]);
+    const districtOptions = districtList.map(item => (
+        item
+    ))
 
-
-    //This function is passed to Building and called from there.
-    const buildingUpdated = (value) => {
-        //I'll do something here.
-    };
-
-    const addNewBuilding = event => {
-        event.preventDefault();
-
-        setBuilding(buildings => [...buildings, <Building buildingId="" buildingName="" eiin={eiinNo} updateFunction={buildingUpdated} key={count + 1} />]);
-
-        setCount(count => count + 1);
-    }
+    const[thanaList, setThanaList]=useState([]);
+    const thanaOptions = thanaList.map(item => (
+        item
+    ))
 
     const districtChanged = event => {
         setDistrict(event.target.value);
+        setThanaList([]);
+        let formData = new FormData();
+        formData.append("district", event.target.value);
+        Axios.post(`${apiUrl}/seat-plan/api/div-dist-thana.php?action=thanaList`, formData).then(response => {
+            const items = response.data.thanas;
+            let local_count = 0;
+            items.map((item) => {
+                local_count += 1;
+                setThanaList(thanaList => [...thanaList, <SelectOption key={local_count} id={item.thana} name={item.thana} />]);
+            })
+           
+            }).catch(error => {
+                console.log(error);
+            }); //end of axios.
     }
 
     const thanaChanged = event => {
@@ -129,7 +152,7 @@ export default function Dashboard(props) {
         updatedData.append("email", email);
         updatedData.append("password", password);
 
-        Axios.post("http://209.126.69.61:5000/seat-plan/api/institute-details.php?action=save", updatedData).then(response => {
+        Axios.post(`${apiUrl}/seat-plan/api/institute-details.php?action=save`, updatedData).then(response => {
             if (response.data.issuccess) {
                 alert("Saved");
             }
@@ -138,7 +161,10 @@ export default function Dashboard(props) {
             }
         }).catch(error => {
             console.log(error);
-        });
+        });//end of axios
+
+
+        
     }
 
     return (
@@ -191,14 +217,22 @@ export default function Dashboard(props) {
                         <div className="col-lg-4">
                             <div className="field">
                                 <label>District</label>
-                                <input onChange={districtChanged} id="district" name="district" value={district} type="text" />
+                                {/* <input onChange={districtChanged} id="district" name="district" value={district} type="text" /> */}
+                                <select onChange={districtChanged} id="district" name="district" value={district}>
+                                    <option value="">select ...</option>
+                                    {districtOptions}
+                                </select>
                             </div>
                         </div>
 
                         <div className="col-lg-4">
                             <div className="field">
                                 <label>Thana</label>
-                                <input onChange={thanaChanged} id="thana" name="thana" type="text" value={thana} type="text" />
+                                <select onChange={thanaChanged} id="thana" name="thana" type="text" value={thana} type="text">
+                                    <option value="">select ...</option>
+                                    {thanaOptions}
+                                </select>
+
                             </div>
                         </div>
 
@@ -240,8 +274,13 @@ export default function Dashboard(props) {
                     <br/>  <br/>  <br/>
                 </form>
             </div>
-
         </>
     );
+}
 
+
+function SelectOption(props){
+    return(
+    <option value={props.id}>{props.name}</option>
+    );
 }

@@ -47,15 +47,15 @@ if($action === "save"){
         }
 
         $form = new Validable();
-        $institute->password= $form->label("Password")->httpPost("password")->required()->asString(true)->maxLength(10)->validate();
-        $institute->district= $form->label("District")->httpPost("district")->required()->asString(true)->maxLength(5)->validate();
-        $institute->thana= $form->label("Thana")->httpPost("thana")->required()->asString(true)->maxLength(19)->validate();
-        $institute->type= $form->label("Type")->httpPost("type")->required()->asString(true)->maxLength(16)->validate();
-        $institute->level= $form->label("Level")->httpPost("level")->required()->asString(true)->maxLength(17)->validate();
-        $institute->name= $form->label("Name")->httpPost("name")->required()->asString(true)->maxLength(67)->validate();
-        $institute->address= $form->label("Address")->httpPost("address")->required()->asString(true)->maxLength(50)->validate();
-        $institute->post= $form->label("Post")->httpPost("post")->required()->asString(true)->maxLength(21)->validate();
-        $institute->mobile= $form->label("Mobile")->httpPost("mobile")->required()->asString(true)->maxLength(25)->validate();
+        $institute->password= $form->label("Password")->httpPost("password")->required()->asString(true)->maxLength(20)->validate();
+        $institute->district= $form->label("District")->httpPost("district")->required()->asString(true)->maxLength(50)->validate();
+        $institute->thana= $form->label("Thana")->httpPost("thana")->required()->asString(true)->maxLength(50)->validate();
+        $institute->type= $form->label("Type")->httpPost("type")->required()->asString(true)->maxLength(50)->validate();
+        $institute->level= $form->label("Level")->httpPost("level")->required()->asString(true)->maxLength(50)->validate();
+        $institute->name= $form->label("Name")->httpPost("name")->required()->asString(true)->maxLength(200)->validate();
+        $institute->address= $form->label("Address")->httpPost("address")->required()->asString(true)->maxLength(200)->validate();
+        $institute->post= $form->label("Post")->httpPost("post")->required()->asString(true)->maxLength(50)->validate();
+        $institute->mobile= $form->label("Mobile")->httpPost("mobile")->required()->asString(true)->maxLength(15)->validate();
         $institute->email= $form->label("Email")->httpPost("email")->required()->asString(true)->maxLength(52)->default(NULL)->validate();
 
         if($isNew){
