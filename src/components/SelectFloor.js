@@ -11,7 +11,7 @@ export default function SelectFloor(props){
     const[examId, setExamId]=useState("");
     const[eiinNo, setEiin] = useState("");
     const[buildingId, setBuildingId]=useState("");
-
+    const[floorId, setFloorId] = useState("");
     const[options, setOption]=useState([]);
     const selectOptions = options.map(item => (
         item
@@ -24,19 +24,18 @@ export default function SelectFloor(props){
         // console.log(location.state.id); // result: 'some_value'
 
         // console.log(location.state.eiin); // result: 'some_value'
-        console.log(location.state.eiin);
-        console.log(location.state.examId);
-        console.log(location.state.buildingId);
-
+        // console.log(location.state.eiin);
+        // console.log(location.state.examId);
         setEiin(location.state.eiin);
         setExamId(location.state.examId);
         setBuildingId(location.state.buildingId);
 
         let postData = new FormData();
-        postData.append("buildingId", buildingId);
+        postData.append("buildingId", location.state.buildingId);
         
         Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=list`, postData).then(response => {
             const items = response.data;
+             console.log(items);
             let local_count = 0;
             items.map((item) => {
                 local_count += 1;
@@ -49,7 +48,7 @@ export default function SelectFloor(props){
 
      }, []); //end of useEffect()
 
-     const buildingChanged=(e)=>{
+     const floorChanged=(e)=>{
         if(e.target.value==="create"){
             history.push({
                 pathname: '/seat-plan/new/create-floor',
@@ -57,17 +56,26 @@ export default function SelectFloor(props){
                 state: { examId: examId, eiin:eiinNo, buildingId:buildingId }
             });
         }
-        setBuildingId(e.target.value);
+        setFloorId(e.target.value);
      }
 
      const goToRoomSelection=(e)=>{
-
+         e.preventDefault();
+        if(floorId===""){
+            alert("Select a floor");
+            return;
+        }
+        history.push({
+            pathname: '/seat-plan/new/create-room',
+            search: '?query=abc',
+            state: { examId: examId, eiin:eiinNo, buildingId:buildingId, floorId:floorId }
+        });
      }
     return(
         <>
         <TopNav/>
        <h1>Select Floor</h1>
-        <select onChange={buildingChanged}>
+        <select onChange={floorChanged} value={floorId}>
             <option value="">select a floor</option>
             {selectOptions}
 

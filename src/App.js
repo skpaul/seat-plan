@@ -8,6 +8,7 @@ import SelectBuilding from "./components/SelectBuilding";
 import CreateBuilding from "./components/CreateBuilding";
 import SelectFloor from "./components/SelectFloor";
 import CreateFloor from "./components/CreateFloor";
+import CreateRoom from "./components/CreateRoom";
 
 import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/seat-plan/new/create-building" component={CreateBuilding} />
           <Route path="/seat-plan/new/select-floor" component={SelectFloor} />
           <Route path="/seat-plan/new/create-floor" component={CreateFloor} />
+          <Route path="/seat-plan/new/create-room" component={CreateRoom} />
           <Route exact path="/view-seat-plan" component={ViewSeatPlan} />
           <Redirect to="/"/>
         </Switch>

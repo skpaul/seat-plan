@@ -32,8 +32,6 @@ export default function CreateFloor(props){
          postData.append("name", floorName);
         
         Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=create`, postData).then(response => {
-            console.log(response.data);
-           
             history.push({
                 pathname: '/seat-plan/new/create-room',
                 search: '?query=abc',
@@ -43,8 +41,6 @@ export default function CreateFloor(props){
             }).catch(error => {
                 console.log(error);
             }); //end of axios.
-
-       
     }
 
     const[floorName, setFloorName] = useState("");
@@ -56,7 +52,7 @@ export default function CreateFloor(props){
     return(
         <>
             <TopNav/>
-            <h1>Create Floor</h1>
+            <h1>Create Room</h1>
             <input onChange={floorNameChanged} value={floorName} type="text" />
             <button onClick={createFloor}>Next</button>
     </>

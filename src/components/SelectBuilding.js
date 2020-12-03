@@ -39,9 +39,9 @@ export default function SelectBuilding(props){
             }); //end of axios.
 
      }, []); //end of useEffect()
-
-     const[buildingId, setBuildingId] = useState("");
+    
      let history = useHistory();
+     const[buildingId, setBuildingId]=useState("");
      const buildingChanged=(e)=>{
         if(e.target.value==="create"){
             history.push({
@@ -50,17 +50,28 @@ export default function SelectBuilding(props){
                 state: { id: examId, eiin:eiinNo }
             });
         }
+        
         setBuildingId(e.target.value);
      }
 
      const goToRoomSelection=(e)=>{
-
+         e.preventDefault();
+         
+       if(buildingId===""){
+           alert("Select a room");
+           return;
+       }
+        history.push({
+            pathname: '/seat-plan/new/select-floor',
+            search: '?query=abc',
+            state: { examId: examId, eiin:eiinNo, buildingId: buildingId}
+        });
      }
     return(
         <>
         <TopNav/>
        <h1>Select Building</h1>
-        <select onChange={buildingChanged}>
+        <select onChange={buildingChanged} value={buildingId}>
             <option value="">select building</option>
             {selectOptions}
 

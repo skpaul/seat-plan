@@ -43,40 +43,28 @@ if($action === "list"){
     }
 }
 
-if($action === "save"){
-    $floorId = $_POST["floorId"];
-    $buildingId = trim($_POST["id"]);
+if($action === "create"){
     //first check whether this eiin exists or not. 
     //If exist, then update. Otherwise create new.
     try {
-        $isNew = false;
-        if(empty($buildingId)){
-            $isNew = true;
-            $building = $db->new("buildings");
-            $building->eiin = $eiin;
-        }
-        else{
-            $building = $db->select()->from("buildings")->where("id")->equalTo($buildingId)->singleOrNull();
-        }
+        $room = $db->new("rooms");
+        $room->floorId = $_POST["floorId"];
+        $room->buildingId = trim($_POST["buildingId"]);
+        $room->examId = trim($_POST["examId"]);
+        $room->roomNo = trim($_POST["roomNo"]);
+        $room->startRoll = trim($_POST["startRoll"]);
+        $room->endRoll = trim($_POST["endRoll"]);
+        $room->capacity = trim($_POST["capacity"]);
+        $room->eiin = trim($_POST["eiin"]);
 
-        $form = new Validable();
-        $building->name = trim($_POST["name"]);
-
-        if($isNew){
-            $building->id = $db->insert($building)->into("buildings")->execute();
-        }
-        else{
-            $db->update($building)->into("buildings")->where("id")->equalTo($building->id)->execute();
-        }
-        
+        $room->id = $db->insert($room)->into("rooms")->execute();
         http_response_code(200);
-
-        $json = '{"issuccess":true, "buildingId":'.$building->id.'}';
+        $json = '{"issuccess":true, "roomId":'.$room->id.'}';
         exit($json);
 
     } catch (\ZeroException $exp) {
         $logger->createLog($exp->getMessage());
-        $json = SwiftJSON::failure("Could not save this building name. Please try again.");
+        $json = SwiftJSON::failure("Could not save. Please try again.");
         die($json);
     }
     

@@ -18,7 +18,7 @@ $buildingId = $_POST["buildingId"];
 
 if($action === "list"){
     try {
-        $buildings= $db->select()->from("floors")->where("buildingId")->equalTo($buildingId)->toList();
+        $buildings= $db->select("id,name")->from("floors")->where("buildingId")->equalTo($buildingId)->toList();
         http_response_code(200);
         $json = json_encode($buildings);
         exit($json);
