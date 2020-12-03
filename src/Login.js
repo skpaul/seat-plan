@@ -3,7 +3,8 @@ import Axios from "axios";
 import "./Login.css";
 
 function Login(props) {
-    const apiUrl = "http://localhost"; //http://209.126.69.61:5000
+    //const apiUrl = "http://localhost";
+    const apiUrl = "http://209.126.69.61:5000";
 
     const[eiin, setEiin] = useState("");
     const[password, setPassword] = useState("");

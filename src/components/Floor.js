@@ -20,7 +20,8 @@ export default function Floor(props){
 
     const roomUpdated = (value) => {console.log("I am from biolding and value is -" + value)};
 
-    const apiUrl = "http://localhost"; //http://209.126.69.61:5000
+    //const apiUrl = "http://localhost";
+    const apiUrl = "http://209.126.69.61:5000";
 
     //Get data on component load event
     useEffect(()=>{

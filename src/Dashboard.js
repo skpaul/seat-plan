@@ -6,7 +6,10 @@ import './teletalk.css';
 import TopNav from "./components/TopNav";
 
 export default function Dashboard(props) {
-    const apiUrl = "http://localhost"; //http://209.126.69.61:5000
+
+    //const apiUrl = "http://localhost";
+    const apiUrl = "http://209.126.69.61:5000";
+
     const [eiinNo, setEIIN] = useState(localStorage.getItem('eiin'));
 
     //    let eiin = localStorage.getItem('eiin');

@@ -10,7 +10,8 @@ export default function ViewSeatPlan(props){
     const[options, setOption]=useState([]);
     const[rows, setRow]=useState([]); //for table tr
 
-    const apiUrl = "http://localhost"; //http://209.126.69.61:5000
+    //const apiUrl = "http://localhost";
+    const apiUrl = "http://209.126.69.61:5000";
 
     //Get data on component load event
     useEffect(()=>{

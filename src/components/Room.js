@@ -11,7 +11,9 @@ export default function Room(props){
     const[capacity, setCapacity] = useState("");
 
     //Get data on component load event
-    const apiUrl = "http://localhost"; //http://209.126.69.61:5000
+    //const apiUrl = "http://localhost";
+    const apiUrl = "http://209.126.69.61:5000";
+    
     useEffect(()=>{
         let postData = new FormData();
         postData.append("roomId", roomId);

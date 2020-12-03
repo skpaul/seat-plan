@@ -14,7 +14,9 @@ export default function CreateRoom(props){
     const[buildingId, setBuildingId] = useState("");
     const[floorId, setFloorId]=useState("");
 
-    const apiUrl = "http://localhost"; //http://209.126.69.61:5000
+    //const apiUrl = "http://localhost";
+    const apiUrl = "http://209.126.69.61:5000";
+    
     useEffect(() => {
         setEiin(location.state.eiin)
         setExamId(location.state.examId);

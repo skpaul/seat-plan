@@ -4,7 +4,9 @@ import "./Building.css";
 import Axios from 'axios';
 
 export default function Building(props){
-    const apiUrl = "http://localhost"; //http://209.126.69.61:5000
+    //const apiUrl = "http://localhost";
+    const apiUrl = "http://209.126.69.61:5000";
+
     const [buildingName, setBuildingName] = useState(props.buildingName);
     const [buildingId, setBuildingId] = useState(props.buildingId);
     const[eiinNo, setEiinNo]= useState(props.eiin);
