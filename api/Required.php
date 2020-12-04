@@ -12,11 +12,14 @@ require_once("CONSTANTS.php");
 
 
 class Required{
-    
-
 
     public static function ZeroSQL($version = null){
         require_once(ROOT_DIRECTORY ."/lib/database/v2/ZeroSQL.php");
+        return new static;
+    }
+
+    public static function Json($version = null){
+        require_once(ROOT_DIRECTORY ."/lib/Json.php");
         return new static;
     }
 
@@ -45,10 +48,10 @@ class Required{
         return new static;
     }
 
-    public static function SwiftJSON($version = null){
-        require_once(ROOT_DIRECTORY ."/lib/JSON/SwiftJSON.php");
-        return new static;
-    }
+    // public static function SwiftJSON($version = null){
+    //     require_once(ROOT_DIRECTORY ."/lib/JSON/SwiftJSON.php");
+    //     return new static;
+    // }
 
 
     public static function Validable($version = null){
