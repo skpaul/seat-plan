@@ -22,8 +22,6 @@ export default function CreateRoom(props){
     const[buttonText, setButtonText]=useState("Save & add another");
     const[isDisbale, setDisable]=useState("");
     
-    // const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
     
     useEffect(() => {
         setEiin(location.state.eiin)
@@ -33,32 +31,35 @@ export default function CreateRoom(props){
 
         let examIdData = new FormData();
         examIdData.append("examId", location.state.examId);
-        Axios.post(`${apiUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
             const item = response.data;
             setExamName(item.name);
             setReference(item.reference);
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of exam axios.
 
         let buildingData = new FormData();
         buildingData.append("id", location.state.buildingId);
-        Axios.post(`${apiUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
             const item = response.data;
             setBuildingName(item.name);
             
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of building axios.
 
 
             let floorData = new FormData();
             floorData.append("id", location.state.floorId);
-            Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=details`, floorData).then(response => {
+            Axios.post(`${window.$baseUrl}/seat-plan/api/floor.php?action=details`, floorData).then(response => {
                 const item = response.data;
                 setFloorName(item.name);
                 }).catch(error => {
                     console.log(error);
+                    alert("Something goes wrong. Please try again");
                 }); //end of floor axios.
 
      }, []); //end of useEffect()
@@ -89,7 +90,7 @@ export default function CreateRoom(props){
         
          setDisable("disabled");
          setButtonText("saving ...");
-         Axios.post(`${apiUrl}/seat-plan/api/room.php?action=create`, postData).then(response => {
+         Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=create`, postData).then(response => {
                 if (response.data.issuccess) {
                     setRoomNo("");
                     setStartRoll("");

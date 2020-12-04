@@ -10,17 +10,15 @@ export default function ViewSeatPlan(props){
     const[options, setOption]=useState([]);
     const[rows, setRow]=useState([]); //for table tr
 
-    // const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
 
     //Get data on component load event
     useEffect(()=>{
         let postData = new FormData();
         // postData.append("eiin", eiinNo);
          postData.append("examId", examId);
-        Axios.post(`${apiUrl}/seat-plan/api/exam.php?action=list`, postData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=list`, postData).then(response => {
             const items = response.data;
-            console.log(items);
+            
             let local_count = 0;
             items.map((item) => {
                 local_count += 1;
@@ -29,6 +27,7 @@ export default function ViewSeatPlan(props){
            
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of axios.
     }, []); //end of useEffect
 
@@ -54,7 +53,7 @@ export default function ViewSeatPlan(props){
         let postData = new FormData();
          postData.append("eiin", eiinNo);
          postData.append("examId", examId);
-        Axios.post(`${apiUrl}/seat-plan/api/view-seat-plan.php?action=list`, postData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/view-seat-plan.php?action=list`, postData).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -66,6 +65,7 @@ export default function ViewSeatPlan(props){
             //setCount(local_count);
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of axios.
     }
 

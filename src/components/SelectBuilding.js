@@ -18,21 +18,19 @@ export default function SelectBuilding(props){
         item
     ))
 
-    // const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
     
     useEffect(() => {
         // console.log(location.pathname); // result: '/secondpage'
         // console.log(location.search); // result: '?query=abc'
-        console.log(location.state.id); // result: 'some_value'
-        console.log(location.state.eiin); // result: 'some_value'
+        // console.log(location.state.id); // result: 'some_value'
+        // console.log(location.state.eiin); // result: 'some_value'
         setEiin(location.state.eiin);
         setExamId(location.state.id);
 
         
         let postData = new FormData();
          postData.append("eiin", location.state.eiin);
-        Axios.post(`${apiUrl}/seat-plan/api/building.php?action=list`, postData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=list`, postData).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -42,16 +40,18 @@ export default function SelectBuilding(props){
            
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of axios.
 
         let examPostData = new FormData();
         examPostData.append("examId", location.state.id);
-        Axios.post(`${apiUrl}/seat-plan/api/exam.php?action=details`, examPostData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=details`, examPostData).then(response => {
             const item = response.data;
             setExamName(item.name);
             setReference(item.reference);
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of exam axios.
 
      }, []); //end of useEffect()

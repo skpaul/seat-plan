@@ -25,9 +25,6 @@ export default function SelectFloor(props){
     const[buttonText, setButtonText]=useState("Save & add another");
     const[isDisbale, setDisable]=useState("");
     const[buildingName, setBuildingName] = useState("");
-
-    // const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
     
     useEffect(() => {
         // console.log(location.pathname); // result: '/secondpage'
@@ -40,7 +37,7 @@ export default function SelectFloor(props){
         let buildingIdData = new FormData();
         buildingIdData.append("buildingId", location.state.buildingId);
         
-        Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=list`, buildingIdData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/floor.php?action=list`, buildingIdData).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -50,26 +47,29 @@ export default function SelectFloor(props){
            
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of axios.
 
         let examIdData = new FormData();
         examIdData.append("examId", location.state.examId);
-        Axios.post(`${apiUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
             const item = response.data;
             setExamName(item.name);
             setReference(item.reference);
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of exam axios.
 
         let buildingData = new FormData();
         buildingData.append("id", location.state.buildingId);
-        Axios.post(`${apiUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
             const item = response.data;
             setBuildingName(item.name);
             
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of building axios.
 
      }, []); //end of useEffect()

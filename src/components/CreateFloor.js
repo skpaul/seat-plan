@@ -15,14 +15,11 @@ export default function CreateFloor(props){
 
     const[examName, setExamName]=useState("");
     const[reference, setReference]=useState("");
-    const[saveResult, setSaveResult] = useState("");
+    // const[saveResult, setSaveResult] = useState("");
     const[buttonText, setButtonText]=useState("Next");
     const[isDisbale, setDisable]=useState("");
     const[buildingName, setBuildingName] = useState("");
 
-    // const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
-    
     useEffect(() => {
         // console.log(location.pathname); // result: '/secondpage'
         // console.log(location.search); // result: '?query=abc'
@@ -32,22 +29,24 @@ export default function CreateFloor(props){
 
         let examIdData = new FormData();
         examIdData.append("examId", location.state.examId);
-        Axios.post(`${apiUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
             const item = response.data;
             setExamName(item.name);
             setReference(item.reference);
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of exam axios.
 
         let buildingData = new FormData();
         buildingData.append("id", location.state.buildingId);
-        Axios.post(`${apiUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
             const item = response.data;
             setBuildingName(item.name);
             
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of building axios.
 
      }, []); //end of useEffect()
@@ -68,7 +67,7 @@ export default function CreateFloor(props){
          setDisable("disabled");
          setButtonText("saving ...");
 
-        Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=create`, postData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/floor.php?action=create`, postData).then(response => {
             if(response.data.issuccess){
                 history.push({
                     pathname: '/seat-plan/new/create-room',

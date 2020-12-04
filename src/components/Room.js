@@ -11,14 +11,11 @@ export default function Room(props){
     const[capacity, setCapacity] = useState("");
 
     //Get data on component load event
-    //const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
-    
     useEffect(()=>{
         let postData = new FormData();
         postData.append("roomId", roomId);
         //Get room details
-        Axios.post(`${apiUrl}/seat-plan/api/room.php?action=details`, postData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=details`, postData).then(response => {
             const item = response.data;
             setRoomNo(item.roomNo);
             setStartRoll(item.startRoll);

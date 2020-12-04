@@ -14,15 +14,13 @@ function CreateSeatPlan(){
         item
     ))
 
-    // const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
 
     //Get data on component load event
     useEffect(()=>{
         let postData = new FormData();
         // postData.append("eiin", eiinNo);
          postData.append("examId", examId);
-        Axios.post(`${apiUrl}/seat-plan/api/exam.php?action=list`, postData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=list`, postData).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -32,6 +30,7 @@ function CreateSeatPlan(){
            
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of axios.
     }, []); //end of useEffect
 

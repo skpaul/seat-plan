@@ -20,8 +20,6 @@ export default function Floor(props){
 
     const roomUpdated = (value) => {console.log("I am from biolding and value is -" + value)};
 
-    //const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
 
     //Get data on component load event
     useEffect(()=>{
@@ -29,7 +27,7 @@ export default function Floor(props){
         postData.append("floorId", floorId);
 
         //Get floors
-        Axios.post(`${apiUrl}/seat-plan/api/room.php?action=list`, postData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=list`, postData).then(response => {
             const items = response.data;
             console.log(items);
             let local_count = 0;

@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import Building from "./components/Building";
+
 import './bootstrap-grid.css';
 import './teletalk.css';
 import TopNav from "./components/TopNav";
 
 export default function Dashboard(props) {
-
-    const apiUrl = "http://localhost";
-    // const apiUrl = "http://209.126.69.61:5000";
-
     const [eiinNo, setEIIN] = useState(localStorage.getItem('eiin'));
-
-    //    let eiin = localStorage.getItem('eiin');
-    //setEIIN(localStorage.getItem('eiin'));
 
     if (eiinNo == null || eiinNo === "") {
         props.history.push('/');
@@ -27,38 +20,44 @@ export default function Dashboard(props) {
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
     const [post, setPost] = useState("");
-    const [mobile, setMobile] = useState("");
+    const [headMobile, setHeadMobile] = useState("");
+    const [asstHeadMobile, setAsstHeadMobile] = useState("");
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-
-    const [count, setCount] = useState(0);
+    const[saveResult, setSaveResult] = useState("");
+    const[buttonText, setButtonText]=useState("Save Profile");
+    const[isDisbale, setDisable]=useState("");
 
     //Get data on component load event
     useEffect(() => {
         let postData = new FormData();
         postData.append("eiin", eiinNo);
         //Get institute profile details -->
-        Axios.post(`${apiUrl}/seat-plan/api/institute-details.php?action=get`, postData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/institute-details.php?action=get`, postData).then(response => {
             if (response.data) {
                 let data = response.data;
                 setDistrict(data.district);
+                setThanaList(thanaList => [...thanaList, <SelectOption key={1} id={data.thana} name={data.thana} />]);
                 setThana(data.thana);
                 setType(data.type);
                 setLevel(data.level);
                 setName(data.name);
                 setAddress(data.address);
                 setPost(data.post);
-                setMobile(data.mobile);
+                setHeadMobile(data.headMobile);
+                setAsstHeadMobile(data.asstHeadMobile);
                 setEmail(data.email);
                 setPassword(data.password);
             }
         }).catch(error => {
             console.log(error);
+            alert("Something goes wrong. Please try again");
         }); //<--Get institute profile details
 
 
-        Axios.post(`${apiUrl}/seat-plan/api/div-dist-thana.php?action=districtList`).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/div-dist-thana.php?action=districtList`).then(response => {
             const items = response.data.districts;
             let local_count = 0;
             items.map((item) => {
@@ -68,6 +67,7 @@ export default function Dashboard(props) {
            
             }).catch(error => {
                 console.log(error);
+                alert("Something goes wrong. Please try again");
             }); //end of axios.
 
     }, []);
@@ -87,17 +87,17 @@ export default function Dashboard(props) {
         setThanaList([]);
         let formData = new FormData();
         formData.append("district", event.target.value);
-        Axios.post(`${apiUrl}/seat-plan/api/div-dist-thana.php?action=thanaList`, formData).then(response => {
+        Axios.post(`${window.$baseUrl}/seat-plan/api/div-dist-thana.php?action=thanaList`, formData).then(response => {
             const items = response.data.thanas;
             let local_count = 0;
             items.map((item) => {
                 local_count += 1;
                 setThanaList(thanaList => [...thanaList, <SelectOption key={local_count} id={item.thana} name={item.thana} />]);
             })
-           
-            }).catch(error => {
-                console.log(error);
-            }); //end of axios.
+        }).catch(error => {
+            console.log(error);
+            alert("Something goes wrong. Please try again");
+        }); //end of axios.
     }
 
     const thanaChanged = event => {
@@ -124,8 +124,20 @@ export default function Dashboard(props) {
         setPost(event.target.value);
     }
 
-    const mobileChanged = event => {
-        setMobile(event.target.value);
+    const headMobileChanged = e => {
+        e.preventDefault();
+        const re = /^[0-9\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            setHeadMobile(e.target.value);
+        }
+    }
+
+    const asstHeadMobileChanged = e => {
+        e.preventDefault();
+        const re = /^[0-9\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            setAsstHeadMobile(e.target.value);
+        }
     }
 
     const emailChanged = event => {
@@ -148,19 +160,32 @@ export default function Dashboard(props) {
         updatedData.append("name", name);
         updatedData.append("address", address);
         updatedData.append("post", post);
-        updatedData.append("mobile", mobile);
+        updatedData.append("headMobile", headMobile);
+        updatedData.append("asstHeadMobile", asstHeadMobile);
         updatedData.append("email", email);
         updatedData.append("password", password);
 
-        Axios.post(`${apiUrl}/seat-plan/api/institute-details.php?action=save`, updatedData).then(response => {
+        setDisable("disabled");
+         setButtonText("saving ...");
+
+        Axios.post(`${window.$baseUrl}/seat-plan/api/institute-details.php?action=save`, updatedData).then(response => {
             if (response.data.issuccess) {
-                alert("Saved");
+                setSaveResult("Saved successfully.");
+                    setDisable("");
+                    setButtonText("Save Profile");
+                    setTimeout(() => {
+                        setSaveResult(" ");
+                    }, 4000);
             }
             else {
                 alert(response.data.message);
+                setDisable("");
+                    setButtonText("Try again");
             }
         }).catch(error => {
             console.log(error);
+            setDisable("");
+            setButtonText("Try again");
         });//end of axios
 
 
@@ -170,10 +195,11 @@ export default function Dashboard(props) {
     return (
         <>
         <TopNav/>
-            <div className="container box-shadow" style={{marginBottom:'50px'}}>
-                <h2>
+        <h1 style={{marginBottom:"30px"}}>
                     Institute Profile
-                </h2>
+                </h1>
+            <div className="container box-shadow" style={{marginBottom:'50px', padding:"20px"}}>
+                
                 <form className="classic">
                     <div className="row">
                         <div className="col-lg-8">
@@ -250,14 +276,28 @@ export default function Dashboard(props) {
                     </div>
 
                     <div className="row">
-                        <div className="col-lg-6">
+                    <div className="col-lg-4">
+                            <div className="field">
+                                <label>Mobile of Inst. Head</label>
+                                <input onChange={headMobileChanged} id="HeadMobile" value={headMobile} type="text"  maxLength="13" />
+                            </div>
+                        </div>
+
+                        <div className="col-lg-4">
+                            <div className="field">
+                                <label>Mobile of Inst. Asst. Head</label>
+                                <input onChange={asstHeadMobileChanged} id="asstHeadMobile" value={asstHeadMobile} type="text" maxLength="13" />
+                            </div>
+                        </div>
+
+                        {/* <div className="col-lg-6">
                             <div className="field">
                                 <label>Mobile</label>
                                 <input onChange={mobileChanged} id="mobile" mobile="mobile" value={mobile} type="text" />
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div className="col-lg-6">
+                        <div className="col-lg-4">
                             <div className="field">
                                 <label>Email</label>
                                 <input onChange={emailChanged} id="email" email="email" value={email} type="text" />
@@ -274,9 +314,9 @@ export default function Dashboard(props) {
                         </div>
                     </div>
 
-                    <br/>  <br/>
-                    <button className="btn btn-large btn-dark" id="saveButton" onClick={saveProfile} type="button">SAVE PROFILE</button>
-                    <br/>  <br/>  <br/>
+                    <br/> 
+                    <button disabled={isDisbale} className="btn btn-large btn-dark" id="saveButton" onClick={saveProfile} type="button">{buttonText}</button>
+                    <div className="saveResult">{saveResult}</div>
                 </form>
             </div>
         </>
