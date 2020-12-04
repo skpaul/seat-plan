@@ -3,6 +3,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import Axios from 'axios';
 import TopNav from "./TopNav";
 import "./CreateSeatPlan.css";
+import "./SelectFloor.css";
 
 export default function SelectFloor(props){
 
@@ -18,8 +19,15 @@ export default function SelectFloor(props){
         item
     ))
 
-    const apiUrl = "http://localhost";
-    // const apiUrl = "http://209.126.69.61:5000";
+    const[examName, setExamName]=useState("");
+    const[reference, setReference]=useState("");
+    const[saveResult, setSaveResult] = useState("");
+    const[buttonText, setButtonText]=useState("Save & add another");
+    const[isDisbale, setDisable]=useState("");
+    const[buildingName, setBuildingName] = useState("");
+
+    // const apiUrl = "http://localhost";
+    const apiUrl = "http://209.126.69.61:5000";
     
     useEffect(() => {
         // console.log(location.pathname); // result: '/secondpage'
@@ -29,10 +37,10 @@ export default function SelectFloor(props){
         setExamId(location.state.examId);
         setBuildingId(location.state.buildingId);
 
-        let postData = new FormData();
-        postData.append("buildingId", location.state.buildingId);
+        let buildingIdData = new FormData();
+        buildingIdData.append("buildingId", location.state.buildingId);
         
-        Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=list`, postData).then(response => {
+        Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=list`, buildingIdData).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -43,6 +51,26 @@ export default function SelectFloor(props){
             }).catch(error => {
                 console.log(error);
             }); //end of axios.
+
+        let examIdData = new FormData();
+        examIdData.append("examId", location.state.examId);
+        Axios.post(`${apiUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
+            const item = response.data;
+            setExamName(item.name);
+            setReference(item.reference);
+            }).catch(error => {
+                console.log(error);
+            }); //end of exam axios.
+
+        let buildingData = new FormData();
+        buildingData.append("id", location.state.buildingId);
+        Axios.post(`${apiUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
+            const item = response.data;
+            setBuildingName(item.name);
+            
+            }).catch(error => {
+                console.log(error);
+            }); //end of building axios.
 
      }, []); //end of useEffect()
 
@@ -72,7 +100,14 @@ export default function SelectFloor(props){
     return(
         <>
             <TopNav />
+            <div className="examName">{examName}</div>
+            <div className="reference">({reference})</div>
+
             <h1>Select Floor</h1>
+            <div className="buildingAndFloor">
+                <div className="buildingName">Building: {buildingName}</div>
+            </div>
+
             <div className="cont box-shadow">
                 <select onChange={floorChanged} value={floorId}>
                     <option value="">select a floor</option>

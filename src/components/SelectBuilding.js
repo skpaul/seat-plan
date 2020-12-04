@@ -10,13 +10,16 @@ export default function SelectBuilding(props){
 
     const[examId, setExamId]=useState("");
     const[eiinNo, setEiin] = useState("");
+    const[examName, setExamName]=useState("");
+    const[reference, setReference]=useState("");
+
     const[options, setOption]=useState([]);
     const selectOptions = options.map(item => (
         item
     ))
 
-    const apiUrl = "http://localhost";
-    // const apiUrl = "http://209.126.69.61:5000";
+    // const apiUrl = "http://localhost";
+    const apiUrl = "http://209.126.69.61:5000";
     
     useEffect(() => {
         // console.log(location.pathname); // result: '/secondpage'
@@ -26,9 +29,9 @@ export default function SelectBuilding(props){
         setEiin(location.state.eiin);
         setExamId(location.state.id);
 
+        
         let postData = new FormData();
          postData.append("eiin", location.state.eiin);
-        
         Axios.post(`${apiUrl}/seat-plan/api/building.php?action=list`, postData).then(response => {
             const items = response.data;
             let local_count = 0;
@@ -40,6 +43,16 @@ export default function SelectBuilding(props){
             }).catch(error => {
                 console.log(error);
             }); //end of axios.
+
+        let examPostData = new FormData();
+        examPostData.append("examId", location.state.id);
+        Axios.post(`${apiUrl}/seat-plan/api/exam.php?action=details`, examPostData).then(response => {
+            const item = response.data;
+            setExamName(item.name);
+            setReference(item.reference);
+            }).catch(error => {
+                console.log(error);
+            }); //end of exam axios.
 
      }, []); //end of useEffect()
     
@@ -73,6 +86,8 @@ export default function SelectBuilding(props){
     return(
         <>
             <TopNav/>
+            <div className="examName">{examName}</div>
+            <div className="reference">({reference})</div>
             <h1>Building Name</h1>
             <div className="cont box-shadow">
                 <select onChange={buildingChanged} value={buildingId}>

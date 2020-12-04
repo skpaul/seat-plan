@@ -14,9 +14,23 @@ $db = new ZeroSQL();
 $db->database(DATABASE_NAME)->user(DATABASE_USER_NAME)->server(DATABASE_SERVER)->password(DATABASE_PASSWORD)->connect();
 
 $action = $_GET["action"];
-$buildingId = $_POST["buildingId"];
+
+if($action === "details"){
+    $floorId = $_POST["id"];
+    try {
+        $floor= $db->select("id,name")->from("floors")->where("id")->equalTo($floorId)->single();
+        http_response_code(200);
+        $json = json_encode($floor);
+        exit($json);
+    } catch (\ZeroException $exp) {
+        $logger->createLog($exp->getMessage());
+        http_response_code(501);
+        die();
+    }
+}
 
 if($action === "list"){
+    $buildingId = $_POST["buildingId"];
     try {
         $buildings= $db->select("id,name")->from("floors")->where("buildingId")->equalTo($buildingId)->toList();
         http_response_code(200);
@@ -30,7 +44,7 @@ if($action === "list"){
 }
 
 if($action === "create"){   
-   
+    $buildingId = $_POST["buildingId"];
     try {
         // $form = new Validable();
         $floor = $db->new("floors");

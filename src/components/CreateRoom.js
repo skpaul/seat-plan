@@ -13,9 +13,16 @@ export default function CreateRoom(props){
     const[eiinNo, setEiin]=useState("");
     const[examId, setExamId]=useState("");
     const[buildingId, setBuildingId] = useState("");
+    const[buildingName, setBuildingName] = useState("");
     const[floorId, setFloorId]=useState("");
-
-    //const apiUrl = "http://localhost";
+    const[floorName, setFloorName]=useState("");
+    const[examName, setExamName]=useState("");
+    const[reference, setReference]=useState("");
+    const[saveResult, setSaveResult] = useState("");
+    const[buttonText, setButtonText]=useState("Save & add another");
+    const[isDisbale, setDisable]=useState("");
+    
+    // const apiUrl = "http://localhost";
     const apiUrl = "http://209.126.69.61:5000";
     
     useEffect(() => {
@@ -23,12 +30,53 @@ export default function CreateRoom(props){
         setExamId(location.state.examId);
         setBuildingId(location.state.buildingId);
         setFloorId(location.state.floorId);
+
+        let examIdData = new FormData();
+        examIdData.append("examId", location.state.examId);
+        Axios.post(`${apiUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
+            const item = response.data;
+            setExamName(item.name);
+            setReference(item.reference);
+            }).catch(error => {
+                console.log(error);
+            }); //end of exam axios.
+
+        let buildingData = new FormData();
+        buildingData.append("id", location.state.buildingId);
+        Axios.post(`${apiUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
+            const item = response.data;
+            setBuildingName(item.name);
+            
+            }).catch(error => {
+                console.log(error);
+            }); //end of building axios.
+
+
+            let floorData = new FormData();
+            floorData.append("id", location.state.floorId);
+            Axios.post(`${apiUrl}/seat-plan/api/floor.php?action=details`, floorData).then(response => {
+                const item = response.data;
+                setFloorName(item.name);
+                }).catch(error => {
+                    console.log(error);
+                }); //end of floor axios.
+
      }, []); //end of useEffect()
 
     
     
      const createRoom=(e)=>{
          e.preventDefault();
+         if(roomNo.trim() === ""){
+             alert("Enter room number.");
+             return;
+         }
+
+         if(capacity.trim() === ""){
+            alert("Enter total capacity.");
+            return;
+        }
+
          let postData = new FormData();
          postData.append("eiin", eiinNo);
          postData.append("buildingId", buildingId);
@@ -39,31 +87,42 @@ export default function CreateRoom(props){
          postData.append("endRoll", endRoll);
          postData.append("capacity", capacity);
         
-        Axios.post(`${apiUrl}/seat-plan/api/room.php?action=create`, postData).then(response => {
-           if(response.data.issuccess){
+         setDisable("disabled");
+         setButtonText("saving ...");
+         Axios.post(`${apiUrl}/seat-plan/api/room.php?action=create`, postData).then(response => {
+                if (response.data.issuccess) {
+                    setRoomNo("");
+                    setStartRoll("");
+                    setEndRoll("");
+                    setCapacity("");
+                    setSaveResult("Saved successfully.");
+                    setDisable("");
+                    setButtonText("Save & add another");
 
-           }
-           else{
-                alert(response.data.message);
-           }
-            // history.push({
-            //     pathname: '/seat-plan/new/create-room',
-            //     search: '?query=abc',
-            //     state: { examId: examId, eiin:eiinNo, buildingId:buildingId, floorId:response.data.floorId }
-            // });
+                    setTimeout(() => {
+                        setSaveResult(" ");
+                    }, 4000);
+                }
+                else {
+                    alert(response.data.message);
+                    setDisable("");
+                    setButtonText("Try again");
+                }
 
-            }).catch(error => {
-                console.log(error);
-            }); //end of axios.
-
+         }).catch(error => {
+             console.log(error);
+             alert("Failed to save");
+             setDisable("");
+             setButtonText("Try again");
+         }); //end of axios.
        
     }
 
-    const[floorName, setFloorName] = useState("");
-    const floorNameChanged=(e)=>{
-        e.preventDefault();
-        setFloorName(e.target.value);
-    }
+    // const[floorName, setFloorName] = useState("");
+    // const floorNameChanged=(e)=>{
+    //     e.preventDefault();
+    //     setFloorName(e.target.value);
+    // }
 
     const[roomNo, setRoomNo] = useState("");
     const[startRoll, setStartRoll] = useState("");
@@ -124,7 +183,17 @@ export default function CreateRoom(props){
     return(
         <>
             <TopNav/>
+            <div className="examName">{examName}</div>
+            <div className="reference">({reference})</div>
+
             <h1>Create Room</h1>
+            
+            <div className="buildingAndFloor">
+                <div className="buildingName">Building: {buildingName}</div>
+                <div className="floorName">Floor: {floorName}</div>
+            </div>
+           
+
             <div className="cont box-shadow">
                 <div className="input-row">
                     <div className="inputBox">
@@ -147,7 +216,8 @@ export default function CreateRoom(props){
                     </div>
                 </div>
 
-                <button onClick={createRoom} name="createRoom">Save and Add Another</button>
+                <button disabled={isDisbale} onClick={createRoom} name="createRoom">{buttonText}</button>
+                <div className="saveResult">{saveResult}</div>
             </div>
     </>
     );

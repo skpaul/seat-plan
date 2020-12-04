@@ -1,5 +1,16 @@
+.seatPlanCont{
+    width: 96%;
+    padding:20px;
+    margin: auto;
+}
+
+select{
+    margin: "auto";
+    width: "70%";
+    margin-bottom: 30px;
+}
 table{
-    width: 90%;
+    width: 100%;
     border-collapse: collapse;
     margin: auto;
 }
@@ -21,7 +32,7 @@ tbody>tr{
 tbody>tr>td{
     padding-top:5px;
     padding-bottom: 5px;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #efeaea;
 }
 
 tfoot>tr>td{

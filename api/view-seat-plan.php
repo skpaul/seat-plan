@@ -7,7 +7,7 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 require_once("Required.php");
-Required::SwiftLogger()->ZeroSQL()->Validable()->SwiftJSON();
+Required::SwiftLogger()->ZeroSQL()->Validable();
 
 $logger = new SwiftLogger(ROOT_DIRECTORY);
 $db = new ZeroSQL();

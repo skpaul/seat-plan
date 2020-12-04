@@ -16,11 +16,11 @@ $db->database(DATABASE_NAME)->user(DATABASE_USER_NAME)->server(DATABASE_SERVER)-
 $action = $_GET["action"];
 
 if($action === "details"){
-    $roomId = $_POST["roomId"];
+    $examId = $_POST["examId"];
     try {
-        $roomDetails = $db->select()->from("rooms")->where("id")->equalTo($roomId)->single();
+        $exam = $db->select()->from("exams")->where("id")->equalTo($examId)->single();
         http_response_code(200);
-        $json = json_encode($roomDetails);
+        $json = json_encode($exam);
         exit($json);
     } catch (\ZeroException $exp) {
         $logger->createLog($exp->getMessage());

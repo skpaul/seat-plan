@@ -10,7 +10,7 @@ export default function ViewSeatPlan(props){
     const[options, setOption]=useState([]);
     const[rows, setRow]=useState([]); //for table tr
 
-    //const apiUrl = "http://localhost";
+    // const apiUrl = "http://localhost";
     const apiUrl = "http://209.126.69.61:5000";
 
     //Get data on component load event
@@ -71,14 +71,18 @@ export default function ViewSeatPlan(props){
 
     return(
         <>
-         <TopNav/>
+            <TopNav />
             {/* A good combobox here - https://react-select.com/home */}
-            <select onChange={examChanged}>
-                <option value="">select an exam</option>
-                {selectOptions}
-            </select>
+            <h1>Seat Plan Details</h1>
 
-            <table>
+            <div className="seatPlanCont box-shadow">
+                <select onChange={examChanged}>
+                    <option value="">select an exam</option>
+                    {selectOptions}
+                </select>
+
+
+                <table>
                 <thead>
                     <tr>
                         <th>Building</th>
@@ -100,6 +104,10 @@ export default function ViewSeatPlan(props){
                 </tfoot>
             </table>
 
+
+            </div>
+
+          
             
         </>
     );

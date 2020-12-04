@@ -1,3 +1,11 @@
+.examName{
+    font-size: 20px;
+}
+
+.reference{
+    font-size: 14px;
+}
+
 h1{
     margin-top: 100px;
     margin-bottom: 50px;

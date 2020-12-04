@@ -18,10 +18,11 @@ $db->database(DATABASE_NAME)->user(DATABASE_USER_NAME)->server(DATABASE_SERVER)-
 $action = $_GET["action"];
 
 if($action === "details"){
+    $buildingId = $_POST["id"];
     try {
-        $buildings= $db->select()->from("buildings")->where("eiin")->equalTo($eiin)->toList();
+        $building= $db->select()->from("buildings")->where("id")->equalTo($buildingId)->single();
         http_response_code(200);
-        $json = json_encode($buildings);
+        $json = json_encode($building);
         exit($json);
     } catch (\ZeroException $exp) {
         $logger->createLog($exp->getMessage());
@@ -47,24 +48,17 @@ if($action === "list"){
 if($action === "create"){
     $eiin = $_POST["eiin"];
     try {
-
         $building = $db->new("buildings");
         $building->eiin = $eiin;
         $building->name = trim($_POST["name"]);
-        $building->id = $db->insert($building)->into("buildings")->execute();
-        
+        $building->id = $db->insert($building)->into("buildings")->execute();       
         http_response_code(200);
-
         $json = '{"issuccess":true, "buildingId":'.$building->id.'}';
         exit($json);
-
     } catch (\ZeroException $exp) {
         $logger->createLog($exp->getMessage());
         $json = '{"issuccess":true, "message":"Could not save this building name. Please try again."}'; // SwiftJSON::failure("");
         die($json);
     }
-    
-   
 }
-
 ?>

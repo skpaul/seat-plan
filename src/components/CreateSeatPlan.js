@@ -14,8 +14,8 @@ function CreateSeatPlan(){
         item
     ))
 
-    const apiUrl = "http://localhost";
-    // const apiUrl = "http://209.126.69.61:5000";
+    // const apiUrl = "http://localhost";
+    const apiUrl = "http://209.126.69.61:5000";
 
     //Get data on component load event
     useEffect(()=>{
