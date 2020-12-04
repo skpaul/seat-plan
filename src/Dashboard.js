@@ -194,7 +194,12 @@ export default function Dashboard(props) {
                         <div className="col-lg-6">
                             <div className="field">
                                 <label>Institute Type</label>
-                                <input onChange={typeChanged} id="type" name="type" value={type} type="text" />
+                                <select onChange={typeChanged} id="type" name="type" value={type} >
+                                    <option value="">select ...</option>
+                                    <option value="School">School</option>
+                                    <option value="College">Collecge</option>
+                                    <option value="Madrasah">Madrasah</option>
+                                </select>
                             </div>
                         </div>
                         <div className="col-lg-6">
