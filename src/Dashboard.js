@@ -157,7 +157,7 @@ export default function Dashboard(props) {
                 alert("Saved");
             }
             else {
-                alert("Could not save. Please try again");
+                alert(response.data.message);
             }
         }).catch(error => {
             console.log(error);

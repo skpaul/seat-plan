@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import Axios from 'axios';
 import TopNav from "./TopNav";
 import { useLocation, useHistory } from "react-router-dom";
+import "./CreateSeatPlan.css";
 
 export default function CreateBuilding(props){
 
@@ -12,8 +13,8 @@ export default function CreateBuilding(props){
     const[examId, setExamId]=useState("");
     const[eiinNo, setEiin]=useState("");
 
-    //const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
+    const apiUrl = "http://localhost";
+    // const apiUrl = "http://209.126.69.61:5000";
     
     useEffect(() => {
         // console.log(location.pathname); // result: '/secondpage'
@@ -58,8 +59,11 @@ export default function CreateBuilding(props){
         <>
             <TopNav/>
             <h1>Create New Building</h1>
-            <input onChange={buildingNameChanged} value={buildingName} type="text" />
-            <button onClick={createBuilding}>Next</button>
+            <div className="cont box-shadow">
+                <input onChange={buildingNameChanged} value={buildingName} type="text" />
+                <button onClick={createBuilding}>Next</button>
+            </div>
+            
         </>
     );
 }

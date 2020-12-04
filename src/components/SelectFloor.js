@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useLocation, useHistory } from "react-router-dom";
 import Axios from 'axios';
 import TopNav from "./TopNav";
+import "./CreateSeatPlan.css";
 
 export default function SelectFloor(props){
 
@@ -17,8 +18,8 @@ export default function SelectFloor(props){
         item
     ))
 
-    //const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
+    const apiUrl = "http://localhost";
+    // const apiUrl = "http://209.126.69.61:5000";
     
     useEffect(() => {
         // console.log(location.pathname); // result: '/secondpage'
@@ -70,22 +71,24 @@ export default function SelectFloor(props){
      }
     return(
         <>
-        <TopNav/>
-       <h1>Select Floor</h1>
-        <select onChange={floorChanged} value={floorId}>
-            <option value="">select a floor</option>
-            {selectOptions}
-
-            <option value="create">Create New</option>
-        </select>
-
-        <button onClick={goToRoomSelection}>Next</button>
-    </>
+            <TopNav />
+            <h1>Select Floor</h1>
+            <div className="cont box-shadow">
+                <select onChange={floorChanged} value={floorId}>
+                    <option value="">select a floor</option>
+                    {selectOptions}
+                    <optgroup label="_________">
+                        <option value="create">Create New</option>
+                    </optgroup>
+                </select>
+                <button onClick={goToRoomSelection}>Next</button>
+            </div>
+        </>
     );
 }
 
 function SelectOption(props){
     return(
-    <option value={props.id}>{props.name}</option>
+        <option value={props.id}>{props.name}</option>
     );
 }

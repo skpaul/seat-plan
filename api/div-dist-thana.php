@@ -7,10 +7,11 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 require_once("Required.php");
-Required::SwiftLogger()->ZeroSQL()->Validable()->SwiftJSON();
+Required::SwiftLogger()->ZeroSQL()->Validable()->Json();
 
 $logger = new SwiftLogger(ROOT_DIRECTORY);
 $db = new ZeroSQL();
+$json = new Json();
 $db->database(DATABASE_NAME)->user(DATABASE_USER_NAME)->server(DATABASE_SERVER)->password(DATABASE_PASSWORD)->connect();
 
 $action = $_GET["action"];
@@ -23,8 +24,8 @@ if($action === "districtList"){
         $response = new stdClass();
         $response->issuccess = true;
         $response->districts = $districts;
-        $json = json_encode($response);
-        exit($json);
+        $response = json_encode($response);
+        exit($response);
     } catch (\ZeroException $exp) {
         $logger->createLog($exp->getMessage());
         http_response_code(501);
@@ -40,8 +41,8 @@ if($action === "thanaList"){
         $response = new stdClass();
         $response->issuccess = true;
         $response->thanas = $thanas;
-        $json = json_encode($response);
-        exit($json);
+        $response = json_encode($response);
+        exit($response);
     } catch (\ZeroException $exp) {
         $logger->createLog($exp->getMessage());
         http_response_code(501);
@@ -59,12 +60,12 @@ if($action === "create"){
         $floor->id = $db->insert($floor)->into("floors")->execute();
         http_response_code(200);
 
-        $json = '{"issuccess":true, "floorId":'.$floor->id.'}';
-        exit($json);
+        $response = '{"issuccess":true, "floorId":'.$floor->id.'}';
+        exit($response);
 
     } catch (\ZeroException $exp) {
         $logger->createLog($exp->getMessage());
-        $json = SwiftJSON::failure("Could not save. Please try again.");
+        $response = '{"issuccess":false, "message":"Could not save. Please try again"}'; //SwiftJSON::failure("Could not save. Please try again.");
         die($json);
     }
     

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useLocation, useHistory } from "react-router-dom";
 import Axios from 'axios';
 import TopNav from "./TopNav";
+import "./CreateSeatPlan.css";
 
 export default function SelectBuilding(props){
 
@@ -14,8 +15,8 @@ export default function SelectBuilding(props){
         item
     ))
 
-    //const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
+    const apiUrl = "http://localhost";
+    // const apiUrl = "http://209.126.69.61:5000";
     
     useEffect(() => {
         // console.log(location.pathname); // result: '/secondpage'
@@ -60,7 +61,7 @@ export default function SelectBuilding(props){
          e.preventDefault();
          
        if(buildingId===""){
-           alert("Select a room");
+           alert("Select a building");
            return;
        }
         history.push({
@@ -71,16 +72,22 @@ export default function SelectBuilding(props){
      }
     return(
         <>
-        <TopNav/>
-       <h1>Select Building</h1>
-        <select onChange={buildingChanged} value={buildingId}>
-            <option value="">select building</option>
-            {selectOptions}
+            <TopNav/>
+            <h1>Building Name</h1>
+            <div className="cont box-shadow">
+                <select onChange={buildingChanged} value={buildingId}>
+                    <option value="">select building</option>
+                    {selectOptions}
 
-            <option value="create">Create New</option>
-        </select>
+                    <optgroup label="_________">
+                        <option value="create">Create New</option>
+                    </optgroup>
+                   
+                </select>
 
-        <button onClick={goToRoomSelection}>Next</button>
+                <button onClick={goToRoomSelection}>Next</button>
+            </div>
+
     </>
     );
 }

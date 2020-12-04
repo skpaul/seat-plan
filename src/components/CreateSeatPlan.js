@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import TopNav from "./TopNav";
 import { Redirect, withRouter,useHistory } from 'react-router-dom';
+import "./CreateSeatPlan.css";
 
- function CreateSeatPlan(){
+function CreateSeatPlan(){
 
     const [eiinNo, setEIIN] = useState(localStorage.getItem('eiin'));
     const[examId, setExamId] = useState("");
@@ -13,8 +14,8 @@ import { Redirect, withRouter,useHistory } from 'react-router-dom';
         item
     ))
 
-    //const apiUrl = "http://localhost";
-    const apiUrl = "http://209.126.69.61:5000";
+    const apiUrl = "http://localhost";
+    // const apiUrl = "http://209.126.69.61:5000";
 
     //Get data on component load event
     useEffect(()=>{
@@ -58,13 +59,17 @@ import { Redirect, withRouter,useHistory } from 'react-router-dom';
         <>
             <TopNav/>
             {/* A good combobox here - https://react-select.com/home */}
-            <h1>SElect Examination</h1>
-            <select onChange={examChanged}>
-                <option value="">select an exam</option>
-                {selectOptions}
-            </select>
+            <h1>Select Examination</h1>
 
-            <button onClick={goToBuildingSelection}>Next</button>
+            <div className="cont box-shadow">
+                <select onChange={examChanged}>
+                    <option value="">select an exam</option>
+                    {selectOptions}
+                </select>
+
+                <button onClick={goToBuildingSelection}>Next</button>
+            </div>
+           
         </>
     );
 }

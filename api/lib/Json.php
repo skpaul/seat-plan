@@ -10,12 +10,12 @@
         }
 
         public function success(){
-            $this->data->success = true;
+            $this->data->issuccess = true;
             return $this;
         }
 
         public function fail(){
-            $this->data->success = false;
+            $this->data->issuccess = false;
             return $this;
         }
 
@@ -31,8 +31,4 @@
             return $string;
         }
     }
-
-    //example
-    $json = new Json();
-    echo $json->success()->one(1)->create();
 ?>

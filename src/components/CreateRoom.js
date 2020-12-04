@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import Axios from 'axios';
 import TopNav from "./TopNav";
 import { useLocation, useHistory } from "react-router-dom";
+import "./CreateRoom.css";
 
 export default function CreateRoom(props){
 
@@ -75,33 +76,78 @@ export default function CreateRoom(props){
     }
 
     const startRollChanged=(e)=>{
-        e.preventDefault();
-        setStartRoll(e.target.value);
+        // e.preventDefault();
+        let startRoll = e.target.value;
+        const re = /^[0-9\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            let startingRoll = e.target.value;
+            
+            if(startingRoll !=="" && endRoll !==""){
+                let intStartRoll = parseInt(startingRoll);
+                let intEndRoll = parseInt(endRoll);
+                let diff = intEndRoll - intStartRoll;
+                setCapacity(diff);
+            }
+
+            setStartRoll(e.target.value);
+        }
+
+        
     }
 
     const endRollChanged=(e)=>{
         e.preventDefault();
-        setEndRoll(e.target.value);
+        const re = /^[0-9\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            let endingRoll = e.target.value;
+            
+            if(startRoll !=="" && endingRoll !==""){
+                let intStartRoll = parseInt(startRoll);
+                let intEndRoll = parseInt(endingRoll);
+                let diff = intEndRoll - intStartRoll;
+                setCapacity(diff);
+            }
+
+            setEndRoll(e.target.value);
+        }
     }
 
-    const capacityChanged=(e)=>{
+    const capacityChanged = (e) => {
         e.preventDefault();
-        setCapacity(e.target.value);
+        const re = /^[0-9\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            setCapacity(e.target.value);
+        }
     }
+
 
     return(
         <>
             <TopNav/>
             <h1>Create Room</h1>
-            <div>
-                <div className="room-row">
-                    <input name="roomNo" onChange={roomNoChanged} value={roomNo} type="text"  placeholder="room number" />
-                    <input name="startRoll" onChange={startRollChanged} value={startRoll} type="text" placeholder="start roll (optional)" />
-                    <input name="endRoll" onChange={endRollChanged} value={endRoll} type="text" placeholder="end roll (optional)" />
-                    <input name="roomCapacity" onChange={capacityChanged} value={capacity} type="text" placeholder="total quantity" />
-                    <button onClick={createRoom} name="createRoom">Save</button>
-                   
+            <div className="cont box-shadow">
+                <div className="input-row">
+                    <div className="inputBox">
+                        <label>Room No.</label>
+                        <input name="roomNo" onChange={roomNoChanged} value={roomNo} type="text"  placeholder="" />
+                    </div>
+                    
+                    <div className="inputBox">
+                        <label>Start Roll</label>
+                        <input name="startRoll" onChange={startRollChanged} value={startRoll} type="text" placeholder="(optional)" />
+                    </div>
+                    <div className="inputBox">
+                        <label>End Roll</label>
+                        <input name="endRoll" onChange={endRollChanged} value={endRoll} type="text" placeholder="(optional)" />
+                    </div>
+
+                    <div className="inputBox">
+                        <label>Total</label>
+                        <input name="roomCapacity" onChange={capacityChanged}  value={capacity} type="text" maxLength="4" placeholder="" />
+                    </div>
                 </div>
+
+                <button onClick={createRoom} name="createRoom">Save and Add Another</button>
             </div>
     </>
     );

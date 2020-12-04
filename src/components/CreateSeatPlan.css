@@ -1,0 +1,35 @@
+h1{
+    margin-top: 100px;
+    margin-bottom: 50px;
+
+}
+.cont{
+    width: 96%;
+    max-width: 600px;
+    padding:50px;
+    margin: auto;
+}
+
+select,input[type="text"]{
+    padding:10px;
+    width: 100%;
+    font-size: 18px;
+}
+
+
+button{
+    width:150px;
+    padding:10px;
+    margin-top: 30px;
+    border:1px solid black;
+    border-radius: 20px;
+    background-color: white;
+    color:black;
+    outline: none;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: gray;
+    color:white;
+}
