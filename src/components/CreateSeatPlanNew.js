@@ -3,8 +3,106 @@ import Axios from 'axios';
 import TopNav from "./TopNav";
 import { Redirect, withRouter,useHistory } from 'react-router-dom';
 import "./CreateSeatPlan.css";
+import Modal from 'react-modal';
 
 function CreateSeatPlanNew(){
+    Modal.setAppElement('#root')
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)'
+        }
+    };
+
+    var subtitle;
+  const [isBuildingModalOpen,setBuildingModalOpen] = useState(false);
+  const [isFloorModalOpen,setFloorModalOpen] = useState(false);
+  
+  function openBuildingModal() {
+    setBuildingModalOpen(true);
+  }
+ 
+  function openFloorModal() {
+    setFloorModalOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+ 
+  function closeBuildingModal(){
+    setBuildingModalOpen(false);
+     let newBuildingName = document.getElementById("newBuildingName").value;
+
+    if(newBuildingName.trim()===""){
+        return;
+    }
+
+     let postData = new FormData();
+     postData.append("name", newBuildingName);
+     postData.append("eiin", eiinNo);
+    
+    
+
+    Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=create`, postData).then(response => {
+        if (response.data.issuccess) {
+           //response.data.buildingId
+           setBuildingOptions(buildingOptions => [...buildingOptions, <SelectOption key={response.data.buildingId} id={response.data.buildingId} name={newBuildingName} />]);
+           setBuildingId(response.data.buildingId);
+           setFloorOptions([]);
+        }
+        else {
+            alert(response.message);
+         
+        }
+    }).catch(error => {
+        console.log(error);
+        alert("Something goes wrong. Please try again.");
+       
+    }); //end of axios.
+  }
+
+  function closeFloorModal(){
+    
+    setFloorModalOpen(false);
+
+    if(buildingId===""){
+        alert("Select a building");
+        return;
+    }
+   let newFloorName = document.getElementById("newFloorName").value;
+   if(newFloorName.trim()===""){
+       return;
+   }
+
+   let postData = new FormData();
+   postData.append("eiin", eiinNo);
+   postData.append("buildingId", buildingId);
+   postData.append("name", newFloorName);
+  
+  
+
+  Axios.post(`${window.$baseUrl}/seat-plan/api/floor.php?action=create`, postData).then(response => {
+      if(response.data.issuccess){
+        // response.data.floorId
+        setFloorOptions(floorOptions => [...floorOptions, <SelectOption key={response.data.floorId} id={response.data.floorId} name={newFloorName} />]);
+        setFloorId(response.data.floorId);
+      }
+     else{
+         alert(response.data.message);
+     }
+
+      }).catch(error => {
+          console.log(error);
+          alert("Something goes wrong. Please try again.");
+      }); //end of axios.
+  }
+
     const [eiinNo, setEIIN] = useState(localStorage.getItem('eiin'));
     const[examId, setExamId] = useState("");
     const[examOptions, setExamOptions]=useState([]);
@@ -102,6 +200,20 @@ function CreateSeatPlanNew(){
      
      const createRoom=(e)=>{
         e.preventDefault();
+        if(examId.trim() === ""){
+            alert("Select exam.");
+            return;
+        }
+        if(buildingId.trim() === ""){
+            alert("Select building.");
+            return;
+        }
+
+        if(floorId.trim() === ""){
+            alert("Select floor.");
+            return;
+        }
+
         if(roomNo.trim() === ""){
             alert("Enter room number.");
             return;
@@ -223,7 +335,7 @@ function CreateSeatPlanNew(){
         <>
             <TopNav/>
             {/* A good combobox here - https://react-select.com/home */}
-            <h1>Select Examination HI-2</h1>
+            <h1>Create New Seat Plan</h1>
 
             <div className="cont box-shadow">
                 <select onChange={examChanged}>
@@ -231,25 +343,23 @@ function CreateSeatPlanNew(){
                     {examList}
                 </select>
 
+                <div className="buildingBlock">
                 <select onChange={buildingChanged} value={buildingId}>
                     <option value="">select building</option>
                     {buildingList}
-
-                    <optgroup label="_________">
-                        <option value="create">Create New</option>
-                    </optgroup>
-                   
                 </select>
-
-                <select onChange={floorChanged} value={floorId}>
+                <button id="addNewBuildingModalButton" onClick={openBuildingModal}>Add</button>
+                </div>
+             
+        <div className="floorBlock">
+        <select onChange={floorChanged} value={floorId}>
                     <option value="">select a floor</option>
                     {floorList}
-                    
                 </select>
+                <button id="addNewFloorModalButton" onClick={openFloorModal}>Add</button>
+        </div>
                
-            </div>
 
-            <div className="cont box-shadow">
                 <div className="saveResult" style={{height:"20px"}}>{saveResult}</div>
                 <div className="input-row">
                     <div className="inputBox">
@@ -281,6 +391,42 @@ function CreateSeatPlanNew(){
                         {tableRows}
                 </div>
             </div>
+
+
+            
+        <Modal
+          isOpen={isBuildingModalOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeBuildingModal}
+          style={customStyles}
+          
+          contentLabel="Example Modal"
+        >
+ 
+          <h2 ref={_subtitle => (subtitle = _subtitle)}>Add New Building Name</h2>
+          
+          <input id="newBuildingName" />
+
+          <button onClick={closeBuildingModal}>Save</button>
+        </Modal>
+
+
+
+
+            
+        <Modal
+          isOpen={isFloorModalOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeFloorModal}
+          style={customStyles}
+          
+          contentLabel="Example Modal New"
+        >
+ 
+          <h2 ref={_subtitle => (subtitle = _subtitle)}>Add New Floor Name</h2>
+          <input id="newFloorName" />
+          <button onClick={closeFloorModal}>Save</button>
+        </Modal>
         </>
     );
 }
