@@ -7,15 +7,12 @@ export default function TopNav(){
             <div>
                 <Link to="/dashboard">Profile</Link>
             </div>
-
             <div>
-            <Link to="/seat-plan/new/select-exam">Create Seat Plan</Link>
+                <Link to="/seat-plan/new">Create New Plan</Link>
             </div>
-
             <div>
                 <Link to="/view-seat-plan">View Seat Plan</Link>
             </div>
-
             <div>
                 <Link to="/">Logout</Link>
             </div>

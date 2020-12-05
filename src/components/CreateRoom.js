@@ -237,9 +237,6 @@ export default function CreateRoom(props){
                 <div style={{display:"block"}}>
                         {tableRows}
                 </div>
-
-                
-                
             </div>
     </>
     );
