@@ -273,3 +273,105 @@ https://stackoverflow.com/questions/58535557/reactjs-how-to-load-component-after
 
 https://www.youtube.com/watch?v=qJt-FtzJ5fo&feature=emb_logo
 
+## On Mounting (componentDidMount)
+
+```javascript
+const FunctionalComponent = () => {
+ React.useEffect(() => {
+   console.log("Hello");
+ }, []);
+ return <h1>Hello, World</h1>;
+};
+```
+
+## On Unmounting (componentWillUnmount)
+
+we can also use a `useState` hook for unmounting as well. But be careful, the syntax is a bit different. What you need to do is return a function that runs on unmounting inside the `useEffect` function. This is especially useful when you have to clean up the subscriptions such as a `clearInterval` function,
+
+```javascript
+const FunctionalComponent = () => {
+ React.useEffect(() => {
+   return () => {
+     console.log("Bye");
+   };
+ }, []);
+ return <h1>Bye, World</h1>;
+};
+```
+
+## Should I use one or many useEffect in component?
+
+The pattern that you need to follow depends on your useCase.
+
+First, You might have a situation where you need to add event listener during the initial mount and clean them up at unmount and another case where a particular listener needs to be cleaned up and re added on a prop change. In such a case, using two different useEffect is better to keep the relevant logic together as well as having performance benefits
+
+```javascript
+useEffect(() => {
+   // adding event listeners on mount here
+   return () => {
+       // cleaning up the listeners here
+   }
+}, []);
+
+useEffect(() => {
+   // adding listeners everytime props.x changes
+   return () => {
+       // removing the listener when props.x changes
+   }
+}, [props.x])
+```
+
+
+Second: There may be a case where you need to trigger an API call or some other side-effect when any of the state or props change amongst a set. In such a case a single useEffect with the relevant values to monitor should be a good idea
+
+```javascript
+useEffect(() => {
+    // side effect here on change of any of props.x or stateY
+}, [props.x, stateY])
+Third: A third case in when you need to take different actions on change of different values. In such a case, separate out relevant comparisons into different useEffects
+
+useEffect(() => {
+   // some side-effect on change of props.x
+}, [props.x])
+
+useEffect(() => {
+   // another side-effect on change of stateX or stateY 
+}, [stateX, stateY])
+```
+
+## Utils.js with latest Javascript ES6 syntax
+
+Create the Utils.js file like this with multiple functions, etc
+
+```javascript
+const someCommonValues = ['common', 'values'];
+
+export const doSomethingWithInput = (theInput) => {
+   //Do something with the input
+   return theInput;
+};
+
+export const justAnAlert = () => {
+   alert('hello');
+};
+```
+
+
+Then in your components that you want to use the util functions, import the specific functions that are needed. You don't have to import everything
+
+```
+import {doSomethingWithInput, justAnAlert} from './path/to/utils.js'
+```
+
+
+And then use these functions within the component like this:
+
+```javascript
+justAnAlert();
+
+<p>{doSomethingWithInput('hello')}</p>
+```
+
+
+
+<p></p>

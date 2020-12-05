@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useFocus} from 'react';
 // import { useLocation } from "react-router-dom";
 import Axios from 'axios';
 import TopNav from "./TopNav";
 import { useLocation, useHistory } from "react-router-dom";
 import "./CreateRoom.css";
+// import SeatPlanTableRow from "./SeatPlanTableRow";
 
 export default function CreateRoom(props){
 
@@ -22,7 +23,14 @@ export default function CreateRoom(props){
     const[buttonText, setButtonText]=useState("Save & add another");
     const[isDisbale, setDisable]=useState("");
     
-    
+    const[rooms, setRooms]=useState([]);
+
+    const tableRows = rooms.map(item => (
+        item
+    ))
+
+    // const [setFocus, focusProps] = useFocus(true);
+
     useEffect(() => {
         setEiin(location.state.eiin)
         setExamId(location.state.examId);
@@ -73,7 +81,7 @@ export default function CreateRoom(props){
              return;
          }
 
-         if(capacity.trim() === ""){
+         if(capacity === ""){
             alert("Enter total capacity.");
             return;
         }
@@ -99,10 +107,13 @@ export default function CreateRoom(props){
                     setSaveResult("Saved successfully.");
                     setDisable("");
                     setButtonText("Save & add another");
-
+                    document.getElementById("roomNo").focus();
                     setTimeout(() => {
                         setSaveResult(" ");
                     }, 4000);
+
+                setRooms(rooms => [ <TableRow key={response.data.roomId} id={response.data.roomId} r={roomNo} startRoll={startRoll} endRoll={endRoll} total={capacity} />, ...rooms]);
+
                 }
                 else {
                     alert(response.data.message);
@@ -196,10 +207,11 @@ export default function CreateRoom(props){
            
 
             <div className="cont box-shadow">
+                <div className="saveResult" style={{height:"20px"}}>{saveResult}</div>
                 <div className="input-row">
                     <div className="inputBox">
                         <label>Room No.</label>
-                        <input name="roomNo" onChange={roomNoChanged} value={roomNo} type="text"  placeholder="" />
+                        <input id="roomNo" name="roomNo" onChange={roomNoChanged} value={roomNo} type="text"  placeholder=""  autoFocus />
                     </div>
                     
                     <div className="inputBox">
@@ -215,11 +227,59 @@ export default function CreateRoom(props){
                         <label>Total</label>
                         <input name="roomCapacity" onChange={capacityChanged}  value={capacity} type="text" maxLength="4" placeholder="" />
                     </div>
+
+                    <div className="buttonCont">
+                    <button className="saveButton"  disabled={isDisbale} onClick={createRoom} name="createRoom">{buttonText}</button>
+                    </div>
+                    
                 </div>
 
-                <button disabled={isDisbale} onClick={createRoom} name="createRoom">{buttonText}</button>
-                <div className="saveResult">{saveResult}</div>
+                <div style={{display:"block"}}>
+                        {tableRows}
+                </div>
+
+                
+                
             </div>
     </>
+    );
+}
+
+function TableRow(props){
+    
+    const[display, setDisplay] = useState("flex");
+    const onClick = () => {
+       
+        var r = window.confirm("Are you sure to delete this room -" + props.r + " ?\nYou can add it again later.");
+        if (r === true) {
+            let postData = new FormData();
+            postData.append("id", props.id);
+            Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=delete`, postData).then(response => {
+                if(response.data.issuccess){
+                    setDisplay("none");
+                    alert("Deleted successfully.");
+                }
+                else{
+                    alert(response.data.message);
+                }
+               
+            }).catch(error => {
+                console.log(error);
+                alert("Something goes wrong. Please try again");
+            }); //end of axios.
+        } 
+    }
+
+
+    return(
+
+            <div className="addedRoom" style={{display:`${display}`}}>
+                <div>{props.r}</div>
+                <div>{props.startRoll === "0"?"-":props.startRoll}</div>
+                <div>{props.endRoll === "0" ? "-":props.endRoll}</div>
+                <div>{props.total}</div>
+                <div><button className="deleteRoom" onClick={onClick}>Delete</button></div>
+            </div>
+       
     );
 }

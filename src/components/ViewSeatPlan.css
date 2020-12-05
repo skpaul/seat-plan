@@ -42,3 +42,10 @@ tfoot>tr>td{
 tfoot>tr>td:first-child{
     text-align: right;
 }
+
+.deleteRoom{
+    width: 50px !important;
+    margin: 0 !important;
+    padding:2px;
+    font-size: 10px;
+}

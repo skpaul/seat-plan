@@ -7,13 +7,29 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 require_once("Required.php");
-Required::SwiftLogger()->ZeroSQL()->Validable();
+Required::SwiftLogger()->ZeroSQL()->Validable()->Json();
 
 $logger = new SwiftLogger(ROOT_DIRECTORY);
 $db = new ZeroSQL();
 $db->database(DATABASE_NAME)->user(DATABASE_USER_NAME)->server(DATABASE_SERVER)->password(DATABASE_PASSWORD)->connect();
+$json = new Json();
 
 $action = $_GET["action"];
+
+if($action === "delete"){
+    $roomId = $_POST["id"];
+    try {
+        $roomDetails = $db->delete()->from("rooms")->where("id")->equalTo($roomId)->execute();
+        http_response_code(200);
+        $response = $json->success()->create();
+        exit($response);
+    } catch (\ZeroException $exp) {
+        $logger->createLog($exp->getMessage());
+        http_response_code(501);
+        $response = $json->fail()->message("Failed to delete.")->create();
+        die($response);
+    }
+}
 
 if($action === "details"){
     $roomId = $_POST["roomId"];

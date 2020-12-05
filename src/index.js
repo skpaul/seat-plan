@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-window.$baseUrl = "http://209.126.69.61:5000"; //'http://localhost' //global variable
+
+// window.$baseUrl = "http://localhost"; 
+window.$baseUrl = "http://209.126.69.61:5000"; //'http://localhost' 
 
 ReactDOM.render(
   <React.StrictMode>

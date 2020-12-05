@@ -24,8 +24,9 @@ h1{
     margin-left: 20px !important;
 }
 .cont{
-    max-width: 800px;
+    max-width: 900px;
     padding-bottom: 30px;
+    padding-top: 10px;
 }
 
 .input-row{
@@ -53,10 +54,17 @@ h1{
     text-align: center;
     font-size: 15px;
 }
-
-button{
-    width:200px;
+.buttonCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.saveButton{
+    height: 36px;
+    width: 145px;
     padding:10px;
+    margin-top: 0;
+    margin-left: 20px;
     border:1px solid black;
     border-radius: 20px;
     background-color: white;
@@ -65,13 +73,18 @@ button{
     cursor: pointer;
 }
 
-button:disabled{
+.saveButton:disabled{
     background-color: white;
     color:black;
     cursor: default;
 }
 
-button:hover:enabled{
+.saveButton:hover:enabled{
+    background-color: gray;
+    color:white;
+}
+
+.saveButton:focus:enabled{
     background-color: gray;
     color:white;
 }
@@ -80,4 +93,48 @@ button:hover:enabled{
     color: green;
     font-weight: bold;
     margin-top: 10px;
+}
+
+.addedRoom{
+    display: flex;
+}
+
+.addedRoom>div:first-child{
+    border: 1px solid;
+        width: 159px;
+        border-top: 0;
+        border-right: 0;
+        background-color: #f3f0f0;
+}
+
+.addedRoom>div:nth-child(2){
+    border: 1px solid;
+    width: 159px;
+        border-top: 0;
+        border-right: 0;
+        background-color: #f3f0f0;
+}
+
+.addedRoom>div:nth-child(3){
+    border: 1px solid;
+    width: 158px;
+        border-top: 0;
+        border-right: 0;
+        background-color: #f3f0f0;
+}
+
+.addedRoom>div:nth-child(4){
+    border: 1px solid;
+    width: 159px;
+    border-top: 0;
+    background-color: #f3f0f0;
+}
+
+.addedRoom>div:nth-child(5){
+    border:0;
+    width: 159px;
+    border-top: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
