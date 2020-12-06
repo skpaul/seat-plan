@@ -58,6 +58,7 @@ if($action === "save"){
         $institute->post= $form->label("Post")->httpPost("post")->required()->asString(true)->maxLength(50)->validate();
         $institute->headMobile= $form->label("Inst. Head Mobile")->httpPost("headMobile")->required()->asString(true)->maxLength(15)->validate();
         $institute->asstHeadMobile= $form->label("Inst. Asst. Head Mobile")->httpPost("asstHeadMobile")->required()->asString(true)->maxLength(15)->validate();
+        $institute->clerkMobile= $form->label("Mobile of Head Asst.(Clerk)")->httpPost("clerkMobile")->required()->asString(true)->maxLength(15)->validate();
         $institute->email= $form->label("Email")->httpPost("email")->required()->asString(true)->maxLength(52)->default(NULL)->validate();
 
         if($isNew){

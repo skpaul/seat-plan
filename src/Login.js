@@ -3,9 +3,7 @@ import Axios from "axios";
 import "./Login.css";
 
 function Login(props) {
-    const apiUrl = "http://localhost";
-    // const apiUrl = "http://209.126.69.61:5000";
-
+    
     localStorage.clear();
 
     const[eiin, setEiin] = useState("");
@@ -29,8 +27,8 @@ function Login(props) {
         data.append("eiin",eiin);
         data.append("password", password);
 
-        Axios.post(`${apiUrl}/seat-plan/api/validate-login.php`,data).then(response=>{
-            console.log(response);
+        Axios.post(`${window.$baseUrl}/seat-plan/api/validate-login.php`,data).then(response=>{
+            
             if(!response.data.issuccess){
                 alert(response.data.message);
                 setButtonText("Try again");

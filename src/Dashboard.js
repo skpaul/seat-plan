@@ -4,6 +4,7 @@ import Axios from "axios";
 import './bootstrap-grid.css';
 import './teletalk.css';
 import TopNav from "./components/TopNav";
+import Footer from "./Footer";
 
 export default function Dashboard(props) {
     const [eiinNo, setEIIN] = useState(localStorage.getItem('eiin'));
@@ -22,6 +23,7 @@ export default function Dashboard(props) {
     const [post, setPost] = useState("");
     const [headMobile, setHeadMobile] = useState("");
     const [asstHeadMobile, setAsstHeadMobile] = useState("");
+    const [clerkMobile, setClerkMobile] = useState("");
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -48,6 +50,7 @@ export default function Dashboard(props) {
                 setPost(data.post);
                 setHeadMobile(data.headMobile);
                 setAsstHeadMobile(data.asstHeadMobile);
+                setClerkMobile(data.clerkMobile);
                 setEmail(data.email);
                 setPassword(data.password);
             }
@@ -140,6 +143,14 @@ export default function Dashboard(props) {
         }
     }
 
+    const clerkMobileChanged = e => {
+        e.preventDefault();
+        const re = /^[0-9\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            setClerkMobile(e.target.value);
+        }
+    }
+
     const emailChanged = event => {
         setEmail(event.target.value);
     }
@@ -162,6 +173,7 @@ export default function Dashboard(props) {
         updatedData.append("post", post);
         updatedData.append("headMobile", headMobile);
         updatedData.append("asstHeadMobile", asstHeadMobile);
+        updatedData.append("clerkMobile", clerkMobile);
         updatedData.append("email", email);
         updatedData.append("password", password);
 
@@ -187,19 +199,24 @@ export default function Dashboard(props) {
             setDisable("");
             setButtonText("Try again");
         });//end of axios
-
-
         
     }
 
     return (
         <>
-        <TopNav/>
-        <h1 style={{marginBottom:"30px"}}>
-                    Institute Profile
+            <div className="master-wrapper">
+                <header style={{marginBottom:"0", paddingTop:"0", boxShadow:"none"}}>
+                    <TopNav />
+                </header>
+                <main>
+
+              
+            
+            <h1 style={{ marginBottom: "30px" }}>
+                Institute Profile
                 </h1>
-            <div className="container box-shadow" style={{marginBottom:'50px', padding:"20px"}}>
-                
+            <div className="container box-shadow" style={{ marginBottom: '50px', padding: "20px" }}>
+
                 <form className="classic">
                     <div className="row">
                         <div className="col-lg-8">
@@ -269,35 +286,35 @@ export default function Dashboard(props) {
 
                         <div className="col-lg-4">
                             <div className="field">
-                                <label>Post</label>
+                                <label>Post Office</label>
                                 <input onChange={postChanged} id="post" post="post" value={post} type="text" />
                             </div>
                         </div>
                     </div>
 
                     <div className="row">
-                    <div className="col-lg-4">
+                        <div className="col-lg-6">
                             <div className="field">
                                 <label>Mobile of Inst. Head</label>
-                                <input onChange={headMobileChanged} id="HeadMobile" value={headMobile} type="text"  maxLength="13" />
+                                <input onChange={headMobileChanged} id="HeadMobile" value={headMobile} type="text" maxLength="13" />
                             </div>
                         </div>
 
-                        <div className="col-lg-4">
+                        <div className="col-lg-6">
                             <div className="field">
-                                <label>Mobile of Inst. Asst. Head</label>
+                                <label>Mobile of Asst. Head/Vice Principal/Equivalent Others</label>
                                 <input onChange={asstHeadMobileChanged} id="asstHeadMobile" value={asstHeadMobile} type="text" maxLength="13" />
                             </div>
                         </div>
 
-                        {/* <div className="col-lg-6">
+                        <div className="col-lg-6">
                             <div className="field">
-                                <label>Mobile</label>
-                                <input onChange={mobileChanged} id="mobile" mobile="mobile" value={mobile} type="text" />
+                                <label>Mobile of Head Assistant (Clerk)</label>
+                                <input onChange={clerkMobileChanged} id="clerkMobile" value={clerkMobile} type="text" />
                             </div>
-                        </div> */}
+                        </div>
 
-                        <div className="col-lg-4">
+                        <div className="col-lg-6">
                             <div className="field">
                                 <label>Email</label>
                                 <input onChange={emailChanged} id="email" email="email" value={email} type="text" />
@@ -314,10 +331,18 @@ export default function Dashboard(props) {
                         </div>
                     </div>
 
-                    <br/> 
+                    <br />
                     <button disabled={isDisbale} className="btn btn-large btn-dark" id="saveButton" onClick={saveProfile} type="button">{buttonText}</button>
                     <div className="saveResult">{saveResult}</div>
                 </form>
+            </div>
+
+            </main>
+
+            <footer>
+               <Footer/>
+           
+            </footer>
             </div>
         </>
     );
