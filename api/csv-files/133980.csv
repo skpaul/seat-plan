@@ -1,4 +1,4 @@
-building,floor,roomNo,startRoll,endRoll,capacity
+Building,Floor,Room,"Start Roll",EndRoll,Quantity
 Test,"Ground Floor",101,,,100
 Test,"Ground Floor",102,1,100,100
 Test,"Ground Floor",103,101,200,100

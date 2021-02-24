@@ -22,8 +22,8 @@
         $query = mysqli_query($conn, $sql);
         $export =  $query;
        
-        $file = fopen("$eiin.csv","w");
-        $dd = array("building", "floor", "roomNo", "startRoll", "endRoll", "capacity");
+        $file = fopen("csv-files/$eiin.csv","w");
+        $dd = array("Building", "Floor", "Room", "Start Roll", "EndRoll", "Quantity");
         fputcsv($file, $dd);
         while( $row = mysqli_fetch_row( $export ) )
         {
@@ -101,7 +101,20 @@
         WHERE r.eiin=$eiin and r.examId=$examId
         order by b.name, f.name, r.roomNo";
         createCSV($con, $sql, $eiin);
-        
+
+        $rDir = realpath(dirname(__FILE__));
+        $path = $rDir . "/csv-files";
+        $files = array_diff(scandir($path), array('.', '..'));
+        $now   = time();
+
+        foreach ($files as $file) {
+            $fpath = $path. '/'.$file;
+            if ($now - filemtime($fpath) >= 60) { // 60 seconds
+                unlink($fpath);
+            }
+        }
+
+
     } catch (\Exception $exp) {
         $logger->createLog($exp->getMessage());
         echo "Problem while showing data. A log has been created.";

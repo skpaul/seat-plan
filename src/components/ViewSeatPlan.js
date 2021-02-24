@@ -120,10 +120,10 @@ export default function ViewSeatPlan(props) {
             data : postData
           }).then((response) => {
             
-             const url = `${window.$baseUrl}/seat-plan/api/${eiinNo}.csv`;
+             const url = `${window.$baseUrl}/seat-plan/api/csv-files/${eiinNo}.csv`;
              const link = document.createElement('a');
              link.href = url;
-            //  link.setAttribute('download', 'Data.csv'); //or any other extension
+            
              document.body.appendChild(link);
              link.click();
           });
