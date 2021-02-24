@@ -1,25 +1,9 @@
-The query must return exactly 1 record. But found none.
-File:SwiftLogger.php, Line:128, Datetime:04-12-2020 04:16:13 PM  
+Failed to execute the following SQL statement: INSERT INTO rooms (`floorId`,`buildingId`,`examId`,`roomNo`,`startRoll`,`endRoll`,`capacity`,`eiin`) VALUES('10', '15', '1', '101', '', '', '1000', '133980'). MySQL Error: Incorrect integer value: '' for column `seat_plan`.`rooms`.`startRoll` at row 1. SqlState: 22007
+File:SwiftLogger.php, Line:128, Datetime:24-02-2021 03:58:36 PM  
 ------------------------------------------------------------------------------------
-The query must return exactly 1 record. But found none.
-File:SwiftLogger.php, Line:128, Datetime:04-12-2020 04:17:05 PM  
+Failed to execute the following SQL statement: INSERT INTO rooms (`floorId`,`buildingId`,`examId`,`roomNo`,`startRoll`,`endRoll`,`capacity`,`eiin`) VALUES('10', '15', '1', '102', '', '', '500', '133980'). MySQL Error: Incorrect integer value: '' for column `seat_plan`.`rooms`.`startRoll` at row 1. SqlState: 22007
+File:SwiftLogger.php, Line:128, Datetime:24-02-2021 03:59:00 PM  
 ------------------------------------------------------------------------------------
-The query must return exactly 1 record. But found none.
-File:SwiftLogger.php, Line:128, Datetime:04-12-2020 04:17:10 PM  
+Failed to execute the following SQL statement: INSERT INTO rooms (`floorId`,`buildingId`,`examId`,`roomNo`,`startRoll`,`endRoll`,`capacity`,`eiin`) VALUES('10', '15', '1', '102', '', '', '300', '133980'). MySQL Error: Incorrect integer value: '' for column `seat_plan`.`rooms`.`startRoll` at row 1. SqlState: 22007
+File:SwiftLogger.php, Line:128, Datetime:24-02-2021 03:59:10 PM  
 ------------------------------------------------------------------------------------
-The query must return exactly 1 record. But found none.
-File:SwiftLogger.php, Line:128, Datetime:04-12-2020 04:17:59 PM  
-------------------------------------------------------------------------------------
-The query must return exactly 1 record. But found none.
-File:SwiftLogger.php, Line:128, Datetime:04-12-2020 05:07:19 PM  
-------------------------------------------------------------------------------------
-The query must return exactly 1 record. But found none.
-File:SwiftLogger.php, Line:128, Datetime:04-12-2020 05:07:27 PM  
-------------------------------------------------------------------------------------
-[23-Feb-2021 20:21:24 Europe/Berlin] Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: ::1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(
-[23-Feb-2021 20:21:26 Europe/Berlin] Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: ::1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(
-[23-Feb-2021 20:21:26 Europe/Berlin] Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: ::1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(
-[23-Feb-2021 20:21:45 Europe/Berlin] Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: ::1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(
-[23-Feb-2021 20:21:56 Europe/Berlin] Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: ::1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(
-[23-Feb-2021 20:21:56 Europe/Berlin] Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: ::1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(
-[23-Feb-2021 20:22:23 Europe/Berlin] Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: ::1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(

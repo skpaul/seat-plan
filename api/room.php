@@ -68,8 +68,18 @@ if($action === "create"){
         $room->buildingId = trim($_POST["buildingId"]);
         $room->examId = trim($_POST["examId"]);
         $room->roomNo = trim($_POST["roomNo"]);
-        $room->startRoll = trim($_POST["startRoll"]);
-        $room->endRoll = trim($_POST["endRoll"]);
+        $startRoll = 'NULL';
+        if(isset($_POST["startRoll"]) && !empty($_POST["startRoll"])){
+            $startRoll = trim($_POST["startRoll"]);
+        }
+
+        $room->startRoll = $startRoll;
+        $endRoll = 'NULL';
+        if(isset($_POST["endRoll"]) && !empty($_POST["endRoll"])){
+            $endRoll = trim($_POST["endRoll"]);
+        }
+
+        $room->endRoll = $endRoll;
         $room->capacity = trim($_POST["capacity"]);
         $room->eiin = trim($_POST["eiin"]);
 

@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // window.$baseUrl = "http://localhost"; 
-window.$baseUrl = "http://demo.bar.teletalk.com.bd/seat-plan";
+window.$baseUrl = "http://seatplan.teletalk.com.bd";
 
 ReactDOM.render(
   <React.StrictMode>
