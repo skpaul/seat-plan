@@ -98,6 +98,47 @@ export default function ViewSeatPlan(props) {
         }); //end of axios.
     }
 
+    const downloadClicked = (e)=>{
+        let selectedExamId = document.getElementById("examIdCombo").value;
+        let postData = new FormData();
+        postData.append("eiin", eiinNo);
+        postData.append("examId", selectedExamId);
+
+        // axios({
+        //     method: 'post',
+        //     url: '/user/12345',
+        //     data: {
+        //       firstName: 'Fred',
+        //       lastName: 'Flintstone'
+        //     }
+        //   });
+
+        Axios({
+            url: `${window.$baseUrl}/seat-plan/api/csv.php`,
+            method: 'post',
+            responseType: 'blob', // important
+            data : postData
+          }).then((response) => {
+            console.log(response);
+             const url = window.URL.createObjectURL(new Blob([response.data]));
+             const link = document.createElement('a');
+             link.href = url;
+             link.setAttribute('download', 'Data.csv'); //or any other extension
+             document.body.appendChild(link);
+             link.click();
+          });
+
+        // Axios.post(`${window.$baseUrl}/seat-plan/api/csv.php`, postData).then(response => {
+        //     const items = response.data;
+        //     let local_count = 0;
+              
+            
+        // }).catch(error => {
+        //     console.log(error);
+        //     alert("Something goes wrong. Please try again");
+        // }); //end of axios.
+    }
+
     return (
         <>
             <div className="master-wrapper">
@@ -134,7 +175,9 @@ export default function ViewSeatPlan(props) {
                                 </tr>
                             </tfoot>
                         </table>
+                        <div onClick={downloadClicked}>Test</div>
                     </div>
+                    
                 </main>
                 <footer>
                     <Footer />
