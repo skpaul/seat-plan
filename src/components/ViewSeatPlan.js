@@ -116,14 +116,14 @@ export default function ViewSeatPlan(props) {
         Axios({
             url: `${window.$baseUrl}/seat-plan/api/csv.php`,
             method: 'post',
-            responseType: 'blob', // important
+            // responseType: 'blob', // important
             data : postData
           }).then((response) => {
-            console.log(response);
-             const url = window.URL.createObjectURL(new Blob([response.data]));
+            
+             const url = `${window.$baseUrl}/seat-plan/api/${eiinNo}.csv`;
              const link = document.createElement('a');
              link.href = url;
-             link.setAttribute('download', 'Data.csv'); //or any other extension
+            //  link.setAttribute('download', 'Data.csv'); //or any other extension
              document.body.appendChild(link);
              link.click();
           });
