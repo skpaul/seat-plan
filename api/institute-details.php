@@ -52,13 +52,13 @@ if($action === "save"){
         $institute->district= $form->label("District")->httpPost("district")->required()->asString(true)->maxLength(50)->validate();
         $institute->thana= $form->label("Thana")->httpPost("thana")->required()->asString(true)->maxLength(50)->validate();
         $institute->type= $form->label("Type")->httpPost("type")->required()->asString(true)->maxLength(50)->validate();
-        $institute->level= $form->label("Level")->httpPost("level")->required()->asString(true)->maxLength(50)->validate();
+        $institute->level= "";
         $institute->name= $form->label("Name")->httpPost("name")->required()->asString(true)->maxLength(200)->validate();
         $institute->address= $form->label("Address")->httpPost("address")->required()->asString(true)->maxLength(200)->validate();
         $institute->post= $form->label("Post")->httpPost("post")->required()->asString(true)->maxLength(50)->validate();
-        $institute->headMobile= $form->label("Inst. Head Mobile")->httpPost("headMobile")->required()->asString(true)->maxLength(15)->validate();
-        $institute->asstHeadMobile= $form->label("Inst. Asst. Head Mobile")->httpPost("asstHeadMobile")->required()->asString(true)->maxLength(15)->validate();
-        $institute->clerkMobile= $form->label("Mobile of Head Asst.(Clerk)")->httpPost("clerkMobile")->required()->asString(true)->maxLength(15)->validate();
+        $institute->headMobile= $form->label("Mobile No. of the Head of the Institute")->httpPost("headMobile")->required()->asString(true)->maxLength(15)->validate();
+        $institute->asstHeadMobile= $form->label("Mobile No. of the Asst. Head/Vice Principal/Equivalent Others")->httpPost("asstHeadMobile")->required()->asString(true)->maxLength(15)->validate();
+        $institute->clerkMobile= $form->label("Mobile No. of the Head Assistant (Clerk)")->httpPost("clerkMobile")->asString(true)->maxLength(15)->default("")->validate();
         $institute->email= $form->label("Email")->httpPost("email")->required()->asString(true)->maxLength(52)->default(NULL)->validate();
 
         if($isNew){

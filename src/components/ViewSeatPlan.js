@@ -10,7 +10,7 @@ export default function ViewSeatPlan(props) {
     const [examId, setExamId] = useState("");
     const [options, setOption] = useState([]);
     const [rows, setRow] = useState([]); //for table tr
-
+    const [isDownloadVisible, setDownloadVisible] = useState(false);
 
 
     //Get data on component load event
@@ -74,9 +74,10 @@ export default function ViewSeatPlan(props) {
         if (examId == "") {
             setRow([]);
             setTotalCapacity(0);
+            setDownloadVisible(false);
             return;
         }
-
+        
         let postData = new FormData();
         postData.append("eiin", eiinNo);
         postData.append("examId", examId);
@@ -96,6 +97,9 @@ export default function ViewSeatPlan(props) {
             console.log(error);
             alert("Something goes wrong. Please try again");
         }); //end of axios.
+
+        //make download button visible
+        setDownloadVisible(true);
     }
 
     const downloadClicked = (e)=>{
@@ -123,9 +127,18 @@ export default function ViewSeatPlan(props) {
              const url = `${window.$baseUrl}/seat-plan/api/csv-files/${eiinNo}.csv`;
              const link = document.createElement('a');
              link.href = url;
-            
+            link.target = "_blank";
+            link.setAttribute(
+                'download',
+                `Data.csv`,
+                );
              document.body.appendChild(link);
              link.click();
+            //  document.body.removeChild(link);
+            // Clean up and remove the link
+            link.parentNode.removeChild(link);
+
+
           });
 
         // Axios.post(`${window.$baseUrl}/seat-plan/api/csv.php`, postData).then(response => {
@@ -175,7 +188,12 @@ export default function ViewSeatPlan(props) {
                                 </tr>
                             </tfoot>
                         </table>
-                        <div onClick={downloadClicked}>Test</div>
+                        {
+                            isDownloadVisible && (
+                                <div className="downloadButton" onClick={downloadClicked}>Download CSV</div>
+                            )
+                        }
+                        
                     </div>
                     
                 </main>

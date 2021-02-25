@@ -49,3 +49,17 @@ tfoot>tr>td:first-child{
     padding:2px;
     font-size: 10px;
 }
+
+.downloadButton{
+    border: 1px solid gray;
+    width: 130px;
+    padding: 10px;
+    border-radius: 21px;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.downloadButton:hover{
+    background-color: lightgray;
+}

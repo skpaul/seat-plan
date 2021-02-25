@@ -22,7 +22,9 @@
         $query = mysqli_query($conn, $sql);
         $export =  $query;
        
+        $rDir = realpath(dirname(__FILE__));
         $file = fopen("csv-files/$eiin.csv","w");
+        // $file = fopen($rDir . "/seat-plan/api/csv-files/$eiin.csv","w");
         $dd = array("Building", "Floor", "Room", "Start Roll", "EndRoll", "Quantity");
         fputcsv($file, $dd);
         while( $row = mysqli_fetch_row( $export ) )
@@ -97,6 +99,7 @@
         $eiin = $_POST["eiin"];
         $examId = $_POST["examId"];
         $con = mysqli_connect("localhost", "root", "", "seat_plan");
+        // $con = mysqli_connect("192.168.61.178", "xdev", "DevX#3^Le%Z", "seat_plan");
         $sql = "select  b.name as building, f.name as floor, r.roomNo, r.startRoll, r.endRoll, r.capacity from rooms r INNER JOIN buildings b on r.buildingId=b.id INNER JOIN floors f on r.floorId=f.id 
         WHERE r.eiin=$eiin and r.examId=$examId
         order by b.name, f.name, r.roomNo";

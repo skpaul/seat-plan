@@ -16,7 +16,7 @@ export default function Dashboard(props) {
     const [district, setDistrict] = useState("");
     const [thana, setThana] = useState("");
     const [type, setType] = useState("");
-    const [level, setLevel] = useState("");
+    // const [level, setLevel] = useState("");
 
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
@@ -44,7 +44,7 @@ export default function Dashboard(props) {
                 setThanaList(thanaList => [...thanaList, <SelectOption key={1} id={data.thana} name={data.thana} />]);
                 setThana(data.thana);
                 setType(data.type);
-                setLevel(data.level);
+                // setLevel(data.level);
                 setName(data.name);
                 setAddress(data.address);
                 setPost(data.post);
@@ -111,9 +111,9 @@ export default function Dashboard(props) {
         setType(event.target.value);
     }
 
-    const levelChanged = event => {
-        setLevel(event.target.value);
-    }
+    // const levelChanged = event => {
+    //     setLevel(event.target.value);
+    // }
 
     const nameChanged = event => {
         setName(event.target.value);
@@ -167,7 +167,7 @@ export default function Dashboard(props) {
         updatedData.append("district", district);
         updatedData.append("thana", thana);
         updatedData.append("type", type);
-        updatedData.append("level", level);
+        // updatedData.append("level", level);
         updatedData.append("name", name);
         updatedData.append("address", address);
         updatedData.append("post", post);
@@ -219,22 +219,23 @@ export default function Dashboard(props) {
 
                 <form className="classic">
                     <div className="row">
-                        <div className="col-lg-8">
+                        <div className="col-lg-12">
                             <div key="nameDiv" className="field">
                                 <label>Institute Name</label>
                                 <input onChange={nameChanged} id="name" name="name" value={name} type="text" />
                             </div>
                         </div>
 
+                       
+                    </div>
+                    <div className="row">
                         <div className="col-lg-4">
                             <div key="eiinDiv" className="field">
                                 <label>EIIN</label>
                                 <input id="eiinNo" name="eiinNo" value={eiinNo} type="text" readOnly />
                             </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-6">
+                        <div className="col-lg-8">
                             <div className="field">
                                 <label>Institute Type</label>
                                 <select onChange={typeChanged} id="type" name="type" value={type} >
@@ -245,12 +246,7 @@ export default function Dashboard(props) {
                                 </select>
                             </div>
                         </div>
-                        <div className="col-lg-6">
-                            <div className="field">
-                                <label>Level</label>
-                                <input onChange={levelChanged} id="level" name="level" value={level} type="text" />
-                            </div>
-                        </div>
+                       
                     </div>
                     <div className="row">
                         <div className="col-lg-12">
@@ -295,21 +291,21 @@ export default function Dashboard(props) {
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="field">
-                                <label>Mobile of Inst. Head</label>
+                                <label>Mobile No. of the Head of the Institute</label>
                                 <input onChange={headMobileChanged} id="HeadMobile" value={headMobile} type="text" maxLength="13" />
                             </div>
                         </div>
 
                         <div className="col-lg-6">
                             <div className="field">
-                                <label>Mobile of Asst. Head/Vice Principal/Equivalent Others</label>
+                                <label>Mobile No. of the Asst. Head/Vice Principal/Equivalent Others</label>
                                 <input onChange={asstHeadMobileChanged} id="asstHeadMobile" value={asstHeadMobile} type="text" maxLength="13" />
                             </div>
                         </div>
 
                         <div className="col-lg-6">
                             <div className="field">
-                                <label>Mobile of Head Assistant (Clerk)</label>
+                                <label>Mobile No. of the Head Assistant (Clerk)</label>
                                 <input onChange={clerkMobileChanged} id="clerkMobile" value={clerkMobile} type="text" />
                             </div>
                         </div>
