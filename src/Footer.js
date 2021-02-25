@@ -5,7 +5,7 @@ export default function Footer(){
     return(
         <>
             <div className="copyright">
-            ©2020 Teletalk
+            ©2021 Teletalk
                </div>
             <div className="powered-by">
                 Powered By:
