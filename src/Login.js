@@ -52,7 +52,15 @@ function Login(props) {
             <div className="login-master-wrapper">
                 <main id="login-main">
                     <h1 className="login-h1">Seat Plan Management</h1>
-                    <div id="login-form-container">
+
+                    <div style={{display:"flex"}}>
+                    <iframe width="420" height="315"
+                        src="https://www.youtube.com/embed/c8SBu7vnulI?autoplay=1">
+                    </iframe>
+                  
+                   
+
+                    <div id="login-form-container" style={{width:"442px", height:"314px", marginLeft:"20px"}}>
                         <h2 className="login-h2">Institute Login</h2>
                         <form>
                         <article className="login-article">
@@ -67,6 +75,8 @@ function Login(props) {
                         </article>
                         </form>
                     </div>
+                    </div>
+                   
                 </main>
             </div>
     );
