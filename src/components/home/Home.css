@@ -28,36 +28,32 @@ html, body {
     align-items: center;
 }
 
-.items{
+.selectWrapper{
     width: 80%;
     max-width: 500px;
 }
 
-a{
-    text-decoration: none;
+.selectDepartment{
+    border: 1px solid #e2e4e2;
+    border-radius: 7px;
+    margin-bottom: 10px;
 }
-.item{
-    border: 1px solid rgb(243 240 240);
-    padding: 14px 5px;
-    background-color: #fdfdfd;
+
+.nextButton{
     cursor: pointer;
-    text-decoration: none;
-}
-
-.item:hover{
-    background-color: #e6e6e6;
-}
-.department{
-    font-size: 16px;
+    border:1px solid #e2e4e2;
+    padding: 6px 21px;
+    width: 100px;
+    background-color: #3d4e5e;
+    color: white;
     font-weight: bold;
-    color: #686f75;
+    letter-spacing: 0.094em;
+    border-radius: 5px;
+    margin:auto;
 }
 
-.ministry{
-    font-size: 14px;
-    color: #686f75;
-}
-
-.item:not(:last-child){
-    margin-bottom: 20px;
+.nextButton:hover{
+    color: #3d4e5e;
+    border:1px solid #3d4e5e;
+    background-color: white;
 }

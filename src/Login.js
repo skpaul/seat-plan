@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import { useLocation } from "react-router-dom";
 import "./Login.css";
 
 function Login(props) {
-    
     localStorage.clear();
 
+    const location = useLocation();
     const[eiin, setEiin] = useState("");
     const[password, setPassword] = useState("");
+
+    useEffect(() => {
+        // console.log(location.pathname); // result: '/secondpage'
+        // console.log(location.search); // result: '?query=abc'
+        console.log(location.state.departmentId); // result: 'some_value'
+     }, [location]);
 
     const eiinChanged = event=>{
         event.preventDefault();
@@ -51,9 +58,18 @@ function Login(props) {
     return (
             <div className="login-master-wrapper">
                 <main id="login-main">
-                    <div className="loginTitle">Seat Plan Management</div>
-                    <div className="loginSubTitle">Directorate Of Secondary & Higher Education</div>
-                    <div className="loginMinistryName">Ministry of Education</div>
+                    <div className="loginTitle" style={{marginBottom:"20px"}}>Seat Plan Management</div>
+                    <div style={{display:"flex"}}>
+                        <div className="departmentLogo" style={{marginRight:"10px"}}>
+                            {/* <img src="logos/govt-logo.png"></img> */}
+                            <img style={{height:"40px"}} src={process.env.PUBLIC_URL + '/govt-logo.png'} /> 
+                        </div>
+                        <div>
+                            <div className="loginSubTitle">Directorate Of Secondary & Higher Education</div>
+                            <div style={{textAlign:"left"}} className="loginMinistryName">Ministry of Education</div>
+                        </div>
+                    </div>
+                   
                     <div style={{display:"flex"}}>
                     <iframe width="420" height="315"
                      allowFullScreen="allowfullscreen"

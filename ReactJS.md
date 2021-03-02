@@ -372,6 +372,17 @@ justAnAlert();
 <p>{doSomethingWithInput('hello')}</p>
 ```
 
+## Variable in Image src string
 
+```html
+<img src={`/uploads/${item.pic}`}></img>
+```
 
-<p></p>
+## Working with URL
+
+```html
+<img src={process.env.PUBLIC_URL + '/yourPathHere.jpg'} />
+or,
+<img src={window.location.origin + '/yourPathHere.jpg'} />
+```
+
