@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2021 at 12:14 PM
+-- Generation Time: Mar 02, 2021 at 05:39 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -33,18 +33,6 @@ CREATE TABLE `buildings` (
   `eiin` int(11) NOT NULL COMMENT 'EIIN of the institutes'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `buildings`
---
-
-INSERT INTO `buildings` (`buildingId`, `name`, `eiin`) VALUES
-(11, 'B1', 1111),
-(12, 'b2', 1111),
-(13, 'b3', 1111),
-(14, 'Boom', 1111),
-(15, 'Test', 133980),
-(16, 'Science Building', 123456);
-
 -- --------------------------------------------------------
 
 --
@@ -53,7 +41,8 @@ INSERT INTO `buildings` (`buildingId`, `name`, `eiin`) VALUES
 
 CREATE TABLE `department_ministry` (
   `departmentId` int(11) NOT NULL,
-  `departmentName` varchar(250) NOT NULL,
+  `shortNameOfDepartment` varchar(250) NOT NULL,
+  `fullNameOfDepartment` varchar(250) NOT NULL,
   `ministryName` varchar(250) NOT NULL,
   `logoName` varchar(100) NOT NULL,
   `isActive` tinyint(1) NOT NULL DEFAULT 1
@@ -63,8 +52,8 @@ CREATE TABLE `department_ministry` (
 -- Dumping data for table `department_ministry`
 --
 
-INSERT INTO `department_ministry` (`departmentId`, `departmentName`, `ministryName`, `logoName`, `isActive`) VALUES
-(1, 'DHSE', 'Ministry of Education', 'dhse-logo.png', 1);
+INSERT INTO `department_ministry` (`departmentId`, `shortNameOfDepartment`, `fullNameOfDepartment`, `ministryName`, `logoName`, `isActive`) VALUES
+(1, 'DHSE', 'This is full name', 'Ministry of Education', 'dhse-logo.png', 1);
 
 -- --------------------------------------------------------
 
@@ -696,21 +685,6 @@ CREATE TABLE `floors` (
   `name` varchar(30) NOT NULL,
   `buildingId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `floors`
---
-
-INSERT INTO `floors` (`floorId`, `name`, `buildingId`) VALUES
-(5, 'F1', 11),
-(6, 'f2', 12),
-(7, 'c3', 13),
-(8, 'Boom Floor 1', 14),
-(9, 'sdfsdfsdf', 14),
-(10, '101', 15),
-(11, 'Ground Floor', 15),
-(12, 'Ground Floor', 16),
-(13, '1st Floor', 16);
 
 -- --------------------------------------------------------
 
@@ -1681,18 +1655,6 @@ CREATE TABLE `rooms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rooms`
---
-
-INSERT INTO `rooms` (`roomId`, `roomNo`, `startRoll`, `endRoll`, `capacity`, `floorId`, `buildingId`, `eiin`, `examId`) VALUES
-(13, '101', NULL, NULL, 100, 11, 15, 133980, 1),
-(14, '102', 1, 100, 100, 11, 15, 133980, 1),
-(15, '103', 101, 200, 100, 11, 15, 133980, 1),
-(16, '101', 1, 100, 100, 12, 16, 123456, 1),
-(18, '102', NULL, NULL, 120, 12, 16, 123456, 1),
-(20, '210', NULL, NULL, 150, 13, 16, 123456, 1);
-
---
 -- Indexes for dumped tables
 --
 
@@ -1747,7 +1709,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `buildings`
 --
 ALTER TABLE `buildings`
-  MODIFY `buildingId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `buildingId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `department_ministry`
@@ -1765,7 +1727,7 @@ ALTER TABLE `exams`
 -- AUTO_INCREMENT for table `floors`
 --
 ALTER TABLE `floors`
-  MODIFY `floorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `floorId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `institutions`
@@ -1777,7 +1739,7 @@ ALTER TABLE `institutions`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `roomId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `roomId` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

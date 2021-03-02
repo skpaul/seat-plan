@@ -99,8 +99,8 @@
     try {
         $eiin = $_POST["eiin"];
         $examId = $_POST["examId"];
-        $con = mysqli_connect("localhost", "root", "", "seat_plan");
-        // $con = mysqli_connect("192.168.61.178", "xdev", "DevX#3^Le%Z", "seat_plan");
+        // $con = mysqli_connect("localhost", "root", "", "seat_plan");
+        $con = mysqli_connect("192.168.61.178", "xdev", "DevX#3^Le%Z", "seat_plan");
         $sql = "select  b.name as building, f.name as floor, r.roomNo, r.startRoll, r.endRoll, r.capacity from rooms r INNER JOIN buildings b on r.buildingId=b.buildingId INNER JOIN floors f on r.floorId=f.floorId 
         WHERE r.eiin=$eiin and r.examId=$examId
         order by b.name, f.name, r.roomNo";
