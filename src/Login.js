@@ -51,11 +51,13 @@ function Login(props) {
     return (
             <div className="login-master-wrapper">
                 <main id="login-main">
-                    <h1 className="login-h1">Seat Plan Management</h1>
-
+                    <div className="loginTitle">Seat Plan Management</div>
+                    <div className="loginSubTitle">Directorate Of Secondary & Higher Education</div>
+                    <div className="loginMinistryName">Ministry of Education</div>
                     <div style={{display:"flex"}}>
                     <iframe width="420" height="315"
-                        src="https://www.youtube.com/embed/c8SBu7vnulI?autoplay=1">
+                     allowFullScreen="allowfullscreen"
+                        src="https://www.youtube.com/embed/v8B23p2snIo?autoplay=1">
                     </iframe>
                   
                    

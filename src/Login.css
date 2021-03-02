@@ -10,18 +10,28 @@
    
 }
 
-.login-h1{
+.loginTitle{
     color:rgb(90, 88, 88);
     text-shadow: 0.09rem;
+    font-family: "Source Sans Pro", sans-serif;
     font-size: 40px;
+    font-weight: 900;
     text-transform: uppercase;
-    margin-bottom: 70px;
+    margin-bottom: 5px;
 }
 
-.login-h2{
+.loginSubTitle{
+    color:rgb(90, 88, 88);
+    text-shadow: 0.09rem;
     font-size: 20px;
-    text-align: center;
+    font-weight: 700;
+    /* text-transform: uppercase; */
+    /* margin-bottom: 20px; */
+}
 
+.loginMinistryName{
+    font-size: 17px;
+    margin-bottom: 20px;
 }
 
 #login-form-container{

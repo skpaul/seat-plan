@@ -1,5 +1,6 @@
 import React from "react";
 import './App.css';
+import Home from "./components/home/Home";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import ViewSeatPlan from "./components/ViewSeatPlan";
@@ -20,7 +21,8 @@ function App() {
       <Router>
         
         <Switch>
-        <Route exact path="/" component={Login} />
+          <Route exact path="/" component={Home} />
+          <Route path="/home" component={Login} />
           <Route path="/login" component={Login} />
          
 
