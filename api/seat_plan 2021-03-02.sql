@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 08:20 AM
+-- Generation Time: Mar 02, 2021 at 12:14 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `buildings` (
-  `id` int(11) NOT NULL,
+  `buildingId` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `eiin` int(11) NOT NULL COMMENT 'EIIN of the institutes'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -37,12 +37,34 @@ CREATE TABLE `buildings` (
 -- Dumping data for table `buildings`
 --
 
-INSERT INTO `buildings` (`id`, `name`, `eiin`) VALUES
+INSERT INTO `buildings` (`buildingId`, `name`, `eiin`) VALUES
 (11, 'B1', 1111),
 (12, 'b2', 1111),
 (13, 'b3', 1111),
 (14, 'Boom', 1111),
-(15, 'Test', 133980);
+(15, 'Test', 133980),
+(16, 'Science Building', 123456);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `department_ministry`
+--
+
+CREATE TABLE `department_ministry` (
+  `departmentId` int(11) NOT NULL,
+  `departmentName` varchar(250) NOT NULL,
+  `ministryName` varchar(250) NOT NULL,
+  `logoName` varchar(100) NOT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `department_ministry`
+--
+
+INSERT INTO `department_ministry` (`departmentId`, `departmentName`, `ministryName`, `logoName`, `isActive`) VALUES
+(1, 'DHSE', 'Ministry of Education', 'dhse-logo.png', 1);
 
 -- --------------------------------------------------------
 
@@ -649,7 +671,8 @@ INSERT INTO `div_dist_thana` (`thana_code`, `thana_name`, `district_code`, `dist
 --
 
 CREATE TABLE `exams` (
-  `id` int(11) NOT NULL,
+  `examId` int(11) NOT NULL,
+  `departmentId` int(11) NOT NULL COMMENT 'comes from department_ministry table',
   `name` varchar(100) NOT NULL,
   `reference` varchar(100) NOT NULL,
   `isActive` tinyint(1) NOT NULL DEFAULT 1
@@ -659,8 +682,8 @@ CREATE TABLE `exams` (
 -- Dumping data for table `exams`
 --
 
-INSERT INTO `exams` (`id`, `name`, `reference`, `isActive`) VALUES
-(1, 'MBBS Exam', 'relksadjf lf', 1);
+INSERT INTO `exams` (`examId`, `departmentId`, `name`, `reference`, `isActive`) VALUES
+(1, 1, 'DSHE Examination', 'relksadjf lf', 1);
 
 -- --------------------------------------------------------
 
@@ -669,7 +692,7 @@ INSERT INTO `exams` (`id`, `name`, `reference`, `isActive`) VALUES
 --
 
 CREATE TABLE `floors` (
-  `id` int(11) NOT NULL,
+  `floorId` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `buildingId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -678,14 +701,16 @@ CREATE TABLE `floors` (
 -- Dumping data for table `floors`
 --
 
-INSERT INTO `floors` (`id`, `name`, `buildingId`) VALUES
+INSERT INTO `floors` (`floorId`, `name`, `buildingId`) VALUES
 (5, 'F1', 11),
 (6, 'f2', 12),
 (7, 'c3', 13),
 (8, 'Boom Floor 1', 14),
 (9, 'sdfsdfsdf', 14),
 (10, '101', 15),
-(11, 'Ground Floor', 15);
+(11, 'Ground Floor', 15),
+(12, 'Ground Floor', 16),
+(13, '1st Floor', 16);
 
 -- --------------------------------------------------------
 
@@ -1634,7 +1659,8 @@ INSERT INTO `institutions` (`id`, `password`, `district`, `thana`, `type`, `leve
 (914, '123', 'Dhaka', 'Uttar Khan', 'TECHNICAL', '', 132573, 'KARIGARI BANIJYA COLLEGE,UTTAR KHAN', '', '', '01715460242', '', NULL, 'KBC4657@GMAIL.COM'),
 (915, '123', 'Dhaka', 'Dhanmondi', 'TECHNICAL', '', 138389, 'WESTERN IDEAL INSTITUTE', '', '', '01992057777', '', NULL, 'WII.DHAKA@GMAIL.COM'),
 (916, '123', 'Dhaka', 'Ramna', 'TECHNICAL', '', 133070, 'DHAKA CITY MOHILA BANIJJIK MOHABIDDALAY', '', '', '01712888026', '', NULL, 'DHAKACITY50064COLLEGE@GMAIL.COM'),
-(917, '123', 'Dinajpur', 'Kaharole', 'School', 'lkj', 1111, 'skpaul college', 'lkj', 'lkj', '01711781878', '01611781878', NULL, 'lksdlsdkjf@alskdjf.com');
+(917, '123', 'Dinajpur', 'Kaharole', 'School', 'lkj', 1111, 'skpaul college', 'lkj', 'lkj', '01711781878', '01611781878', NULL, 'lksdlsdkjf@alskdjf.com'),
+(918, '123456', 'Dhaka', 'Mirpur Model', 'College', '', 123456, 'ABC School & College', 'Mirpur-1, Dhaka', 'Mirpur', '01511121212', '01711232323', '01822565656', 'abc@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -1643,7 +1669,7 @@ INSERT INTO `institutions` (`id`, `password`, `district`, `thana`, `type`, `leve
 --
 
 CREATE TABLE `rooms` (
-  `id` int(11) NOT NULL,
+  `roomId` int(11) NOT NULL,
   `roomNo` varchar(10) NOT NULL,
   `startRoll` int(11) DEFAULT NULL,
   `endRoll` int(11) DEFAULT NULL,
@@ -1658,10 +1684,13 @@ CREATE TABLE `rooms` (
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `roomNo`, `startRoll`, `endRoll`, `capacity`, `floorId`, `buildingId`, `eiin`, `examId`) VALUES
+INSERT INTO `rooms` (`roomId`, `roomNo`, `startRoll`, `endRoll`, `capacity`, `floorId`, `buildingId`, `eiin`, `examId`) VALUES
 (13, '101', NULL, NULL, 100, 11, 15, 133980, 1),
 (14, '102', 1, 100, 100, 11, 15, 133980, 1),
-(15, '103', 101, 200, 100, 11, 15, 133980, 1);
+(15, '103', 101, 200, 100, 11, 15, 133980, 1),
+(16, '101', 1, 100, 100, 12, 16, 123456, 1),
+(18, '102', NULL, NULL, 120, 12, 16, 123456, 1),
+(20, '210', NULL, NULL, 150, 13, 16, 123456, 1);
 
 --
 -- Indexes for dumped tables
@@ -1671,7 +1700,13 @@ INSERT INTO `rooms` (`id`, `roomNo`, `startRoll`, `endRoll`, `capacity`, `floorI
 -- Indexes for table `buildings`
 --
 ALTER TABLE `buildings`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`buildingId`);
+
+--
+-- Indexes for table `department_ministry`
+--
+ALTER TABLE `department_ministry`
+  ADD PRIMARY KEY (`departmentId`);
 
 --
 -- Indexes for table `div_dist_thana`
@@ -1684,13 +1719,13 @@ ALTER TABLE `div_dist_thana`
 -- Indexes for table `exams`
 --
 ALTER TABLE `exams`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`examId`);
 
 --
 -- Indexes for table `floors`
 --
 ALTER TABLE `floors`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`floorId`);
 
 --
 -- Indexes for table `institutions`
@@ -1702,7 +1737,7 @@ ALTER TABLE `institutions`
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`roomId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1712,31 +1747,37 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `buildings`
 --
 ALTER TABLE `buildings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `buildingId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `department_ministry`
+--
+ALTER TABLE `department_ministry`
+  MODIFY `departmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `exams`
 --
 ALTER TABLE `exams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `examId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `floors`
 --
 ALTER TABLE `floors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `floorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `institutions`
 --
 ALTER TABLE `institutions`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=918;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=919;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `roomId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
