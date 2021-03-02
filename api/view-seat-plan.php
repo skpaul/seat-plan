@@ -1,6 +1,6 @@
 <?php
-
-header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Origin: http://seatplan.teletalk.com.bd/');
+// header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
@@ -17,8 +17,8 @@ $eiin = $_POST["eiin"];
 $examId = $_POST["examId"];
 
 try {
-    $sql = "select r.*, b.name as building, f.name as floor from rooms r INNER JOIN buildings b on r.buildingId=b.id INNER JOIN floors f on r.floorId=f.id 
-    WHERE r.eiin=$eiin and r.examId=$examId
+    $sql = "select r.*, b.name as building, f.name as floor from rooms r 
+    INNER JOIN buildings b on r.buildingId=b.buildingId INNER JOIN floors f on r.floorId=f.floorId WHERE r.eiin=$eiin and r.examId=$examId
     order by b.name, f.name, r.roomNo";
 
     $seatPlan = $db->select($sql)->fromSQL()->toList();

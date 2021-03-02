@@ -20,7 +20,16 @@
     margin-bottom: 5px;
 }
 
-.loginSubTitle{
+.departmentLogo{
+    margin-right: 10px;
+    margin-top: 5px
+}
+
+.departmentLogo>img{
+    height: 40px;
+
+}
+.departmentName{
     color:rgb(90, 88, 88);
     text-shadow: 0.09rem;
     font-size: 20px;
@@ -29,9 +38,11 @@
     /* margin-bottom: 20px; */
 }
 
-.loginMinistryName{
+.ministryName{
     font-size: 17px;
     margin-bottom: 20px;
+    margin-left: 8px;
+    text-align: left;
 }
 
 #login-form-container{

@@ -18,7 +18,7 @@ export default function SeatPlanTableRow(props){
         if (r === true) {
             let postData = new FormData();
             postData.append("id", props.id);
-            Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=delete`, postData).then(response => {
+            Axios.post(`${window.$apiUrl}/room.php?action=delete`, postData).then(response => {
                 if(response.data.issuccess){
                    // setDisplay("none");
                     roomDeleted(props.id);

@@ -28,7 +28,7 @@ export default function CreateBuilding(props){
 
         let examPostData = new FormData();
         examPostData.append("examId", location.state.id);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=details`, examPostData).then(response => {
+        Axios.post(`${window.$apiUrl}/exam.php?action=details`, examPostData).then(response => {
             const item = response.data;
             setExamName(item.name);
             setReference(item.reference);
@@ -54,7 +54,7 @@ export default function CreateBuilding(props){
          setDisable("disabled");
          setButtonText("saving ...");
 
-        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=create`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/building.php?action=create`, postData).then(response => {
             if (response.data.issuccess) {
                 history.push({
                     pathname: '/seat-plan/new/select-floor',

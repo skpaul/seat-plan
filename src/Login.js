@@ -5,16 +5,26 @@ import "./Login.css";
 
 function Login(props) {
     localStorage.clear();
-
     const location = useLocation();
+    localStorage.setItem('departmentId', location.state.departmentId);
+    // console.log(location.state.departmentId);
     const[eiin, setEiin] = useState("");
     const[password, setPassword] = useState("");
+    const[departmentDetails, setDepartmentDetails]= useState({});
 
+    //Get data on component load event
     useEffect(() => {
-        // console.log(location.pathname); // result: '/secondpage'
-        // console.log(location.search); // result: '?query=abc'
-        console.log(location.state.departmentId); // result: 'some_value'
-     }, [location]);
+        Axios.get(`${window.$apiUrl}/department-ministry.php?action=details&department-id=${location.state.departmentId}`).then(response => {
+            const data = response.data;
+            setDepartmentDetails(response.data);
+            
+           console.log(localStorage.getItem('departmentId'));
+        }).catch(error => {
+            console.log(error);
+            alert("Something goes wrong. Please try again");
+        }); //end of axios.
+
+    }, []); //end of useEffect
 
     const eiinChanged = event=>{
         event.preventDefault();
@@ -34,7 +44,7 @@ function Login(props) {
         data.append("eiin",eiin);
         data.append("password", password);
 
-        Axios.post(`${window.$baseUrl}/seat-plan/api/validate-login.php`,data).then(response=>{
+        Axios.post(`${window.$apiUrl}/validate-login.php`,data).then(response=>{
             
             if(!response.data.issuccess){
                 alert(response.data.message);
@@ -60,13 +70,13 @@ function Login(props) {
                 <main id="login-main">
                     <div className="loginTitle" style={{marginBottom:"20px"}}>Seat Plan Management</div>
                     <div style={{display:"flex"}}>
-                        <div className="departmentLogo" style={{marginRight:"10px"}}>
+                        <div className="departmentLogo">
                             {/* <img src="logos/govt-logo.png"></img> */}
-                            <img style={{height:"40px"}} src={process.env.PUBLIC_URL + '/govt-logo.png'} /> 
+                            <img src={process.env.PUBLIC_URL + '/logos/' + departmentDetails.logoName } /> 
                         </div>
                         <div>
-                            <div className="loginSubTitle">Directorate Of Secondary & Higher Education</div>
-                            <div style={{textAlign:"left"}} className="loginMinistryName">Ministry of Education</div>
+                            <div className="departmentName">{departmentDetails.fullNameOfDepartment}</div>
+                            <div className="ministryName">{departmentDetails.ministryName}</div>
                         </div>
                     </div>
                    

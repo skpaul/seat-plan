@@ -37,7 +37,7 @@ export default function Dashboard(props) {
         let postData = new FormData();
         postData.append("eiin", eiinNo);
         //Get institute profile details -->
-        Axios.post(`${window.$baseUrl}/seat-plan/api/institute-details.php?action=get`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/institute-details.php?action=get`, postData).then(response => {
             if (response.data) {
                 let data = response.data;
                 setDistrict(data.district);
@@ -60,7 +60,7 @@ export default function Dashboard(props) {
         }); //<--Get institute profile details
 
 
-        Axios.post(`${window.$baseUrl}/seat-plan/api/div-dist-thana.php?action=districtList`).then(response => {
+        Axios.post(`${window.$apiUrl}/div-dist-thana.php?action=districtList`).then(response => {
             const items = response.data.districts;
             let local_count = 0;
             items.map((item) => {
@@ -90,7 +90,7 @@ export default function Dashboard(props) {
         setThanaList([]);
         let formData = new FormData();
         formData.append("district", event.target.value);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/div-dist-thana.php?action=thanaList`, formData).then(response => {
+        Axios.post(`${window.$apiUrl}/div-dist-thana.php?action=thanaList`, formData).then(response => {
             const items = response.data.thanas;
             let local_count = 0;
             items.map((item) => {
@@ -180,7 +180,7 @@ export default function Dashboard(props) {
         setDisable("disabled");
          setButtonText("saving ...");
 
-        Axios.post(`${window.$baseUrl}/seat-plan/api/institute-details.php?action=save`, updatedData).then(response => {
+        Axios.post(`${window.$apiUrl}/institute-details.php?action=save`, updatedData).then(response => {
             if (response.data.issuccess) {
                 setSaveResult("Saved successfully.");
                     setDisable("");

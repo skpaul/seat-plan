@@ -30,7 +30,7 @@ export default function SelectBuilding(props){
         
         let postData = new FormData();
          postData.append("eiin", location.state.eiin);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=list`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/building.php?action=list`, postData).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -45,7 +45,7 @@ export default function SelectBuilding(props){
 
         let examPostData = new FormData();
         examPostData.append("examId", location.state.id);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=details`, examPostData).then(response => {
+        Axios.post(`${window.$apiUrl}/exam.php?action=details`, examPostData).then(response => {
             const item = response.data;
             setExamName(item.name);
             setReference(item.reference);

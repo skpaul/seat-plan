@@ -1,6 +1,6 @@
 <?php
-
-header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Origin: http://seatplan.teletalk.com.bd/');
+// header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
@@ -18,7 +18,7 @@ $action = $_GET["action"];
 if($action === "details"){
     $examId = $_POST["examId"];
     try {
-        $exam = $db->select()->from("exams")->where("id")->equalTo($examId)->single();
+        $exam = $db->select()->from("exams")->where("examId")->equalTo($examId)->single();
         http_response_code(200);
         $json = json_encode($exam);
         exit($json);
@@ -30,9 +30,10 @@ if($action === "details"){
 }
 
 if($action === "list"){
-    
+     $departmentId = $_GET["departmentid"];
     try {
-        $exams= $db->select("id, name, reference")->from("exams")->where("isActive")->equalTo(true)->orderBy("name")->toList();
+        $exams= $db->select("examId, name, reference")->from("exams")->where("isActive")->equalTo(true)->andWhere("departmentId")->equalTo($departmentId)->orderBy("name")->toList();
+        // $exams= $db->select("examId, name, reference")->from("exams")->where("isActive")->equalTo(true)->orderBy("name")->toList();
         http_response_code(200);
         $json = json_encode($exams);
         exit($json);

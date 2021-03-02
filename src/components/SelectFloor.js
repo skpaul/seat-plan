@@ -37,7 +37,7 @@ export default function SelectFloor(props){
         let buildingIdData = new FormData();
         buildingIdData.append("buildingId", location.state.buildingId);
         
-        Axios.post(`${window.$baseUrl}/seat-plan/api/floor.php?action=list`, buildingIdData).then(response => {
+        Axios.post(`${window.$apiUrl}/floor.php?action=list`, buildingIdData).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -52,7 +52,7 @@ export default function SelectFloor(props){
 
         let examIdData = new FormData();
         examIdData.append("examId", location.state.examId);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
+        Axios.post(`${window.$apiUrl}/exam.php?action=details`, examIdData).then(response => {
             const item = response.data;
             setExamName(item.name);
             setReference(item.reference);
@@ -63,7 +63,7 @@ export default function SelectFloor(props){
 
         let buildingData = new FormData();
         buildingData.append("id", location.state.buildingId);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
+        Axios.post(`${window.$apiUrl}/building.php?action=details`, buildingData).then(response => {
             const item = response.data;
             setBuildingName(item.name);
             

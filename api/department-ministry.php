@@ -1,6 +1,6 @@
 <?php
-
-header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Origin: http://seatplan.teletalk.com.bd/');
+// header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
@@ -16,11 +16,11 @@ $db->database(DATABASE_NAME)->user(DATABASE_USER_NAME)->server(DATABASE_SERVER)-
 $action = $_GET["action"];
 
 if($action === "details"){
-    $examId = $_POST["examId"];
+    $departmentId = $_GET["department-id"];
     try {
-        $exam = $db->select()->from("exams")->where("id")->equalTo($examId)->single();
+        $department = $db->select()->from("department_ministry")->where("departmentId")->equalTo($departmentId)->single();
         http_response_code(200);
-        $json = json_encode($exam);
+        $json = json_encode($department);
         exit($json);
     } catch (\ZeroException $exp) {
         $logger->createLog($exp->getMessage());
@@ -32,7 +32,8 @@ if($action === "details"){
 if($action === "list"){
     
     try {
-        $exams= $db->select("departmentId, departmentName")->from("department_ministry")->where("isActive")->equalTo(true)->orderBy("departmentName")->toList();
+        $sql = "select departmentId, fullNameOfDepartment as departmentName from department_ministry where isActive=1 ORDER BY  fullNameOfDepartment";
+        $exams= $db->select($sql)->fromSQL()->toList();
         http_response_code(200);
         $json = json_encode($exams);
         exit($json);

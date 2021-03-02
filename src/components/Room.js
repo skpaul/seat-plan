@@ -15,7 +15,7 @@ export default function Room(props){
         let postData = new FormData();
         postData.append("roomId", roomId);
         //Get room details
-        Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=details`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/room.php?action=details`, postData).then(response => {
             const item = response.data;
             setRoomNo(item.roomNo);
             setStartRoll(item.startRoll);

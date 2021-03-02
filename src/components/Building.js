@@ -32,7 +32,7 @@ export default function Building(props){
     postData.append("buildingId", buildingId);
 
     //Get floors
-    Axios.post(`${window.$baseUrl}/seat-plan/api/floor.php?action=list`, postData).then(response=>{
+    Axios.post(`${window.$apiUrl}/floor.php?action=list`, postData).then(response=>{
         const items = response.data;
         console.log(items);
         let local_count = 0;

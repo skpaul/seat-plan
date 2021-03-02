@@ -29,7 +29,7 @@ export default function CreateFloor(props){
 
         let examIdData = new FormData();
         examIdData.append("examId", location.state.examId);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
+        Axios.post(`${window.$apiUrl}/exam.php?action=details`, examIdData).then(response => {
             const item = response.data;
             setExamName(item.name);
             setReference(item.reference);
@@ -40,7 +40,7 @@ export default function CreateFloor(props){
 
         let buildingData = new FormData();
         buildingData.append("id", location.state.buildingId);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
+        Axios.post(`${window.$apiUrl}/building.php?action=details`, buildingData).then(response => {
             const item = response.data;
             setBuildingName(item.name);
             
@@ -67,7 +67,7 @@ export default function CreateFloor(props){
          setDisable("disabled");
          setButtonText("saving ...");
 
-        Axios.post(`${window.$baseUrl}/seat-plan/api/floor.php?action=create`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/floor.php?action=create`, postData).then(response => {
             if(response.data.issuccess){
                 history.push({
                     pathname: '/seat-plan/new/create-room',

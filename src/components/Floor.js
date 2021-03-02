@@ -27,7 +27,7 @@ export default function Floor(props){
         postData.append("floorId", floorId);
 
         //Get floors
-        Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=list`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/room.php?action=list`, postData).then(response => {
             const items = response.data;
             console.log(items);
             let local_count = 0;

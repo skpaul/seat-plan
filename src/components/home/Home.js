@@ -10,21 +10,18 @@ export default function Home(props){
     const [departments, setDepartments] = useState([]);
     //Get data on component load event
     useEffect(() => {
-        Axios.post(`${window.$baseUrl}/seat-plan/api/department-ministry.php?action=list`).then(response => {
+        Axios.post(`${window.$apiUrl}/department-ministry.php?action=list`).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
                 local_count += 1;
-                setDepartments(departments => [...departments, <SelectOption key={local_count} id={item.departmentId} name={item.departmentName} />]);
+                setDepartments(departments => [...departments, <SelectOption key={item.departmentId} id={item.departmentId} name={item.departmentName} />]);
             })
 
         }).catch(error => {
             console.log(error);
             alert("Something goes wrong. Please try again");
         }); //end of axios.
-
-
-       
 
     }, []); //end of useEffect
 

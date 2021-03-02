@@ -50,7 +50,7 @@ function CreateSeatPlanNew() {
 
 
 
-        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=create`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/building.php?action=create`, postData).then(response => {
             if (response.data.issuccess) {
                 //response.data.buildingId
                 setBuildingOptions(buildingOptions => [...buildingOptions, <SelectOption key={response.data.buildingId} id={response.data.buildingId} name={newBuildingName} />]);
@@ -88,7 +88,7 @@ function CreateSeatPlanNew() {
 
 
 
-        Axios.post(`${window.$baseUrl}/seat-plan/api/floor.php?action=create`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/floor.php?action=create`, postData).then(response => {
             if (response.data.issuccess) {
                 // response.data.floorId
                 setFloorOptions(floorOptions => [...floorOptions, <SelectOption key={response.data.floorId} id={response.data.floorId} name={newFloorName} />]);
@@ -105,6 +105,9 @@ function CreateSeatPlanNew() {
     }
 
     const [eiinNo, setEIIN] = useState(localStorage.getItem('eiin'));
+    const [departmentId, setDepartmentId] = useState(localStorage.getItem('departmentId'));
+
+    // console.log(localStorage.getItem('departmentId'));
     const [examId, setExamId] = useState("");
     const [examOptions, setExamOptions] = useState([]);
     const examList = examOptions.map(item => (
@@ -136,12 +139,12 @@ function CreateSeatPlanNew() {
 
     //Get data on component load event
     useEffect(() => {
-        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=list`).then(response => {
+        Axios.get(`${window.$apiUrl}/exam.php?action=list&departmentid=${departmentId}`).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
                 local_count += 1;
-                setExamOptions(examOptions => [...examOptions, <SelectOption key={local_count} id={item.id} name={item.name} />]);
+                setExamOptions(examOptions => [...examOptions, <SelectOption key={local_count} id={item.examId} name={item.name} />]);
             })
 
         }).catch(error => {
@@ -152,7 +155,7 @@ function CreateSeatPlanNew() {
 
         let buildingListParameters = new FormData();
         buildingListParameters.append("eiin", eiinNo);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=list`, buildingListParameters).then(response => {
+        Axios.post(`${window.$apiUrl}/building.php?action=list`, buildingListParameters).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -177,7 +180,7 @@ function CreateSeatPlanNew() {
         let floorListParameters = new FormData();
         floorListParameters.append("buildingId", buildingIdNo);
 
-        Axios.post(`${window.$baseUrl}/seat-plan/api/floor.php?action=list`, floorListParameters).then(response => {
+        Axios.post(`${window.$apiUrl}/floor.php?action=list`, floorListParameters).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -237,7 +240,7 @@ function CreateSeatPlanNew() {
 
         setDisable("disabled");
         setButtonText("saving ...");
-        Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=create`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/room.php?action=create`, postData).then(response => {
             if (response.data.issuccess) {
                 setRoomNo("");
                 setStartRoll("");
@@ -452,7 +455,7 @@ function TableRow(props) {
         if (r === true) {
             let postData = new FormData();
             postData.append("id", props.id);
-            Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=delete`, postData).then(response => {
+            Axios.post(`${window.$apiUrl}/room.php?action=delete`, postData).then(response => {
                 if (response.data.issuccess) {
                     setDisplay("none");
                     alert("Deleted successfully.");

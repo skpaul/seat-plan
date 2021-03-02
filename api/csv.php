@@ -1,10 +1,11 @@
 
 <?php 
-   header("Access-Control-Allow-Origin: *");
-   header("Content-Type: application/json; charset=UTF-8");
-   header("Access-Control-Allow-Methods: POST");
-   header("Access-Control-Max-Age: 3600");
-   header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+    header('Access-Control-Allow-Origin: http://seatplan.teletalk.com.bd/');
+    // header("Access-Control-Allow-Origin: *");
+    header("Content-Type: application/json; charset=UTF-8");
+    header("Access-Control-Allow-Methods: POST");
+    header("Access-Control-Max-Age: 3600");
+    header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
    
 
     function executeQuery($conn, $sql){
@@ -100,7 +101,7 @@
         $examId = $_POST["examId"];
         $con = mysqli_connect("localhost", "root", "", "seat_plan");
         // $con = mysqli_connect("192.168.61.178", "xdev", "DevX#3^Le%Z", "seat_plan");
-        $sql = "select  b.name as building, f.name as floor, r.roomNo, r.startRoll, r.endRoll, r.capacity from rooms r INNER JOIN buildings b on r.buildingId=b.id INNER JOIN floors f on r.floorId=f.id 
+        $sql = "select  b.name as building, f.name as floor, r.roomNo, r.startRoll, r.endRoll, r.capacity from rooms r INNER JOIN buildings b on r.buildingId=b.buildingId INNER JOIN floors f on r.floorId=f.floorId 
         WHERE r.eiin=$eiin and r.examId=$examId
         order by b.name, f.name, r.roomNo";
         createCSV($con, $sql, $eiin);

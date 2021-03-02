@@ -39,7 +39,7 @@ export default function CreateRoom(props){
 
         let examIdData = new FormData();
         examIdData.append("examId", location.state.examId);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=details`, examIdData).then(response => {
+        Axios.post(`${window.$apiUrl}/exam.php?action=details`, examIdData).then(response => {
             const item = response.data;
             setExamName(item.name);
             setReference(item.reference);
@@ -50,7 +50,7 @@ export default function CreateRoom(props){
 
         let buildingData = new FormData();
         buildingData.append("id", location.state.buildingId);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/building.php?action=details`, buildingData).then(response => {
+        Axios.post(`${window.$apiUrl}/building.php?action=details`, buildingData).then(response => {
             const item = response.data;
             setBuildingName(item.name);
             
@@ -62,7 +62,7 @@ export default function CreateRoom(props){
 
             let floorData = new FormData();
             floorData.append("id", location.state.floorId);
-            Axios.post(`${window.$baseUrl}/seat-plan/api/floor.php?action=details`, floorData).then(response => {
+            Axios.post(`${window.$apiUrl}/floor.php?action=details`, floorData).then(response => {
                 const item = response.data;
                 setFloorName(item.name);
                 }).catch(error => {
@@ -98,7 +98,7 @@ export default function CreateRoom(props){
         
          setDisable("disabled");
          setButtonText("saving ...");
-         Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=create`, postData).then(response => {
+         Axios.post(`${window.$apiUrl}/room.php?action=create`, postData).then(response => {
                 if (response.data.issuccess) {
                     setRoomNo("");
                     setStartRoll("");
@@ -251,7 +251,7 @@ function TableRow(props){
         if (r === true) {
             let postData = new FormData();
             postData.append("id", props.id);
-            Axios.post(`${window.$baseUrl}/seat-plan/api/room.php?action=delete`, postData).then(response => {
+            Axios.post(`${window.$apiUrl}/room.php?action=delete`, postData).then(response => {
                 if(response.data.issuccess){
                     setDisplay("none");
                     alert("Deleted successfully.");

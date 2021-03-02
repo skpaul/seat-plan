@@ -12,18 +12,19 @@ export default function ViewSeatPlan(props) {
     const [rows, setRow] = useState([]); //for table tr
     const [isDownloadVisible, setDownloadVisible] = useState(false);
 
+    const [departmentId, setDepartmentId] = useState(localStorage.getItem('departmentId'));
 
     //Get data on component load event
     useEffect(() => {
         let postData = new FormData();
         // postData.append("eiin", eiinNo);
         postData.append("examId", examId);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/exam.php?action=list`, postData).then(response => {
+        Axios.get(`${window.$apiUrl}/exam.php?action=list&departmentid=${departmentId}`, postData).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
                 local_count += 1;
-                setOption(options => [...options, <SelectOption key={local_count} id={item.id} name={item.name} />]);
+                setOption(options => [...options, <SelectOption key={local_count} id={item.examId} name={item.name} />]);
             })
 
         }).catch(error => {
@@ -52,7 +53,7 @@ export default function ViewSeatPlan(props) {
         postData.append("eiin", eiinNo);
         postData.append("examId", selectedExamId);
 
-        Axios.post(`${window.$baseUrl}/seat-plan/api/view-seat-plan.php?action=list`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/view-seat-plan.php?action=list`, postData).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -81,7 +82,7 @@ export default function ViewSeatPlan(props) {
         let postData = new FormData();
         postData.append("eiin", eiinNo);
         postData.append("examId", examId);
-        Axios.post(`${window.$baseUrl}/seat-plan/api/view-seat-plan.php?action=list`, postData).then(response => {
+        Axios.post(`${window.$apiUrl}/view-seat-plan.php?action=list`, postData).then(response => {
             const items = response.data;
             let local_count = 0;
             items.map((item) => {
@@ -89,7 +90,7 @@ export default function ViewSeatPlan(props) {
                 setTotalCapacity(prevTotal => prevTotal + parseInt(item.capacity));
                 //setRow(rows => [...rows, <TableRow key={local_count} b={item.building} f={item.floor} r={item.roomNo} startRoll={item.startRoll} endRoll={item.endRoll} total={item.capacity} />]);
 
-                setRow(rows => [...rows, <SeatPlanTableRow roomDeleted={roomDeleted} key={item.id} id={item.id} b={item.building} f={item.floor} r={item.roomNo} startRoll={item.startRoll} endRoll={item.endRoll} total={item.capacity} />]);
+                setRow(rows => [...rows, <SeatPlanTableRow roomDeleted={roomDeleted} key={item.roomId} id={item.roomId} b={item.building} f={item.floor} r={item.roomNo} startRoll={item.startRoll} endRoll={item.endRoll} total={item.capacity} />]);
             })
             // setCount(count => count + local_count);
             //setCount(local_count);
@@ -118,13 +119,13 @@ export default function ViewSeatPlan(props) {
         //   });
 
         Axios({
-            url: `${window.$baseUrl}/seat-plan/api/csv.php`,
+            url: `${window.$apiUrl}/csv.php`,
             method: 'post',
             // responseType: 'blob', // important
             data : postData
           }).then((response) => {
             
-             const url = `${window.$baseUrl}/seat-plan/api/csv-files/${eiinNo}.csv`;
+             const url = `${window.$apiUrl}/csv-files/${eiinNo}.csv`;
              const link = document.createElement('a');
              link.href = url;
             link.target = "_blank";
@@ -141,7 +142,7 @@ export default function ViewSeatPlan(props) {
 
           });
 
-        // Axios.post(`${window.$baseUrl}/seat-plan/api/csv.php`, postData).then(response => {
+        // Axios.post(`${window.$apiUrl}/csv.php`, postData).then(response => {
         //     const items = response.data;
         //     let local_count = 0;
               
