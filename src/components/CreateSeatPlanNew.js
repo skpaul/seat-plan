@@ -185,7 +185,7 @@ function CreateSeatPlanNew() {
             let local_count = 0;
             items.map((item) => {
                 local_count += 1;
-                setFloorOptions(floorOptions => [...floorOptions, <SelectOption key={local_count} id={item.id} name={item.name} />]);
+                setFloorOptions(floorOptions => [...floorOptions, <SelectOption key={local_count} id={item.floorId} name={item.name} />]);
             })
 
         }).catch(error => {

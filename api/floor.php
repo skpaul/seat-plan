@@ -32,7 +32,7 @@ if($action === "details"){
 if($action === "list"){
     $buildingId = $_POST["buildingId"];
     try {
-        $buildings= $db->select("id,name")->from("floors")->where("buildingId")->equalTo($buildingId)->toList();
+        $buildings= $db->select("floorId,name")->from("floors")->where("buildingId")->equalTo($buildingId)->toList();
         http_response_code(200);
         $json = json_encode($buildings);
         exit($json);
