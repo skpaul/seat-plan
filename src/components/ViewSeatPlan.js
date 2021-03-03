@@ -59,7 +59,7 @@ export default function ViewSeatPlan(props) {
             items.map((item) => {
                 local_count += 1;
                 setTotalCapacity(prevTotal => prevTotal + parseInt(item.capacity));
-                setRow(rows => [...rows, <SeatPlanTableRow roomDeleted={roomDeleted} key={item.id} id={item.id} b={item.building} f={item.floor} r={item.roomNo} startRoll={item.startRoll} endRoll={item.endRoll} total={item.capacity} />]);
+                setRow(rows => [...rows, <SeatPlanTableRow roomDeleted={roomDeleted} key={item.roomId} id={item.roomId} b={item.building} f={item.floor} r={item.roomNo} startRoll={item.startRoll} endRoll={item.endRoll} total={item.capacity} />]);
             })
             // setCount(count => count + local_count);
             //setCount(local_count);

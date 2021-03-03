@@ -16,4 +16,7 @@
     defined("DATABASE_NAME") or define("DATABASE_NAME", "seat_plan"); 
 
     defined("ENVIRONMENT") or define("ENVIRONMENT", "DEVELOPMENT"); //DEVELOPMENT PRODUCTION
+
+    defined("ALLOWORIGIN") or define("ALLOWORIGIN", "*"); 
+    // defined("ALLOWORIGIN") or define("ALLOWORIGIN", "http://seatplan.teletalk.com.bd/"); 
 ?>

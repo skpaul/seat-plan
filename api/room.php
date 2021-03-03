@@ -1,6 +1,7 @@
 <?php
-header('Access-Control-Allow-Origin: http://seatplan.teletalk.com.bd/');
-// header("Access-Control-Allow-Origin: *");
+require_once("Required.php");
+header('Access-Control-Allow-Origin: '. ALLOWORIGIN);
+
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
@@ -19,7 +20,7 @@ $action = $_GET["action"];
 if($action === "delete"){
     $roomId = $_POST["id"];
     try {
-        $roomDetails = $db->delete()->from("rooms")->where("id")->equalTo($roomId)->execute();
+        $roomDetails = $db->delete()->from("rooms")->where("roomId")->equalTo($roomId)->execute();
         http_response_code(200);
         $response = $json->success()->create();
         exit($response);

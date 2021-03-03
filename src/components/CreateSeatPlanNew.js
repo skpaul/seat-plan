@@ -160,7 +160,7 @@ function CreateSeatPlanNew() {
             let local_count = 0;
             items.map((item) => {
                 local_count += 1;
-                setBuildingOptions(buildingOptions => [...buildingOptions, <SelectOption key={local_count} id={item.id} name={item.name} />]);
+                setBuildingOptions(buildingOptions => [...buildingOptions, <SelectOption key={local_count} id={item.buildingId} name={item.name} />]);
             })
 
         }).catch(error => {
