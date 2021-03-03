@@ -4,11 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// window.$baseUrl = "http://localhost"; 
-// window.$baseUrl = "http://seatplan.teletalk.com.bd";
-
-window.$apiUrl = "http://localhost/seat-plan/api"; 
-// window.$apiUrl = "http://seatplan.teletalk.com.bd/api";
+// window.$apiUrl = "http://localhost/seat-plan/api"; 
+window.$apiUrl = "http://seatplan.teletalk.com.bd/api";
 
 
 ReactDOM.render(

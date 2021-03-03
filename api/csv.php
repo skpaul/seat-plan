@@ -8,6 +8,13 @@
     header("Access-Control-Max-Age: 3600");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
    
+    Required::SwiftLogger()->ZeroSQL()->Validable();
+
+    $logger = new SwiftLogger(ROOT_DIRECTORY);
+
+    $db = new ZeroSQL();
+    $db->database(DATABASE_NAME)->user(DATABASE_USER_NAME)->server(DATABASE_SERVER)->password(DATABASE_PASSWORD)->connect();
+
 
     function executeQuery($conn, $sql){
         $result = $conn->query($sql);
@@ -19,7 +26,7 @@
         }
     }
 
-    function createCSV($conn, $sql = "", $eiin){
+    function createCSV($conn, $eiin, $sql = ""){
 
         $query = mysqli_query($conn, $sql);
         $export =  $query;
@@ -101,11 +108,12 @@
         $eiin = $_POST["eiin"];
         $examId = $_POST["examId"];
         // $con = mysqli_connect("localhost", "root", "", "seat_plan");
-        $con = mysqli_connect("192.168.61.178", "xdev", "DevX#3^Le%Z", "seat_plan");
+        $con = mysqli_connect(DATABASE_SERVER, DATABASE_USER_NAME, DATABASE_PASSWORD, DATABASE_NAME);
         $sql = "select  b.name as building, f.name as floor, r.roomNo, r.startRoll, r.endRoll, r.capacity from rooms r INNER JOIN buildings b on r.buildingId=b.buildingId INNER JOIN floors f on r.floorId=f.floorId 
         WHERE r.eiin=$eiin and r.examId=$examId
         order by b.name, f.name, r.roomNo";
-        createCSV($con, $sql, $eiin);
+        createCSV($con, $eiin,$sql);
+
 
         $rDir = realpath(dirname(__FILE__));
         $path = $rDir . "/csv-files";
@@ -119,6 +127,16 @@
             }
         }
 
+
+        $instName = $db->select("name")->from("institutions")->where("eiin")->equalTo($eiin)->singleOrNull();
+        if($instName == null){
+            echo "";
+        }
+        else{
+            echo $instName->name;
+        }
+       
+        exit;
 
     } catch (\Exception $exp) {
         $logger->createLog($exp->getMessage());

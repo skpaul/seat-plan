@@ -124,15 +124,16 @@ export default function ViewSeatPlan(props) {
             // responseType: 'blob', // important
             data : postData
           }).then((response) => {
-            
-             const url = `${window.$apiUrl}/csv-files/${eiinNo}.csv`;
-             const link = document.createElement('a');
-             link.href = url;
+            const url = `${window.$apiUrl}/csv-files/${eiinNo}.csv`;
+            const link = document.createElement('a');
+            link.href = url;
             link.target = "_blank";
+            // alert(response.data);
             link.setAttribute(
                 'download',
-                `Data.csv`,
+                `${response.data} ${eiinNo}.csv`,
                 );
+                
              document.body.appendChild(link);
              link.click();
             //  document.body.removeChild(link);
