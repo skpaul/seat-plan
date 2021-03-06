@@ -114,6 +114,12 @@ function CreateSeatPlanNew() {
         item
     ))
 
+    const [postId, setPostId] = useState("");
+    const [postOptions, setPostOptions] = useState([]);
+    const postList = postOptions.map(item => (
+        item
+    ))
+
     const [buildingId, setBuildingId] = useState("");
     const [buildingOptions, setBuildingOptions] = useState([]);
     const buildingList = buildingOptions.map(item => (
@@ -171,7 +177,31 @@ function CreateSeatPlanNew() {
     }, []); //end of useEffect
 
     const examChanged = (e) => {
+
         setExamId(e.target.value);
+        let examId = e.target.value;
+        setPostOptions([]);
+        let postListParameters = new FormData();
+        postListParameters.append("examId", examId);
+
+        Axios.post(`${window.$apiUrl}/post.php?action=list`, postListParameters).then(response => {
+            const items = response.data;
+            console.log(items);
+            let local_count = 0;
+            items.map((item) => {
+                local_count += 1;
+                setPostOptions(postOptions => [...postOptions, <SelectOption key={local_count} id={item.postId} name={item.postName} />]);
+            })
+
+        }).catch(error => {
+            console.log(error);
+            alert("Something goes wrong. Please try again");
+        }); //end of axios.
+    }
+
+    const postChanged = (e) => {
+        setPostId(e.target.value);
+        
     }
 
     const buildingChanged = (e) => {
@@ -208,6 +238,12 @@ function CreateSeatPlanNew() {
             alert("Select exam.");
             return;
         }
+
+        if (String(postId).trim() === "") {
+            alert("Select post.");
+            return;
+        }
+
         if (buildingId.toString().trim() === "") {
             alert("Select building.");
             return;
@@ -230,9 +266,10 @@ function CreateSeatPlanNew() {
 
         let postData = new FormData();
         postData.append("eiin", eiinNo);
+        postData.append("examId", examId);
+        postData.append("postId", postId);
         postData.append("buildingId", buildingId);
         postData.append("floorId", floorId);
-        postData.append("examId", examId);
         postData.append("roomNo", roomNo);
         postData.append("startRoll", startRoll);
         postData.append("endRoll", endRoll);
@@ -349,6 +386,11 @@ function CreateSeatPlanNew() {
                         <select onChange={examChanged}>
                             <option value="">select an exam</option>
                             {examList}
+                        </select>
+
+                        <select onChange={postChanged}>
+                            <option value="">select post</option>
+                            {postList}
                         </select>
 
                         <div className="buildingBlock">

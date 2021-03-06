@@ -36,6 +36,9 @@ export default function SeatPlanTableRow(props){
     }
     return(
         <tr style={{display:`${display}`}}>
+             <td>
+                {props.post}
+            </td>
             <td>
                 {props.b}
             </td>

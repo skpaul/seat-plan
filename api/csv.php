@@ -34,7 +34,7 @@
         $rDir = realpath(dirname(__FILE__));
         $file = fopen("csv-files/$eiin.csv","w");
         // $file = fopen($rDir . "/seat-plan/api/csv-files/$eiin.csv","w");
-        $dd = array("Building", "Floor", "Room", "Start Roll", "EndRoll", "Quantity");
+        $dd = array("Examination", "Name of the Post", "Post Code", "Exam Date", "Time", "Venue", "Address", "Building", "Floor", "Room", "Start Roll", "EndRoll", "Quantity");
         fputcsv($file, $dd);
         while( $row = mysqli_fetch_row( $export ) )
         {
@@ -109,9 +109,27 @@
         $examId = $_POST["examId"];
         // $con = mysqli_connect("localhost", "root", "", "seat_plan");
         $con = mysqli_connect(DATABASE_SERVER, DATABASE_USER_NAME, DATABASE_PASSWORD, DATABASE_NAME);
-        $sql = "select  b.name as building, f.name as floor, r.roomNo, r.startRoll, r.endRoll, r.capacity from rooms r INNER JOIN buildings b on r.buildingId=b.buildingId INNER JOIN floors f on r.floorId=f.floorId 
-        WHERE r.eiin=$eiin and r.examId=$examId
-        order by b.name, f.name, r.roomNo";
+
+        // Examination", "Name of the Post", "Post Code", "Exam Date", "Time", "Venue", "Address", "Building", "Floor", "Room", "Start Roll", "EndRoll", "Quantity
+
+        $sql = "SELECT  
+                    e.name as exam,
+                    p.postName, p.postCode, p.examDate, p.examTime,
+                    i.name as venue, i.address,
+                    b.name as building, 
+                    f.name as floor, 
+                    r.roomNo, 
+                    r.startRoll, 
+                    r.endRoll,
+                    r.capacity 
+                FROM rooms r 	
+                    INNER JOIN buildings b on r.buildingId=b.buildingId 
+                    INNER JOIN floors f on r.floorId=f.floorId 
+                    INNER JOIN exams e on r.examId=e.examId
+                    INNER JOIN posts p on r.postId=p.postId
+                    INNER JOIN institutions i on r.eiin=i.eiin
+                WHERE r.eiin=$eiin and r.examId=$examId
+                ORDER BY exam, p.postName, i.name,  b.name, f.name, r.roomNo";
         createCSV($con, $eiin,$sql);
 
 

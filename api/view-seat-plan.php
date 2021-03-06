@@ -18,9 +18,12 @@ $eiin = $_POST["eiin"];
 $examId = $_POST["examId"];
 
 try {
-    $sql = "select r.*, b.name as building, f.name as floor from rooms r 
-    INNER JOIN buildings b on r.buildingId=b.buildingId INNER JOIN floors f on r.floorId=f.floorId WHERE r.eiin=$eiin and r.examId=$examId
-    order by b.name, f.name, r.roomNo";
+    $sql = "select r.*, b.name as building, f.name as floor, p.postName as post 
+            from rooms r INNER JOIN buildings b on r.buildingId=b.buildingId 
+            INNER JOIN floors f on r.floorId=f.floorId 
+            INNER JOIN posts p on r.postId = p.postId 
+            WHERE r.eiin=$eiin and r.examId=$examId
+            order by b.name, f.name, r.roomNo";
 
     $seatPlan = $db->select($sql)->fromSQL()->toList();
 
