@@ -1,0 +1,24 @@
+.examComboDiv{
+    margin-bottom: 30px;
+}
+
+.examCombo{
+    margin-bottom: 0;
+}
+
+.postComboDiv{
+    margin-bottom: 30px;
+}
+
+.postCombo{
+    margin-bottom: 0;
+}
+
+.buildingComboDiv, .floorComboDiv{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.buildingCombo, .floorCombo{
+    margin-bottom: 0;
+}

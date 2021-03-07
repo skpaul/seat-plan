@@ -3,6 +3,8 @@ import Axios from 'axios';
 import TopNav from "./TopNav";
 import { Redirect, withRouter, useHistory } from 'react-router-dom';
 import "./CreateSeatPlan.css";
+import "./CreateSeatPlanNew.css";
+
 import Modal from 'react-modal';
 import Footer from "./../Footer";
 
@@ -383,26 +385,30 @@ function CreateSeatPlanNew() {
                     <h1>Create New Seat Plan</h1>
 
                     <div className="cont box-shadow">
-                        <select onChange={examChanged}>
-                            <option value="">select an exam</option>
-                            {examList}
-                        </select>
+                        <div className="examComboDiv">
+                            <select className="examCombo" onChange={examChanged}>
+                                <option value="">select an exam</option>
+                                {examList}
+                            </select>
+                        </div>
 
-                        <select onChange={postChanged}>
-                            <option value="">select post</option>
-                            {postList}
-                        </select>
+                        <div className="postComboDiv">
+                            <select className="postCombo" onChange={postChanged}>
+                                <option value="">select post</option>
+                                {postList}
+                            </select>
+                        </div>
 
-                        <div className="buildingBlock">
-                            <select onChange={buildingChanged} value={buildingId}>
+                        <div className="buildingComboDiv">
+                            <select className="buildingCombo" onChange={buildingChanged} value={buildingId}>
                                 <option value="">select building</option>
                                 {buildingList}
                             </select>
                             <button id="addNewBuildingModalButton" onClick={openBuildingModal}>Add</button>
                         </div>
 
-                        <div className="floorBlock">
-                            <select onChange={floorChanged} value={floorId}>
+                        <div className="floorComboDiv">
+                            <select className="floorCombo" onChange={floorChanged} value={floorId}>
                                 <option value="">select a floor</option>
                                 {floorList}
                             </select>
