@@ -30,7 +30,9 @@ html, body {
 
 .selectWrapper{
     width: 80%;
-    max-width: 500px;
+    max-width: 645px;
+    border: 1px solid lightgray;
+    padding: 48px 21px;
 }
 
 .selectDepartment{

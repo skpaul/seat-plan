@@ -162,12 +162,14 @@ export default function ViewSeatPlan(props) {
                 </header>
                 <main>
                     {/* A good combobox here - https://react-select.com/home */}
-                    <h1>Seat Plan Details</h1>
+                    <h1 className="seatPlanViewHeading" >Seat Plan Details</h1>
                     <div className="seatPlanCont box-shadow">
-                        <select id="examIdCombo" onChange={examChanged}>
-                            <option value="">select an exam</option>
-                            {selectOptions}
-                        </select>
+                        <div className="examComboDiv">
+                            <select className="examComboViewSeatPlan" id="examIdCombo" onChange={examChanged}>
+                                <option value="">select an exam</option>
+                                {selectOptions}
+                            </select>
+                        </div>
                         <table>
                             <thead>
                                 <tr>
@@ -186,7 +188,7 @@ export default function ViewSeatPlan(props) {
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colSpan="5">Grand Total = </td>
+                                    <td colSpan="6">Grand Total = </td>
                                     <td>{totalCapacity}</td>
                                 </tr>
                             </tfoot>
